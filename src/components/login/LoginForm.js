@@ -46,10 +46,14 @@ export default function LoginForm({ setVisible }) {
                     email,
                     password,
                 });
-            setLoading(false);
-            dispatch({ type: "LOGIN", payload: data });
-            Cookies.set("user", JSON.stringify(data));
-            navigate("/");
+
+
+            setTimeout(() => {
+                dispatch({ type: "LOGIN", payload: data });
+                Cookies.set("user", JSON.stringify(data));
+                setLoading(false);
+                navigate("/");
+            }, 2000)
         }
         catch (error) {
             setLoading(false);
@@ -91,18 +95,17 @@ export default function LoginForm({ setVisible }) {
                         }
                     </Formik>
                     <Link to="/forgot" className="forgot_password">Recover Password</Link>
-                    {error &&
-                        <div className="error_text">
-                            <RiseLoader
-                                color="#F51997"
-                                loading={loading}
-                                size={10}
-                                aria-label="Loading Spinner"
-                                data-testid="loader"
-                            />
-                            {error}
-                        </div>
-                    }
+
+                    <div className="error_text">
+                        <RiseLoader
+                            color="#F51997"
+                            loading={loading}
+                            size={10}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                        {error && <div>{ error }</div>}
+                    </div>
                     <div className="sign_splitter"></div>
                     <button className="pink_btn open_signup" type="submit" onClick={() => setVisible(true)}>Create Account</button>
                 </div>
