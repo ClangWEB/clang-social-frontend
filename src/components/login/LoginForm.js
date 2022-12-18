@@ -46,14 +46,10 @@ export default function LoginForm({ setVisible }) {
                     email,
                     password,
                 });
-
-
-            setTimeout(() => {
-                dispatch({ type: "LOGIN", payload: data });
-                Cookies.set("user", JSON.stringify(data));
-                setLoading(false);
-                navigate("/");
-            }, 2000)
+            dispatch({ type: "LOGIN", payload: data });
+            Cookies.set("user", JSON.stringify(data));
+            setLoading(false);
+            navigate("/");
         }
         catch (error) {
             setLoading(false);
@@ -104,7 +100,7 @@ export default function LoginForm({ setVisible }) {
                             aria-label="Loading Spinner"
                             data-testid="loader"
                         />
-                        {error && <div>{ error }</div>}
+                        {error && <div>{error}</div>}
                     </div>
                     <div className="sign_splitter"></div>
                     <button className="pink_btn open_signup" type="submit" onClick={() => setVisible(true)}>Create Account</button>
