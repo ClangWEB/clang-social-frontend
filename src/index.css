@@ -32,6 +32,7 @@ a {
   --pink-color-light: #ffccbb;
   --green-color: #42b72a;
   --light-blue-color: #e7f3ff;
+  --light-pink-color: rgba(255, 204, 187, 0.400);
   --border-color: #ccced2;
   --shadow-1: rgba(0, 0, 0, 0.2);
   --shadow-2: rgba(0, 0, 0, 0.1);
