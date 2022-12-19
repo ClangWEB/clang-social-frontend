@@ -94,20 +94,20 @@ export const left = [
         img: "messkids",
     },
     {
-        text: "Most recent",
-        img: "recent",
-    },
-    {
         text: "Play Games",
         img: "play",
     },
     {
-        text: "Recent ad activity",
-        img: "recentad",
-    },
-    {
         text: "Weather",
         img: "weather",
+    },
+    {
+        text: "Most recent",
+        img: "recent",
+    },
+    {
+        text: "Recent ad activity",
+        img: "recentad",
     },
 ];
 export const stories = [
