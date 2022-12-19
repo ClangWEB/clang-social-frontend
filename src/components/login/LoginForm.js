@@ -79,6 +79,7 @@ export default function LoginForm({ setVisible }) {
                         }}
                         validationSchema={loginValidation}
                         onSubmit={() => {
+                            setError("");
                             setLoading(true);
                             loginSubmit();
                         }}
