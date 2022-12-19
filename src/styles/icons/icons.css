@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   display: inline-block;
   -webkit-filter: invert(10%);
+  filter: invert(10%);
 }
 .friends_suggestions_icon {
   background-image: url(../../../public/icons/icons11.png);
@@ -16,6 +17,7 @@
   height: 20px;
   background-repeat: no-repeat;
   -webkit-filter: invert(10%);
+  filter: invert(10%);
   display: inline-block;
 }
 .all_friends_icon {
@@ -26,6 +28,7 @@
   height: 20px;
   background-repeat: no-repeat;
   -webkit-filter: invert(10%);
+  filter: invert(10%);
   display: inline-block;
 }
 .birthdays_icon {
@@ -36,6 +39,7 @@
   height: 20px;
   background-repeat: no-repeat;
   -webkit-filter: invert(10%);
+  filter: invert(10%);
   display: inline-block;
 }
 .m_post_icon {
@@ -273,6 +277,7 @@
   background-repeat: no-repeat;
   display: inline-block;
   -webkit-filter: invert(40%);
+  filter: invert(40%);
 }
 .ad_choices_icon {
   background-image: url(../../../public/icons/icons6.png);
@@ -284,6 +289,7 @@
   display: inline-block;
   transform: translateY(1px);
   -webkit-filter: invert(40%);
+  filter: invert(40%);
 }
 
 .pin_icon {
@@ -331,6 +337,7 @@
   background-repeat: no-repeat;
   display: inline-block;
   -webkit-filter: invert(40%);
+  filter: invert(40%);
 }
 .turnOffNotifications_icon {
   background-image: url("../../../public/icons/icons3.png");
@@ -682,6 +689,7 @@
   -webkit-filter: invert(39%) sepia(57%) saturate(200%) saturate(200%)
     saturate(200%) saturate(200%) saturate(200%) saturate(147.75%)
     hue-rotate(202deg) brightness(97%) contrast(96%);
+    filter: invert(39%);
 }
 .equalize_icon {
   background-image: url(../../../public/icons/icons26.png);
@@ -745,4 +753,31 @@
   display: inline-block;
   height: 21px;
   width: 21px;
+}
+.compact_icon {
+  background-image: url(../../../public/icons/icons38.png);
+  background-position: 0px -130px;
+  background-size: auto;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.public_icon {
+  background-image: url(../../../public/icons/public.png);
+  background-position: 0px -109px;
+  background-size: auto;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.friends_home_icon {
+  background-image: url(../../../public/icons/icons40.png);
+  background-position: 0px -423px;
+  background-size: auto;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
 }

@@ -29,6 +29,7 @@ a {
   --dark-color-secondary: #b0b3b8;
   --blue-color: #1876f2;
   --pink-color: #F51997;
+  --pink-color-light: #ffccbb;
   --green-color: #42b72a;
   --light-blue-color: #e7f3ff;
   --border-color: #ccced2;
@@ -76,10 +77,36 @@ a {
 .hover2:hover {
   background: var(--bg-third);
 }
+
+.hover3:hover {
+  background: pink;
+  /* background: #d4d6da3a; */
+}
 /* ------------------------------------------------- */
 
-.card {
-  height: 500px;
-  width: 500px;
-  background: red;
+/* ----------------- SMALL CIRCLE ------------------ */
+.small_circle {
+  position: relative;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 11px;
+  background: pink;
+  cursor: pointer;
 }
+/* ------------------------------------------------- */
+
+/* SCROLLBAR */
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: pink;
+  /* background: #aeaeafa1; */
+  border-radius: 5px;
+}
+/* ------------------------------------------------- */

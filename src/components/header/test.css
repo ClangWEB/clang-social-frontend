@@ -1,8 +1,8 @@
 header {
     position: fixed;
     top: 0;
-    height: 70px;
-    z-index: 99;
+    height: 56px;
+    z-index: 9999999999999;
     background: var(--bg-primary);
     width: 100%;
     box-shadow: 1px 8px 15px -7px var(--shadow-2);
@@ -11,19 +11,17 @@ header {
     color: var(--color-primary);
 }
 
-
-/* ---------------------- HEADER LEFT ---------------------- */
+/*---Header left-----*/
 .header_left {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px;
-    /* padding: 5px; */
+    padding: 5px 1rem;
 }
 
 .circle {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -36,7 +34,7 @@ header {
     align-items: center;
     gap: 8px;
     background: var(--bg-forth);
-    padding: 13px 32px 13px 10px;
+    padding: 10px 32px 10px 10px;
     border-radius: 50px;
     cursor: text;
 }
@@ -49,12 +47,14 @@ header {
     font-family: inherit;
 }
 
-/* .search input::placeholder {
-    color: gray;
-} */
-/* ----------------------------------------------------------- */
+.search input::placeholder {
+    transform: translateY(-1px);
+}
 
-/* ---------------------- HEADER MIDDLE ---------------------- */
+/*---Header left-----*/
+
+/*---Header middle-----*/
+
 .header_middle {
     display: flex;
     align-items: center;
@@ -68,7 +68,6 @@ header {
     align-items: center;
     justify-content: center;
     width: 125px;
-    /* width: 200px; */
     height: 50px;
     border-radius: 10px;
     cursor: pointer;
@@ -92,10 +91,9 @@ header {
 }
 
 .active {
-    border-bottom: 3px solid var(--pink-color);
-    /* border-top: 3px solid var(--pink-color); */
-    /* border-radius: 0; */
-    height: 70px;
+    border-bottom: 3px solid var(--blue-color);
+    border-radius: 0;
+    height: 56px;
     transform: translateX(0);
 }
 
@@ -107,17 +105,17 @@ header {
     position: absolute;
     top: 3px;
     right: 1.9rem;
-    background: #ffccbb;
-    /* background: var(--blue-color); */
+    background: #e41e3f;
     border-radius: 50px;
     padding: 1px 5px;
     font-size: 13px;
-    color: var(--pink-color);
+    color: #fff;
 }
 
-/* ---------------------------------------------------------- */
+/*---Header middle-----*/
 
-/* ---------------------- HEADER RIGHT ---------------------- */
+/*---Header right-----*/
+
 .header_right {
     display: flex;
     position: absolute;
@@ -140,22 +138,19 @@ header {
 }
 
 .profile_link img {
-    width: 40px;
-    height: 40px;
+    width: 28.7px;
+    height: 28.7px;
     border-radius: 50%;
-    /* border: 1px solid var(--pink-color); */
     border: 1px solid #b0b3b8;
     transform: translateX(-1px);
 }
 
-/* .profile_link span {
+.profile_link span {
     margin-bottom: 3px;
-
-} */
+}
 
 .circle_icon {
     position: relative;
-    top: 4px;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -171,16 +166,16 @@ header {
     position: absolute;
     top: -6px;
     right: -5px;
-    background: #ffccbb;
+    background: #e41e3f;
     border-radius: 50px;
     padding: 1px 6px;
     font-size: 13px;
-    color: var(--pink-color);
+    color: #fff;
 }
 
-/* --------------------------------------------------------- */
+/*---Header right-----*/
 
-/* ---------------------- SEARCH MENU ---------------------- */
+/*---Search menu-----*/
 .search_area {
     position: absolute;
     align-items: flex-start;
@@ -205,29 +200,27 @@ header {
 }
 
 .search_area .search {
-    margin-left: 8px;
-    margin-top: 4px;
     padding: 10px 44px 10px 12px;
-    width: 238px;
-    height: 46px;
+    width: 252px;
     gap: 4px;
 }
 
 .search_area .search input {
     padding-left: 4px;
+    color: var(--color-primary);
 }
 
 .search_area .search svg {
-    transform: translateY(2px);
+    transform: translateY(1px);
 }
 
-/* .search_area .search input::placeholder {
-    transform: translateY(-1px);
+.search_area .search input::placeholder {
+    transform: translateY(-2px);
 }
 
 .search_area .search input:focus::placeholder {
     transform: translateY(-1px);
-} */
+}
 
 .search_history {
     width: 100%;
@@ -252,14 +245,12 @@ header {
     color: var(--blue-color);
 }
 
-/* ------------------------------------------------------ */
-
-/* ---------------------- ALL MENU ---------------------- */
+/*---Search menu-----*/
+/*---Search All Menu-----*/
 .all_menu {
     position: absolute;
     right: -9rem;
-    top: 56px;
-    /* background: var(--pink-color-light); */
+    top: 45px;
     background: var(--bg-secondary);
     border-radius: 10px;
     height: 90vh;
@@ -286,6 +277,7 @@ header {
 
 .all_left {
     background: var(--bg-primary);
+
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -293,6 +285,7 @@ header {
 
 .all_menu_search {
     background: var(--bg-secondary);
+
     display: flex;
     align-items: center;
     gap: 5px;
@@ -314,13 +307,9 @@ header {
 }
 
 .all_menu_group_header {
-    font-weight: bolder;
+    font-weight: 600;
     font-size: 16px;
     padding: 10px 0;
-}
-
-.all_menu_group_header span:first-child {
-    color: var(--pink-color);
 }
 
 .all_menu_group {
@@ -350,7 +339,7 @@ header {
 
 .all_menu_col span:first-of-type {
     font-size: 14px;
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .all_menu_col span:last-of-type {
@@ -399,14 +388,14 @@ header {
     background: var(--bg-third);
 }
 
-/* ------------------------------------------------------ */
+/*---Search All Menu-----*/
 
-/* ---------------------- USER MENU --------------------- */
-.menu {
+/*-------User menu----*/
+
+.mmenu {
     padding: 0 0.3rem;
     position: absolute;
-    /* top: 100%; */
-    top: 56px;
+    top: 100%;
     right: 0;
     width: 360px;
     border-radius: 10px;
@@ -416,7 +405,7 @@ header {
     padding: 10px;
 }
 
-.menu_header {
+.mmenu_header {
     display: flex;
     align-items: center;
     padding: 5px;
@@ -424,32 +413,31 @@ header {
     gap: 10px;
 }
 
-.menu_header img {
-    width: 65px;
-    height: 65px;
+.mmenu_header img {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.menu_col {
+.mmenu_col {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.menu_col span:first-of-type {
+.mmenu_col span:first-of-type {
     color: var(--color-primary);
     font-weight: 600;
     font-size: 15px;
     letter-spacing: 1px;
 }
 
-.menu_col span:last-of-type {
+.mmenu_col span:last-of-type {
     font-size: 14px;
-    color: var(--pink-color);
 }
 
-.menu_main {
+.mmenu_main {
     padding: 10px;
     margin-top: 5px;
     display: flex;
@@ -457,28 +445,23 @@ header {
     gap: 5px;
 }
 
-.menu_splitter {
+.mmenu_splitter {
     width: 100%;
     height: 1px;
     background: var(--bg-third);
     margin-top: 5px;
 }
 
-.menu_span1 {
+.mmenu_span1 {
     font-size: 14px !important;
 }
 
-.menu_span2 {
+.mmenu_span2 {
     font-size: 12px !important;
     color: var(--color-secondary);
 }
 
-.menu_span3 {
-    font-size: 15px !important;
-    font-weight: 600;
-}
-
-.menu_item {
+.mmenu_item {
     position: relative;
     display: flex;
     align-items: center;
@@ -512,7 +495,7 @@ header {
     padding: 10px;
 }
 
-.absolute_wrap .menu_item {
+.absolute_wrap .mmenu_item {
     margin-top: 0;
 }
 
@@ -529,15 +512,15 @@ header {
     align-items: center;
     justify-content: space-between;
     margin-left: 50px;
-    font-weight: 400;
+    font-weight: 600;
     padding: 10px;
     cursor: pointer;
     border-radius: 10px;
 }
 
 .absolute_wrap label input {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
 }
 
 .search_user_item i {
@@ -545,4 +528,185 @@ header {
     right: 10px;
     transform: scale(0.6);
 }
-/* ------------------------------------------------------ */
+
+/*-------User menu----*/
+.search_results {
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.search_history {
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.search_user_item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.search_user_item img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.search_user_item span {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/*---responsive----------*/
+@media (max-width: 1295px) {
+    .middle_icon {
+        width: 90px;
+    }
+}
+
+@media (max-width: 1130px) {
+    .middle_icon {
+        width: 70px;
+    }
+}
+
+@media (max-width: 1040px) {
+    .search1 {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .search1 input {
+        display: none;
+    }
+
+    .header_middle {
+        transform: translateX(-15%);
+    }
+}
+
+@media (max-width: 945px) {
+    .header_middle {
+        transform: translateX(-22%);
+    }
+}
+
+@media (max-width: 850px) {
+    .header_middle {
+        transform: translateX(-30%);
+    }
+
+    .middle_icon:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 770px) {
+    .header_middle {
+        transform: translateX(-37%);
+    }
+
+    .middle_icon:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .middle_icon:nth-child(3) {
+        display: none;
+    }
+}
+
+/*---responsive----------*/
+@media (max-width: 620px) {
+    .profile_link {
+        display: none;
+    }
+
+    .all_menu {
+        width: 485px;
+    }
+
+    .all_left {
+        width: 250px;
+    }
+}
+
+@media (max-width: 550px) {
+    .middle_icon:nth-child(1) {
+        display: none;
+    }
+
+    .header_middle {
+        transform: translateX(-20%);
+    }
+}
+
+@media (max-width: 505px) {
+    .all_menu {
+        width: 340px;
+        right: -9rem;
+    }
+
+    .all_menu_wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .all_left {
+        width: 100%;
+    }
+
+    .all_right {
+        position: relative;
+        width: 100%;
+        padding-left: 3rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .header_right .circle_icon:nth-child(3) {
+        display: none;
+    }
+
+    .mmenu {
+        width: 290px;
+    }
+
+    .all_menu {
+        width: 310px;
+        left: -10rem;
+    }
+
+    .search_area {
+        width: 310px;
+    }
+}
+
+/*---responsive----------*/
+
+/*----Active header----*/
+.active_header {
+    background: var(--light-blue-color);
+}
+
+.active_header svg {
+    fill: var(--blue-color);
+}
+
+.active_link {
+    background: var(--light-blue-color);
+    color: var(--blue-color);
+}
+
+/*----Active header----*/
