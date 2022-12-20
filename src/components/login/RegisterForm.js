@@ -91,7 +91,7 @@ export default function RegisterForm({ setVisible }) {
         dispatch({ type: "LOGIN", payload: rest });
         Cookies.set("user", JSON.stringify(rest));
         navigate("/");
-      }, 7000);
+      }, 5000);
     }
     catch (error) {
       setLoading(false);

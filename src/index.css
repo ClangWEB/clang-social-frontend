@@ -83,6 +83,10 @@ a {
   background: pink;
   /* background: #d4d6da3a; */
 }
+
+.hover4:hover {
+  background: var(--light-pink-color);
+}
 /* ------------------------------------------------- */
 
 /* ----------------- SMALL CIRCLE ------------------ */

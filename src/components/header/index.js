@@ -76,7 +76,9 @@ export default function Header() {
                 </Link>
                 <div className={`circle_icon hover1 ${showAllMenu && "active_header"}`} ref={allMenu}>
                     <div onClick={() => setShowAllMenu((prev) => !prev)}>
-                        <Menu />
+                        <div style={{ transform: "translateY(2.5px)" }}>
+                            <Menu />
+                        </div>
                     </div>
                     {showAllMenu && <AllMenu />}
                 </div>
@@ -89,7 +91,9 @@ export default function Header() {
                 </div>
                 <div className={`circle_icon hover1 ${showUserMenu && "active_header"}`} ref={usermenu} >
                     <div onClick={() => setShowUserMenu((prev) => !prev)}>
-                        <ArrowDown />
+                        <div style={{ transform: "translateY(2.5px)" }}>
+                            <ArrowDown />
+                        </div>
                     </div>
                     {showUserMenu && <UserMenu user={user} />}
 

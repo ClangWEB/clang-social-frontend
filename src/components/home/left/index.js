@@ -46,7 +46,6 @@ export default function LeftHome({ user }) {
             )}
             <div className="splitter"></div>
             <div className="shortcut">
-                {/* <div className="heading">Your Shortcuts</div> */}
                 <div className="heading">My Social Links</div>
                 <div className="edit_shortcut">Edit</div>
             </div>
