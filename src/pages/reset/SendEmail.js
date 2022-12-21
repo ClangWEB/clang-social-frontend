@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function SendEmail({ user }) {
+export default function SendEmail({ setLoading, userInfos }) {
 
 
     return (
@@ -14,14 +14,14 @@ export default function SendEmail({ user }) {
                         <input type="radio" name="" id="email" checked readOnly />
                         <div className="label_col">
                             <span>Send code via email</span>
-                            <span>email@email.com</span>
+                            <span>{userInfos?.email}</span>
                         </div>
                     </label>
                 </div>
                 <div className="reset_right">
-                    <img src={user?.picture} alt="Profile" />
-                    <span>email@email.com</span>
-                    <span>Clang Social user</span>
+                    <img src={userInfos?.picture} alt="Profile" />
+                    <span>{userInfos?.email}</span>
+                    <span style={{color: "#F51997"}}>Clang Social User</span>
                 </div>
             </div>
             <div className="reset_form_btns">

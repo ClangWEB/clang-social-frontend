@@ -3,14 +3,28 @@ import { Search } from "../../svg";
 import { Form, Formik } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import axios from "axios";
 
 
-export default function SearchAccount({ email, setEmail, error }) {
+export default function SearchAccount({ email, setEmail, error, setError,  setLoading, setUserInfos, setVisible }) {
     const validateEmail = Yup.object({
         email: Yup.string()
         .required("Enter the Email address!")
         .email("Enter valid Email address!")
     })
+    const handleSearch = async () => {
+        try {
+            setError("");
+            setLoading(true);
+            const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/findUser`, {email});
+            setUserInfos(data);
+            setVisible(1);
+        } 
+        catch (error) {
+            setLoading(false);
+            setError(error.response.data.message);
+        }
+    }
 
     return (
         <div className="reset_form">
@@ -20,6 +34,9 @@ export default function SearchAccount({ email, setEmail, error }) {
                 enableReinitialize
                 initialValues={{ email }}
                 validationSchema={validateEmail}
+                onSubmit={() => {
+                    handleSearch();
+                }}
             >
                 {(formik) => (
                     <Form>
