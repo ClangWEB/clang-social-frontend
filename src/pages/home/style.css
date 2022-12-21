@@ -48,7 +48,7 @@
 @media (max-width: 1175px) {
 
     .stories,
-    .createPost {
+    .createPost, .send_verification {
         width: 83%;
     }
 
@@ -108,14 +108,14 @@
     }
 
     .stories,
-    .createPost {
+    .createPost, .send_verification {
         width: 100%;
     }
 }
 
 @media (max-width: 960px) {
 
-    .createPost {
+    .createPost, .send_verification {
         width: 93%;
     }
 
@@ -147,7 +147,7 @@
         display: none;
     }
 
-    .createPost {
+    .createPost, .send_verification {
         width: 110%;
     }
 
@@ -196,7 +196,7 @@
 @media (max-width: 620px) {
 
     .myCreatePost {
-        margin-top: 1.7rem;
+        margin-top: 1.1rem;
     }
 
     .left_home {
@@ -209,7 +209,7 @@
     }
 
     .stories,
-    .createPost {
+    .createPost, .send_verification {
         width: 100%;
     }
 

@@ -46,7 +46,7 @@ a {
   border: none;
   outline: none;
   background: var(--pink-color);
-  padding: 0.5px 12px;
+  padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;
   font-weight: 600;
@@ -59,6 +59,47 @@ a {
   cursor: pointer;
 }
 
+.light_blue_btn {
+  border: none;
+  outline: none;
+  background: var(--light-blue-color);
+  padding: 8.5px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.gray_btn {
+  border: none;
+  outline: none;
+  background: var(--bg-secondary);
+  padding: 8.5px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* .blue_btn,
+.gray_btn span {
+  transform: translateY(-1px);
+} */
+/* ------------------------------------------------- */
+
+/* --------------------- BLUR ---------------------- */
 .blur {
   position:fixed;
   top: 0;

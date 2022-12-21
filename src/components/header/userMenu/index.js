@@ -17,7 +17,7 @@ export default function UserMenu({ user }) {
             type: "LOGOUT",
         });
         navigate("/");
-    }
+    };
     const [visible, setVisible] = useState(0);
 
     return (

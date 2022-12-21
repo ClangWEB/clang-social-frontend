@@ -46,6 +46,8 @@ export default function LoginForm({ setVisible }) {
                     email,
                     password,
                 });
+
+
             dispatch({ type: "LOGIN", payload: data });
             Cookies.set("user", JSON.stringify(data));
             setLoading(false);
@@ -91,7 +93,7 @@ export default function LoginForm({ setVisible }) {
                             )
                         }
                     </Formik>
-                    <Link to="/forgot" className="forgot_password">Recover Password</Link>
+                    <Link to="/reset" className="forgot_password">Recover Password</Link>
 
                     <div className="error_text">
                         <RiseLoader

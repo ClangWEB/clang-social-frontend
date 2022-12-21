@@ -25,7 +25,6 @@ export default function Stories() {
         query: "(max-width: 390px)"
     });
     const max = query390px ? 3: query550px ? 4 : query885px ? 5 : query960px ? 4 : query1030px ? 5 : query1175px ? 4 : stories.length;
-    // const max = query390px ? 3 : query885px ? 5 : query960px ? 4 : query1030px ? 5 : query1175px ? 4 : stories.length;
 
     return (
         <div className="stories">
