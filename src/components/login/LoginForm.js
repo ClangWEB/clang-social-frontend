@@ -46,8 +46,6 @@ export default function LoginForm({ setVisible }) {
                     email,
                     password,
                 });
-
-
             dispatch({ type: "LOGIN", payload: data });
             Cookies.set("user", JSON.stringify(data));
             setLoading(false);
