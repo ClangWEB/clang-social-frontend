@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import axios from "axios";
 
 
-export default function SearchAccount({ email, setEmail, error, setError,  setLoading, setUserInfos, setVisible }) {
+export default function SearchAccount({ email, setEmail, error, setError, loading, setLoading, setUserInfos, setVisible }) {
     const validateEmail = Yup.object({
         email: Yup.string()
         .required("Enter the Email address!")
@@ -14,10 +14,11 @@ export default function SearchAccount({ email, setEmail, error, setError,  setLo
     })
     const handleSearch = async () => {
         try {
-            setError("");
             setLoading(true);
             const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/findUser`, {email});
+            setError("");
             setUserInfos(data);
+            setLoading(false);
             setVisible(1);
         } 
         catch (error) {

@@ -30,7 +30,6 @@ export default function Reset() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [userInfos, setUserInfos] = useState("");
-    console.log(userInfos);
 
     return (
         <div className="reset">
@@ -49,16 +48,53 @@ export default function Reset() {
             </div>
             <div className="reset_wrap">
                 {visible === 0 &&
-                    <SearchAccount email={email} setEmail={setEmail} error={error} setError={setError} setLoading={setLoading} setUserInfos={setUserInfos} setVisible={setVisible}/>
+                    <SearchAccount
+                        email={email}
+                        setEmail={setEmail}
+                        error={error}
+                        setError={setError}
+                        loading={loading}
+                        setLoading={setLoading}
+                        setUserInfos={setUserInfos}
+                        setVisible={setVisible}
+                    />
                 }
                 {visible === 1 && userInfos &&
-                    <SendEmail setLoading={setLoading} userInfos={userInfos}/>
+                    <SendEmail
+                        email={email}
+                        userInfos={userInfos}
+                        error={error}
+                        setError={setError}
+                        loading={loading}
+                        setLoading={setLoading}
+                        setUserInfos={setUserInfos}
+                        setVisible={setVisible}
+                    />
                 }
                 {visible === 2 &&
-                    <CodeVerification code={code} setCode={setCode} error={error} setLoading={setLoading}/>
+                    <CodeVerification
+                        code={code}
+                        userInfos={userInfos}
+                        setCode={setCode}
+                        error={error}
+                        setError={setError}
+                        loading={loading}
+                        setLoading={setLoading}
+                        setVisible={setVisible}
+                    />
                 }
                 {visible === 3 &&
-                    <ChangePassword password={password} setPassword={setPassword} confirmPassword={confirmPassword} setConfirmPassword={setConfirmPassword} error={error} setLoading={setLoading}/>
+                    <ChangePassword
+                        userInfos={userInfos}
+                        password={password}
+                        setPassword={setPassword}
+                        confirmPassword={confirmPassword}
+                        setConfirmPassword={setConfirmPassword}
+                        error={error}
+                        setError={setError}
+                        loading={loading}
+                        setLoading={setLoading}
+                    />
                 }
             </div>
             <Footer />
