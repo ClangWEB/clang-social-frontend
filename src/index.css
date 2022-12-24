@@ -3,6 +3,8 @@
   margin: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
 }
 body {
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
@@ -53,6 +55,23 @@ a {
   font-weight: 600;
   font-size: 14px;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.blue_btn {
+  border: none;
+  outline: none;
+  background: var(--blue-color);
+  padding: 8.5px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;

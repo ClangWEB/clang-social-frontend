@@ -106,7 +106,7 @@ export default function LoginForm({ setVisible }) {
                         {error && <div>{error}</div>}
                     </div>
                     <div className="sign_splitter"></div>
-                    <button className="pink_btn open_signup" type="submit" onClick={() => setVisible(true)}>Create Account</button>
+                    <button disabled={loading} className="pink_btn open_signup" type="submit" onClick={() => setVisible(true)}>Create Account</button>
                 </div>
                 {/* <Link to="/" className="sign_extra">
               <b>Create a Page </b>

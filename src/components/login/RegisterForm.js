@@ -210,7 +210,7 @@ export default function RegisterForm({ setVisible }) {
                   notifications from us and can opt out at any time.
                 </div>
                 <div className="reg_btn_wrapper">
-                  <button className="pink_btn open_signup_second" type="submit">Sign Up</button>
+                  <button disabled={loading} className="pink_btn open_signup_second" type="submit">Sign Up</button>
                 </div>
                 <RiseLoader
                   color="#F51997"

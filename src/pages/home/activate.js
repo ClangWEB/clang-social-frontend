@@ -47,6 +47,7 @@ export default function Activate() {
       }, 3000);
     }
   }
+  
   useEffect(() => {
     activateAccount();
   }, [])

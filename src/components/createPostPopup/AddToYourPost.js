@@ -1,11 +1,11 @@
 import { Dots, Feeling, Photo } from "../../svg"
 
 
-export default function AddToYourPost() {
+export default function AddToYourPost({ setShowPreview }) {
     return (
         <div className="addtoyourpost">
             <div className="addto_text">Add to your Post</div>
-            <div className="post_header_right hover4">
+            <div className="post_header_right hover4" onClick={() => {setShowPreview(true)}}>
                 <Photo color="#45BD62"/>
             </div>
             <div className="post_header_right hover4">
