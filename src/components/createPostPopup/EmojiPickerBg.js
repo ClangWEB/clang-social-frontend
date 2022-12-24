@@ -53,7 +53,8 @@ export default function EmojiPickerBg({ user, text, setText, type2, background, 
                     ref={textRef}
                     maxLength="250"
                     value={text}
-                    placeholder={`What's on your mind, ${user?.first_name}...`}
+                    placeholder={`Say hii to world, ${user?.first_name}`}
+                    // placeholder={`What's on your mind, ${user?.first_name}...`}
                     className={`post_input scrollbar ${type2 ? "input2" : ""}`}
                     onChange={(e) => setText(e.target.value)}
                     style={{
