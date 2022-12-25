@@ -44,9 +44,6 @@ function App() {
     posts: [],
     error: ""
   });
-  useEffect(() => {
-    getAllPosts();
-  }, []);
   const getAllPosts = async () => {
     try {
       dispatch({
@@ -69,13 +66,17 @@ function App() {
       });
     }
   };
+  useEffect(() => {
+    getAllPosts();
+  }, []);
   const [postVisible, setPostVisible] = useState(false);
   return (
     <div>
       {postVisible && <CreatePostPopup user={user} setPostVisible={setPostVisible} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
-          <Route path="/" element={<Home loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} />} exact />
+          <Route path="/" element={<Home setPostVisible={setPostVisible} />} exact />
+          {/* <Route path="/" element={<Home loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} />} exact /> */}
           <Route path="/profile" element={<Profile />} exact />
           <Route path="/activate/:token" element={<Activate />} exact />
         </Route>
