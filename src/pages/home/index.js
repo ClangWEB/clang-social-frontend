@@ -40,7 +40,7 @@ function reducer(state, action) {
 
 // export default function Home({ loading, posts, error, setPostVisible }) {
 export default function Home({ setPostVisible }) {
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector((state) => ({ ...state })); // eslint-disable-next-line
   const [{ loading, posts, error }, dispatch] = useReducer(reducer, {
     loading: false,
     posts: [],
