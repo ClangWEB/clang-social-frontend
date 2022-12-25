@@ -8,7 +8,8 @@ import Activate from "./pages/home/activate";
 import Reset from "./pages/reset";
 import CreatePostPopup from "./components/createPostPopup";
 import { useSelector } from "react-redux";
-import { useEffect, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
+// import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 
 function reducer(state, action) {
@@ -50,7 +51,7 @@ function App() {
       dispatch({
         type: "POSTS_REQUEST"
       });
-      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllPosts`, {
+      const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getAllPosts`, {
         headers: {
           Authorization: `Bearer ${user?.token}`
         }
@@ -67,12 +68,15 @@ function App() {
       });
     }
   };
-  useEffect(() => {
-    getAllPosts();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   getAllPosts();
+  // }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const GetAllPostsLoad = async () => {
+      await getAllPosts();
+  }
 
   return (
-    <div>
+    <div onLoad={GetAllPostsLoad}>
       {postVisible && <CreatePostPopup user={user} setPostVisible={setPostVisible} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
