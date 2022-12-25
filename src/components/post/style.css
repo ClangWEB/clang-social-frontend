@@ -5,8 +5,7 @@
 
 .post {
     position: relative;
-    /* width: 100%; */
-    /* width: 680px; */
+    width: 680px;
     background: var(--bg-primary);
     border-radius: 10px;
     box-shadow: 0 1px 2px var(--shadow-1);
