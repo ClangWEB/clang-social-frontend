@@ -46,11 +46,11 @@ export default function Activate() {
         navigate("/");
       }, 3000);
     }
-  }
-  
+  };
+
   useEffect(() => {
     activateAccount();
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="home">

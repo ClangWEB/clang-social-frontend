@@ -41,17 +41,11 @@ export default function LoginForm({ setVisible }) {
 
     const loginSubmit = async () => {
         try {
-            const { data } = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/login`,
-                {
-                    email,
-                    password,
-                });
-
-
-            dispatch({ type: "LOGIN", payload: data });
-            Cookies.set("user", JSON.stringify(data));
+            const { data } = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/login`, { email, password });
             setLoading(false);
             navigate("/");
+            dispatch({ type: "LOGIN", payload: data });
+            Cookies.set("user", JSON.stringify(data));
         }
         catch (error) {
             setLoading(false);
@@ -88,7 +82,6 @@ export default function LoginForm({ setVisible }) {
                                     <LoginInput onChange={handleLoginChange} type="text" name="email" placeholder="Email Address" />
                                     <LoginInput onChange={handleLoginChange} type="password" name="password" placeholder="Password" bottom />
                                     <button type="submit" className="pink_btn">Log In</button>
-
                                 </Form>
                             )
                         }
@@ -106,7 +99,7 @@ export default function LoginForm({ setVisible }) {
                         {error && <div>{error}</div>}
                     </div>
                     <div className="sign_splitter"></div>
-                    <button disabled={loading} className="pink_btn open_signup" type="submit" onClick={() => setVisible(true)}>Create Account</button>
+                    <button disabled={loading} className="pink_btn open_signup" type="" onClick={() => setVisible(true)}>Create Account</button>
                 </div>
                 {/* <Link to="/" className="sign_extra">
               <b>Create a Page </b>

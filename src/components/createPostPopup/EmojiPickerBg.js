@@ -51,6 +51,7 @@ export default function EmojiPickerBg({ user, text, setText, type2, background, 
             <div className={!type2 ? "flex_center" : ""} ref={bgRef}>
                 <textarea
                     ref={textRef}
+                    autoFocus
                     maxLength="250"
                     value={text}
                     placeholder={`Say hii to world, ${user?.first_name}`}

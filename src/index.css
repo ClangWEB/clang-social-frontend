@@ -148,6 +148,10 @@ a {
 .hover4:hover {
   background: var(--light-pink-color);
 }
+
+.hover5:hover {
+  background: var(--pink-color);
+}
 /* ------------------------------------------------- */
 
 /* ----------------- SMALL CIRCLE ------------------ */

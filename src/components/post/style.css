@@ -94,7 +94,8 @@
 .grid_1 img {
     width: 100%;
     height: 610px;
-    object-fit: cover;
+    object-fit: contain;
+    /* object-fit: cover; */
 }
 
 .grid_1 {
@@ -296,7 +297,8 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    height: 305px;
+    height: 200px;
+    /* height: 305px; */
     width: 33.33%;
     background: #94949454;
     font-size: 32px;
@@ -370,15 +372,15 @@
     gap: 10px;
     cursor: pointer;
     padding: 7px 0;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .post_action span {
     color: var(--color-secondary);
     font-weight: 600;
     font-size: 14px;
-    transform: translateY(-1px);
     text-transform: capitalize;
+    transform: translateY(-1px);
 }
 
 .reacts_popup {
@@ -390,7 +392,7 @@
     padding: 5px 15px;
     border-radius: 50px;
     gap: 8px;
-    box-shadow: 0 1px 2px var(--shadow-1);
+    box-shadow: 0 10px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color), inset 0 0 0 1px var(--shadow-inset);
 }
 
 .react {
@@ -408,7 +410,7 @@
     object-fit: cover;
 }
 
-/*-----create comment-----*/
+/*-----COMMENT-----*/
 .comments_wrap {
     padding: 10px 15px;
 }
@@ -420,8 +422,8 @@
 }
 
 .create_comment img {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -477,12 +479,12 @@
 
 .comment_img_preview .small_white_circle {
     top: -6px;
-    right: -4px;
+    right: 5px;
     transform: scale(0.8);
 }
 
-/*-----create comment-----*/
-/*------Post menu------*/
+
+/*------POST MENU------*/
 .post_menu {
     background: var(--bg-primary);
     width: 300px;
@@ -567,7 +569,7 @@
     object-fit: cover;
 }
 
-/*----Comment-----------*/
+/*-----------COMMENT-----------*/
 .comment {
     display: flex;
     gap: 5px;
@@ -618,19 +620,22 @@
     text-decoration: underline;
 }
 
-/*----Comment-----------*/
-/*------Post menu------*/
+/*------MEDIA QUERY------*/
+@media (min-width: 435px) {
+    .more-pics-shadow {
+        height: 305px;
+    }
+}
 @media (max-width: 435px) {
-
     .post .grid_2 img,
     .post .grid_3 img,
     .post .grid_4 img,
     .post .grid_5 img {
-        height: 240px !important;
+        height: 200px !important;
     }
 
     .post_bg {
-        height: 400px !important;
+        height: 350px !important;
     }
 
     .post .grid_1 {

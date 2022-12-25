@@ -12,7 +12,7 @@ export default function ImagePreview({ user, text, setText, setError, images, se
                 return;
             }
             else if (img.size > 5242880) {
-                setError(`(${img.name}) file size is not allowed! Max 5mb is allowed.`);
+                setError(`(${img.name}) File size is not allowed! Max 5mb is allowed.`);
                 files = files.filter(item => item.name !== img.name);
                 return;
             }
