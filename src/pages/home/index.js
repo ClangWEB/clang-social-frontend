@@ -8,69 +8,11 @@ import CreatePost from "../../components/createPost";
 import SendVerification from "../../components/home/sendVerification";
 import Post from "../../components/post";
 
-import { useEffect, useReducer, useRef, useState } from "react";
-import axios from "axios";
+import { useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "POSTS_REQUEST":
-      return {
-        ...state,
-        loading: true,
-        error: ""
-      };
-    case "POSTS_SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        posts: action.payload,
-        error: ""
-      };
-    case "POSTS_ERROR":
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
-    default:
-      return state;
-  }
-}
-
-// export default function Home({ loading, posts, error, setPostVisible }) {
-export default function Home({ setPostVisible }) {
+export default function Home({ loading, posts, error, setPostVisible }) {
   const { user } = useSelector((state) => ({ ...state })); // eslint-disable-next-line
-  const [{ loading, posts, error }, dispatch] = useReducer(reducer, {
-    loading: false,
-    posts: [],
-    error: ""
-  });
-  useEffect(() => {
-    const getAllPosts = async () => {
-      try {
-        dispatch({
-          type: "POSTS_REQUEST"
-        });
-        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllPosts`, {
-          headers: {
-            Authorization: `Bearer ${user?.token}`
-          }
-        });
-        dispatch({
-          type: "POSTS_SUCCESS",
-          payload: data
-        });
-      }
-      catch (error) {
-        dispatch({
-          type: "POSTS_ERROR",
-          payload: error.response.data.message
-        });
-      }
-    };
-    getAllPosts();
-  }, [user]);
 
   const query1175px = useMediaQuery({
     query: "(max-height: 1175px)"
@@ -78,7 +20,7 @@ export default function Home({ setPostVisible }) {
   const query768px = useMediaQuery({
     query: "(max-height: 768px)"
   });
-  const max = query768px ? 40 : query1175px ? 120 : 130;
+  const max = query768px ? 40 : query1175px ? 160 : 180;
 
   const middle = useRef(null);
   const [height, setHeight] = useState();
@@ -96,7 +38,7 @@ export default function Home({ setPostVisible }) {
         <CreatePost user={user} setPostVisible={setPostVisible} />
         <div className="posts">
           {
-            posts.map((post) => (
+            posts?.map((post) => (
               <Post key={post?._id} post={post} user={user}/>
             ))
           }

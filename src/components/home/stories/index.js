@@ -72,10 +72,10 @@ export default function Stories() {
     const query550px = useMediaQuery({
         query: "(max-width: 550px)"
     });
-    const query390px = useMediaQuery({
-        query: "(max-width: 390px)"
+    const query400px = useMediaQuery({
+        query: "(max-width: 400px)"
     });
-    const max = query390px ? 3: query550px ? 5 : query885px ? 5 : query960px ? 4 : query1030px ? 5 : query1175px ? 4 : stories.length;
+    const max = query400px ? 3: query550px ? 5 : query885px ? 5 : query960px ? 4 : query1030px ? 5 : query1175px ? 4 : stories.length;
 
     return (
         <div className="stories">

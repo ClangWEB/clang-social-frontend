@@ -36,13 +36,13 @@ export default function Post({ post, user }) {
                             <Moment fromNow interval={30}>
                                 {post.createdAt}
                             </Moment>
-                            &nbsp;•&nbsp;<Public color="#F51997"/>
+                            &nbsp;•&nbsp;<Public color="#F51997" />
                             {/* &nbsp;❁&nbsp;<Public color="#F51997"/> */}
                             {/* &nbsp;●&nbsp;<Public color="#F51997" /> */}
                         </div>
                     </div>
                 </Link>
-                <div className="post_header_right_second hover1" onClick={() => {setShowMenu(prev => !prev)}}>
+                <div className="post_header_right_second hover1" onClick={() => { setShowMenu(prev => !prev) }}>
                     <Dots color="#828387" />
                 </div>
             </div>
@@ -60,30 +60,30 @@ export default function Post({ post, user }) {
                             post.images && post.images.length && (
                                 <div className={
                                     post.images.length === 1
-                                    ? "grid_1"
-                                    : post.images.length === 2
-                                    ? "grid_2"
-                                    : post.images.length === 3
-                                    ? "grid_3"
-                                    : post.images.length === 4
-                                    ? "grid_4"
-                                    : post.images.length >= 5
-                                    && "grid_5"
+                                        ? "grid_1"
+                                        : post.images.length === 2
+                                            ? "grid_2"
+                                            : post.images.length === 3
+                                                ? "grid_3"
+                                                : post.images.length === 4
+                                                    ? "grid_4"
+                                                    : post.images.length >= 5
+                                                    && "grid_5"
                                 }>
                                     {
-                                        post.images.slice(0,5).map((image, i) => (
-                                            <img src={image.url} key={i} alt="Post" className={`img-${i}`}/>
+                                        post.images.slice(0, 5).map((image, i) => (
+                                            <img src={image.url} key={i} alt="Post" className={`img-${i}`} />
                                         ))
                                     }
                                     {
                                         post.images.length > 5 && (
                                             <div className="more-pics-shadow">
-                                                +{post.images.length-5}
+                                                +{post.images.length - 5}
                                             </div>
                                         )
                                     }
                                 </div>
-                            ) 
+                            )
                         }
                     </>
                 )
@@ -100,9 +100,9 @@ export default function Post({ post, user }) {
                 </div>
             </div>
             <div className="post_actions">
-                <ReactPopup visible={visible} setVisible={setVisible}/>
-                <div 
-                    className="post_action hover1" 
+                <ReactPopup visible={visible} setVisible={setVisible} />
+                <div
+                    className="post_action hover1"
                     onMouseOver={() => {
                         setTimeout(() => {
                             setVisible(true)
@@ -128,9 +128,9 @@ export default function Post({ post, user }) {
             </div>
             <div className="comments_wrap">
                 <div className="comments_order"></div>
-                <CreateComment user={user}/>
+                <CreateComment user={user} />
             </div>
-            {showMenu && <PostMenu userId={user.id} postUserId={post.user._id}/>}
+            {showMenu && <PostMenu userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} />}
         </div>
     )
 }
