@@ -20,7 +20,7 @@ export default function Home({ loading, posts, error, setPostVisible }) {
   const query768px = useMediaQuery({
     query: "(max-height: 768px)"
   });
-  const max = query768px ? 40 : query1175px ? 160 : 180;
+  const max = query768px ? 60 : query1175px ? 160 : 180;
 
   const middle = useRef(null);
   const [height, setHeight] = useState();

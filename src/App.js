@@ -8,8 +8,8 @@ import Activate from "./pages/home/activate";
 import Reset from "./pages/reset";
 import CreatePostPopup from "./components/createPostPopup";
 import { useSelector } from "react-redux";
-import { useReducer, useState } from "react";
-// import { useEffect, useReducer, useState } from "react";
+// import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 
 function reducer(state, action) {
@@ -46,37 +46,57 @@ function App() {
     posts: [],
     error: ""
   });
-  const getAllPosts = async () => {
-    try {
-      dispatch({
-        type: "POSTS_REQUEST"
-      });
-      const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getAllPosts`, {
-        headers: {
-          Authorization: `Bearer ${user?.token}`
-        }
-      });
-      dispatch({
-        type: "POSTS_SUCCESS",
-        payload: data
-      });
-    }
-    catch (error) {
-      dispatch({
-        type: "POSTS_ERROR",
-        payload: error.response.data.message
-      });
-    }
-  };
-  // useEffect(() => {
-  //   getAllPosts();
-  // }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  const GetAllPostsLoad = async () => {
-      await getAllPosts();
-  }
+  // const getMyAllPosts = async () => { // eslint-disable-line react-hooks/exhaustive-deps
+  //   try {
+  //     dispatch({
+  //       type: "POSTS_REQUEST"
+  //     });
+  //     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllPosts`, {
+  //       headers: {
+  //         Authorization: `Bearer ${user?.token}`
+  //       }
+  //     });
+  //     dispatch({
+  //       type: "POSTS_SUCCESS",
+  //       payload: data
+  //     });
+  //   }
+  //   catch (error) {
+  //     dispatch({
+  //       type: "POSTS_ERROR",
+  //       payload: error.response.data.message
+  //     });
+  //   }
+  // };
+  
+  useEffect(() => {
+    const getAllPosts = async () => {
+      try {
+        dispatch({
+          type: "POSTS_REQUEST"
+        });
+        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllPosts`, {
+          headers: {
+            Authorization: `Bearer ${user?.token}`
+          }
+        });
+        dispatch({
+          type: "POSTS_SUCCESS",
+          payload: data
+        });
+      }
+      catch (error) {
+        dispatch({
+          type: "POSTS_ERROR",
+          payload: error.response.data.message
+        });
+      }
+    };
+    getAllPosts();
+  }, [user?.token, user]); 
 
   return (
-    <div onLoad={GetAllPostsLoad}>
+    <div>
       {postVisible && <CreatePostPopup user={user} setPostVisible={setPostVisible} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
