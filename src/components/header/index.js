@@ -9,7 +9,7 @@ import useClickOutside from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
 
 
-export default function Header({ page }) {
+export default function Header({ page, visitor }) {
 
     const { user } = useSelector((user) => ({ ...user }));
     const color = "#65676b";
@@ -70,10 +70,16 @@ export default function Header({ page }) {
 
             {/* HEADER RIGHT */}
             <div className="header_right">
-                <Link to="/profile" className={`profile_link hover1 ${page==="profile" ? "activate_link" : ""}`}>
-                    <img src={user?.picture} className={`profile_link_img ${page==="profile" ? "activate_image" : ""}`} alt="Profile" />
-                    <span>{user?.first_name}</span>
-                </Link>
+                {!visitor ? (
+                    <Link to="/profile" className={`profile_link hover1 ${page === "profile" ? "activate_link" : ""}`}>
+                        <img src={user?.picture} className={`profile_link_img ${page === "profile" ? "activate_image" : ""}`} alt="Profile" />
+                        <span>{user?.first_name}</span>
+                    </Link>) : (
+                    <Link to="/profile" className="profile_link hover1">
+                        <img src={user?.picture} className="profile_link_img" alt="Profile" />
+                        <span>{user?.first_name}</span>
+                    </Link>
+                )}
                 <div className={`circle_icon hover1 ${showAllMenu && "active_header"}`} ref={allMenu}>
                     <div onClick={() => setShowAllMenu((prev) => !prev)}>
                         <div style={{ transform: "translateY(2.5px)" }}>

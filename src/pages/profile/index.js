@@ -12,6 +12,8 @@ import PeopleDiscovery from "./PeopleDiscovery";
 import CreatePost from "../../components/createPost";
 import GridPosts from "./GridPosts";
 import Post from "../../components/post";
+import Photos from "./Photos";
+import Friends from "./Friends";
 
 export default function Profile({ setPostVisible }) {
   const navigate = useNavigate();
@@ -23,7 +25,6 @@ export default function Profile({ setPostVisible }) {
     profile: {},
     error: ""
   });
-
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -53,15 +54,17 @@ export default function Profile({ setPostVisible }) {
       }
     };
     getProfile();
-  }, [userName, user?.token, user, navigate]); console.log(profile)
+  }, [userName, user?.token, user, navigate]);
+
+  var visitor = userName === user.username ? false : true;
 
   return (
     <div className="profile">
-      <Header page="profile" />
+      <Header page="profile" visitor={visitor} />
       <div className="profile_top">
         <div className="profile_container">
-          <Cover cover={profile?.cover} />
-          <ProfilePictureInfos profile={profile} />
+          <Cover cover={profile?.cover} visitor={visitor} />
+          <ProfilePictureInfos profile={profile} visitor={visitor} />
           <ProfileMenu />
         </div>
       </div>
@@ -71,16 +74,27 @@ export default function Profile({ setPostVisible }) {
             <PeopleDiscovery />
             <div className="profile_grid">
               <div className="profile_left">
-
+                <Photos username={userName} token={user?.token} />
+                <Friends friends={profile.friends} />
+                {/* <div className="relative_cs_copright">
+                  <div>
+                    <Link to="/">Privacy&nbsp; </Link>
+                    <Link to="/">Terms&nbsp; </Link>
+                    <Link to="/">Cookies&nbsp; </Link>
+                    <Link to="/">More&nbsp; </Link>
+                  </div>
+                  <Link to="/">Casuals4Fun © 2022</Link>
+                </div> */}
               </div>
               <div className="profile_right">
-                <CreatePost profile user={user} setPostVisible={setPostVisible} />
-                <GridPosts />
+                {!visitor && <CreatePost profile user={user} setPostVisible={setPostVisible} />}
+                <GridPosts profile={profile} />
                 <div className="posts">
-                  {profile.posts && profile.posts.length && profile.posts.map((post, i) => (
-                    <Post post={post} user={user} key={i}/>
-                  ))}
-                  
+                  {profile.posts && profile.posts.length ?
+                    profile.posts.map((post) => (
+                      <Post post={post} user={user} key={post._id} profile={profile} />
+                    )) : (<div className="no_posts">No Posts yet...</div>)
+                  }
                 </div>
               </div>
             </div>

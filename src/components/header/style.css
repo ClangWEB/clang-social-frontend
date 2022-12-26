@@ -1,10 +1,10 @@
 header {
     position: fixed;
+    width: 100%;
     top: 0;
     height: 70px;
     z-index: 99;
     background: var(--bg-primary);
-    width: 100%;
     box-shadow: 1px 8px 15px -7px var(--shadow-2);
     display: grid;
     grid-template-columns: repeat(3, 1fr);

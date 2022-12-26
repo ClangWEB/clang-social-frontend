@@ -68,7 +68,7 @@ export default function CreateComment({ user }) {
                             <button className="pink_btn" onClick={() => { setError("") }}>Retry</button>
                         </div>
                     }
-                    <input type="text" placeholder="Anything to comment" ref={textRef} value={text} onChange={(e) => setText(e.target.value)} />
+                    <input type="text" placeholder="Comment as you wish" ref={textRef} value={text} onChange={(e) => setText(e.target.value)} />
                     <div className="comment_circle_icon hover3" onClick={() => { setPicker(prev => !prev) }}>
                         <i className="emoji_icon"></i>
                     </div>

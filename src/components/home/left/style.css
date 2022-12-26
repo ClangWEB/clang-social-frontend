@@ -142,4 +142,6 @@
     margin-top: 2rem;
     margin-bottom: -9px;
     margin-left: -6px;
+    font-size: 12px;
+    color: var(--color-secondary);
 }

@@ -61,7 +61,7 @@ export default function LeftHome({ user }) {
                     name="My Instagram"
                 />
             </div>
-            <div className={`cs_copyright ${visible && "relative_cs_copright"}`}>
+            {/* <div className={`cs_copyright ${visible && "relative_cs_copright"}`}>
                 <div>
                     <Link to="/">Privacy&nbsp; </Link>
                     <Link to="/">Terms&nbsp; </Link>
@@ -69,7 +69,7 @@ export default function LeftHome({ user }) {
                     <Link to="/">More&nbsp; </Link>
                 </div>
                 <Link to="/">Casuals4Fun © 2022</Link>
-            </div>
+            </div> */}
         </div>
     )
 }
