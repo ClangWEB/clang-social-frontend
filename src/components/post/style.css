@@ -94,8 +94,8 @@
 .grid_1 img {
     width: 100%;
     height: 610px;
-    object-fit: contain;
-    /* object-fit: cover; */
+    /* object-fit: contain; */
+    object-fit: cover;
 }
 
 .grid_1 {
@@ -626,7 +626,9 @@
         height: 305px;
     }
 }
+
 @media (max-width: 435px) {
+
     .post .grid_2 img,
     .post .grid_3 img,
     .post .grid_4 img,
@@ -638,12 +640,17 @@
         height: 350px !important;
     }
 
-    .post .grid_1 {
+    /* .post .grid_1 {
         height: 100% !important;
     }
 
     .post .grid_1 img {
         height: 450px !important;
+    } */
+
+    
+    .post .grid_3 .img-0 {
+        height: 100% !important;
     }
 
     .post_profile_wrap {

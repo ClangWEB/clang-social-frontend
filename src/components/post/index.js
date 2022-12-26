@@ -3,14 +3,19 @@ import Moment from "react-moment";
 import "./style.css";
 import { Dots, Public } from "../../svg";
 import ReactPopup from "./ReactPopup";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
+import useClickOutside from "../../helpers/clickOutside";
 
 
 export default function Post({ post, user }) {
     const [visible, setVisible] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    const reactRef = useRef(null);
+    useClickOutside(reactRef, () => setVisible(false));
+    const menuRef = useRef(null);
+    useClickOutside(menuRef,() => setShowMenu(false));
 
     return (
         <div className="post">
@@ -42,7 +47,7 @@ export default function Post({ post, user }) {
                         </div>
                     </div>
                 </Link>
-                <div className="post_header_right_second hover1" onClick={() => setShowMenu(prev => !prev)}>
+                <div className="post_header_right_second hover1" ref={menuRef} onClick={() => setShowMenu(prev => !prev)}>
                     <Dots color="#828387" />
                 </div>
             </div>
@@ -102,26 +107,28 @@ export default function Post({ post, user }) {
             <div className="post_actions">
                 <ReactPopup visible={visible} setVisible={setVisible} />
                 <div
-                    className="post_action hover1"
-                    onMouseOver={() => {
-                        setTimeout(() => {
-                            setVisible(true)
-                        }, 500)
-                    }}
-                    onMouseLeave={() => {
-                        setTimeout(() => {
-                            setVisible(false)
-                        }, 500)
-                    }}
+                    className="post_action hover4"
+                    // onMouseOver={() => {
+                    //     setTimeout(() => {
+                    //         setVisible(true)
+                    //     }, 500)
+                    // }}
+                    // onMouseLeave={() => {
+                    //     setTimeout(() => {
+                    //         setVisible(false)
+                    //     }, 500)
+                    // }}
+                    onClick={() => setVisible(prev => !prev)}
+                    ref={reactRef}
                 >
                     <i className="like_icon"></i>
                     <span>Like</span>
                 </div>
-                <div className="post_action hover1">
+                <div className="post_action hover4">
                     <i className="comment_icon"></i>
                     <span>Comment</span>
                 </div>
-                <div className="post_action hover1">
+                <div className="post_action hover4">
                     <i className="share_icon"></i>
                     <span>Share</span>
                 </div>
@@ -130,7 +137,9 @@ export default function Post({ post, user }) {
                 <div className="comments_order"></div>
                 <CreateComment user={user} />
             </div>
-            {showMenu && <PostMenu userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} setShowMenu={setShowMenu} />}
+            <div>
+                {showMenu && <PostMenu userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} setShowMenu={setShowMenu} />}
+            </div>
         </div>
     )
 }

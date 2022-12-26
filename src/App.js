@@ -8,67 +8,19 @@ import Activate from "./pages/home/activate";
 import Reset from "./pages/reset";
 import CreatePostPopup from "./components/createPostPopup";
 import { useSelector } from "react-redux";
-// import { useReducer, useState } from "react";
 import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "POSTS_REQUEST":
-      return {
-        ...state,
-        loading: true,
-        error: ""
-      };
-    case "POSTS_SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        posts: action.payload,
-        error: ""
-      };
-    case "POSTS_ERROR":
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
-    default:
-      return state;
-  }
-}
+import { postsReducer } from "./functions/reducers";
 
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
   const [postVisible, setPostVisible] = useState(false);
-  const [{ loading, posts, error }, dispatch] = useReducer(reducer, {
+  const [{ loading, posts, error }, dispatch] = useReducer(postsReducer, {
     loading: false,
     posts: [],
     error: ""
   });
-  // const getMyAllPosts = async () => { // eslint-disable-line react-hooks/exhaustive-deps
-  //   try {
-  //     dispatch({
-  //       type: "POSTS_REQUEST"
-  //     });
-  //     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllPosts`, {
-  //       headers: {
-  //         Authorization: `Bearer ${user?.token}`
-  //       }
-  //     });
-  //     dispatch({
-  //       type: "POSTS_SUCCESS",
-  //       payload: data
-  //     });
-  //   }
-  //   catch (error) {
-  //     dispatch({
-  //       type: "POSTS_ERROR",
-  //       payload: error.response.data.message
-  //     });
-  //   }
-  // };
-  
+
   useEffect(() => {
     const getAllPosts = async () => {
       try {
@@ -93,7 +45,7 @@ function App() {
       }
     };
     getAllPosts();
-  }, [user?.token, user]); 
+  }, [user?.token, user]);
 
   return (
     <div>
@@ -101,7 +53,8 @@ function App() {
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={<Home loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} />} exact />
-          <Route path="/profile" element={<Profile />} exact />
+          <Route path="/profile" element={<Profile setPostVisible={setPostVisible}/>} exact />
+          <Route path="/profile/:username" element={<Profile setPostVisible={setPostVisible}/>} exact />
           <Route path="/activate/:token" element={<Activate />} exact />
         </Route>
         <Route element={<NotLoggenInRoutes />}>
@@ -115,6 +68,25 @@ function App() {
 
 export default App;
 
-
-
-// function App() {
+// const getMyAllPosts = async () => { // eslint-disable-line react-hooks/exhaustive-deps
+//   try {
+//     dispatch({
+//       type: "POSTS_REQUEST"
+//     });
+//     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllPosts`, {
+//       headers: {
+//         Authorization: `Bearer ${user?.token}`
+//       }
+//     });
+//     dispatch({
+//       type: "POSTS_SUCCESS",
+//       payload: data
+//     });
+//   }
+//   catch (error) {
+//     dispatch({
+//       type: "POSTS_ERROR",
+//       payload: error.response.data.message
+//     });
+//   }
+// };

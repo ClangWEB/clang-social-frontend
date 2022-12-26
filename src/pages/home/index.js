@@ -30,7 +30,7 @@ export default function Home({ loading, posts, error, setPostVisible }) {
 
   return (
     <div className="home" style={{ height: `${height}px` }} onLoad={handleHeightLoad}>
-      <Header />
+      <Header page="home"/>
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
         <Stories />

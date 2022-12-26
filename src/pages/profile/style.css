@@ -1,0 +1,351 @@
+.profile {
+    color: var(--color-primary);
+}
+
+.profile_top {
+    margin-top: 70px;
+    box-shadow: 0 1px 2px var(--shadow-1);
+    background: var(--bg-primary);
+}
+
+.profile_container {
+    max-width: 945px;
+    margin: 0 auto;
+}
+
+.profile_cover {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: var(--bg-secondary);
+}
+
+.update_cover_wrapper {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.open_cover_update {
+    background: #fff;
+    padding: 7px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #111;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.open_cover_update i {
+    transform: scale(0.9);
+    margin-top: 2px;
+}
+
+.open_cover_menu {
+    margin-top: 1px;
+    background: var(--bg-primary);
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 12px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color), inset 0 0 0 1px var(--shadow-inset);
+    /* box-shadow: 0 12px 20px var(--shadow-1); */
+    z-index: 99;
+}
+
+.open_cover_menu_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.profile_img_wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-bottom: -2.8rem;
+}
+
+.profile_w_left {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 13px 0 13px;
+}
+
+.profile_w_img {
+    position: relative;
+}
+
+.profile_w_bg {
+    width: 180px;
+    height: 180px;
+    transform: translateY(-3.6rem);
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    border: 2px solid #fff;
+    /* border: 2px solid rgb(255, 0, 234); */
+    background: #fff;
+    cursor: pointer;
+}
+
+.profile_w_bg:hover {
+    filter: brightness(90%);
+}
+
+.profile_circle {
+    position: absolute;
+    bottom: 4.5rem;
+    right: 0;
+    background: var(--light-pink-color-blur);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.profile_name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.profile_w_right {
+    display: flex;
+    gap: 8px;
+    padding: 0 18px;
+    margin-bottom: 7px;
+}
+
+.invert {
+    filter: invert(100%);
+}
+
+/*------------------------- MENU -------------------------*/
+
+.profile_menu_wrap {
+    position: relative;
+    padding: 0 2.2rem;
+}
+
+.profile_menu {
+    position: relative;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    padding: 0;
+}
+
+.profile_menu a {
+    height: 54px;
+    width: 78.5px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 3px 0;
+    color: var(--color-secondary);
+}
+
+.profile_menu_active {
+    height: 60px !important;
+    width: 65px !important;
+    margin: 0 !important;
+    color: var(--pink-color) !important;
+    border-bottom: 3px solid var(--pink-color);
+    border-radius: 0 !important;
+}
+
+.p10_dots {
+    position: absolute;
+    /* background: var(--bg-third); */
+    right: 0;
+    top: 10px;
+    border-radius: 5px;
+    display: grid;
+    place-content: center;
+    padding: 8px 14px;
+}
+
+.p10_dots svg {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    margin-left: 2px;
+}
+
+/*--------------------------------------------------------*/
+
+/*----------------------- DISCOVER -----------------------*/
+
+.profile_bottom {
+    margin-top: 1px;
+    background-color: var(--bg-secondary);
+}
+
+.bottom_container {
+    padding: 10px 2.2rem;
+
+}
+
+.pplumayknow {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 3px solid var(--pink-color-btn);
+    padding: 10px 15px;
+}
+
+.pplumayknow_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.pplumayknow_list {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    height: 240px;
+}
+
+/* Change this for image view */
+.addfriendCard {
+    position: relative;
+    height: 100%;
+    width: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+.addfriend_imgsmall {
+    width: 100%;
+    height: 140px;
+}
+
+.addfriend_imgsmall img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* border-radius: 50%; */
+}
+
+.addfriend_infos {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.addfriend_name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.light_pink_btn_second img {
+    width: 20px;
+}
+
+.pplumayknow_list .light_pink_btn_second {
+    color: var(--pink-color);
+}
+
+.profile_grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 10px;
+}
+
+/*--------------------------------------------------------*/
+
+.left_header_grid {
+    font-size: 22px;
+    font-weight: 600;   
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    font-size: 14px;
+}
+
+.view_type {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+.grid2 .active {
+    color: var(--pink-color);
+}
+
+/*--------------------------------------------------------*/
+
+@media (max-width: 900px) {
+    .profile_w_left {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile_w_col {
+        transform: translateY(-3.6rem);
+    }
+
+    .profile_w_right {
+        transform: translateY(-3.6rem);
+    }
+
+    .profile_img_wrap {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .profile_circle {
+        right: 0.55rem;
+    }
+
+    .profile_name {
+        padding-bottom: 10px;
+    }
+
+    .pplumayknow {
+        display: none;
+    }
+
+    .profile_grid {
+        grid-template-columns: 1fr;
+        width: 95%;
+    }
+}

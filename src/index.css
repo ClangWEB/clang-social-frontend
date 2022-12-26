@@ -6,16 +6,20 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
 body {
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
+
 html {
   overflow-y: scroll;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 :root {
   --bg-primary: #fff;
   --bg-secondary: #f0f2f5;
@@ -31,6 +35,7 @@ a {
   --dark-color-secondary: #b0b3b8;
   --blue-color: #1876f2;
   --pink-color: #F51997;
+  --pink-color-btn: #f51996c9;
   --pink-color-light: #ffccbb;
   --green-color: #42b72a;
   --light-blue-color: #e7f3ff;
@@ -42,6 +47,7 @@ a {
   --shadow-3: rgba(0, 0, 0, 0.3);
   --shadow-inset: rgba(255, 255, 255, 0.5);
 }
+
 /* ------------------------------------------------- */
 
 /* BUTTONS */
@@ -49,6 +55,40 @@ a {
   border: none;
   outline: none;
   background: var(--pink-color);
+  padding: 8.5px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.light_pink_btn {
+  border: none;
+  outline: none;
+  background: var(--pink-color-btn);
+  padding: 8.5px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.light_pink_btn_second {
+  border: none;
+  outline: none;
+  background: #f519963d;
   padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;
@@ -113,7 +153,7 @@ a {
   cursor: pointer;
 }
 
-/* .blue_btn,
+/* .light_pink_btn,
 .gray_btn span {
   transform: translateY(-1px);
 } */
@@ -121,7 +161,7 @@ a {
 
 /* --------------------- BLUR ---------------------- */
 .blur {
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -129,6 +169,7 @@ a {
   background: rgba(255, 255, 255, 0.768);
   z-index: 99;
 }
+
 /* ------------------------------------------------- */
 
 /* HOVER */
@@ -152,6 +193,7 @@ a {
 .hover5:hover {
   background: var(--pink-color);
 }
+
 /* ------------------------------------------------- */
 
 /* ----------------- SMALL CIRCLE ------------------ */
@@ -168,6 +210,7 @@ a {
   /* background: var(--bg-third); */
   cursor: pointer;
 }
+
 .small_circle_second {
   position: relative;
   height: 36px;
@@ -180,6 +223,7 @@ a {
   background: var(--bg-third);
   cursor: pointer;
 }
+
 /* ------------------------------------------------- */
 
 /* SCROLLBAR */
@@ -192,4 +236,17 @@ a {
   /* background: #aeaeafa1; */
   border-radius: 5px;
 }
+
+/* ------------------------------------------------- */
+
+/* -------------------- FILTER --------------------- */
+
+.filter_blue {
+  filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+}
+
+.filter_pink {
+  filter: invert(33%) sepia(84%) saturate(7429%) hue-rotate(313deg) brightness(99%) contrast(94%);
+}
+
 /* ------------------------------------------------- */

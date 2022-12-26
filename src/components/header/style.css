@@ -75,7 +75,7 @@ header {
     transform: translateX(-2px);
 }
 
-.middle_icon:nth-child(2) {
+/* .middle_icon:nth-child(2) {
     transform: translateX(-4px);
 }
 
@@ -89,7 +89,7 @@ header {
 
 .middle_icon:nth-child(5) {
     transform: translateX(-5px);
-}
+} */
 
 .active {
     border-bottom: 3px solid var(--pink-color);
@@ -139,11 +139,18 @@ header {
     margin-right: 10px;
 }
 
-.profile_link img {
+/* .profile_link img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    /* border: 1px solid var(--pink-color); */
+    border: 1px solid #b0b3b8;
+    transform: translateX(-1px);
+} */
+
+.profile_link_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     border: 1px solid #b0b3b8;
     transform: translateX(-1px);
 }
@@ -623,9 +630,11 @@ header {
         display: none;
     }
 
-    .header_middle{
+    .header_middle {
         transform: translateX(-20%);
     }
+
+
 }
 
 @media (max-width: 505px) {
@@ -664,6 +673,16 @@ header {
         width: 340px;
     }
 
+    .middle_icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .middle_icon:nth-child(2) {
+        transform: translateX(-6px);
+    }
+
     .all_menu {
         left: -12.5rem;
     }
@@ -679,6 +698,19 @@ header {
 
 .active_header svg {
     fill: var(--pink-color);
+}
+
+.activate_link {
+    background: var(--light-pink-color);
+    color: var(--pink-color);
+}
+
+.activate_image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--pink-color);
+    transform: translateX(-1px);
 }
 
 /* ------------------------------------------------------ */

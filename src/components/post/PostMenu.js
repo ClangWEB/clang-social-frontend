@@ -1,14 +1,12 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import MenuItem from "./MenuItem";
-import useClickOutside from "../../helpers/clickOutside";
 
 export default function PostMenu({ userId, postUserId, imagesLength, setShowMenu }) { // eslint-disable-next-line
     const [test, setTest] = useState(postUserId === userId ? true : false);
-    const menuRef = useRef(null);
-    useClickOutside(menuRef,() => setShowMenu(false));
+
 
     return (
-        <ul className="post_menu" ref={menuRef}>
+        <ul className="post_menu">
             {test && <MenuItem icon="pin_icon" title="Pin Post" subtitle="Pin this post." />}
             <MenuItem icon="save_icon" title="Save Post" subtitle="Save this post to your saved items." />
             <div className="line"></div>
