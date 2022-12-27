@@ -1,48 +1,4 @@
-import { useEffect, useReducer } from "react";
-import { photosReducer } from "../../functions/reducers";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-
-export default function Photos({ username, token }) {
-  const navigate = useNavigate();
-  const path = `${username}/*`;
-  const sort = "asc";
-  const max = 30; // eslint-disable-next-line
-  const [{ loading, photos, error }, dispatch] = useReducer(photosReducer, {
-    loading: false,
-    photos: {},
-    error: ""
-  });
-  useEffect(() => {
-    const getPhotos = async () => {
-      try {
-        dispatch({
-          type: "PHOTOS_REQUEST"
-        });
-        const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/listImages`, {
-          path, sort, max
-        },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-        dispatch({
-          type: "PHOTOS_SUCCESS",
-          payload: data
-        });
-      }
-      catch (error) {
-        dispatch({
-          type: "PHOTOS_ERROR",
-          payload: error.response.data.message
-        });
-      }
-    };
-    getPhotos();
-  }, [username, token, navigate, path]);
-
+export default function Photos({ photos }) {
   return (
     <div className="profile_card">
       <div className="profile_card_header">Photos

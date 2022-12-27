@@ -134,9 +134,9 @@ export default function CreatePostPopup({ user, setPostVisible }) {
                     {loading
                         ? <PulseLoader
                             color="#fff"
-                            size={5}
+                            size={7}
                         />
-                        : "POST 🍕"
+                        : "POST"
                     }
                 </button>
             </div>
