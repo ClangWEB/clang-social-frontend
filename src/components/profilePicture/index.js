@@ -19,10 +19,12 @@ export default function ProfilePicture({ setShow, pRef, photos }) {
             file.type !== "image/gif" &&
             file.type !== "image/webp"
         ) {
+            e.target.value = null;
             setError(`Only Image is supported!`)
             return;
         }
         else if (file.size > 5242880) {
+            e.target.value = null;
             setError(`Max 5mb is allowed!`)
             return;
         }
@@ -31,6 +33,7 @@ export default function ProfilePicture({ setShow, pRef, photos }) {
         reader.onload = (event) => {
             setImage(event.target.result);
         };
+        setError("");
     };
 
     return (

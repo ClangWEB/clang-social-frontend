@@ -22,6 +22,64 @@
     background: var(--bg-secondary);
 }
 
+.save_changes_cover {
+    z-index: 9999999;
+    position: fixed;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--color-primary);
+}
+
+.save_changes_left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}
+
+.save_changes_left i {
+    filter: invert(100%);
+}
+
+.save_changes_right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.save_changes_right button {
+    padding: 10px;
+}
+
+.save_changes_right button:first-of-type {
+    width: 100px;
+    background: #39393f;
+}
+
+.save_changes_right button:last-of-type {
+    width: 160px;
+}
+
+.cover_cropper {
+    height: 100%;
+}
+.cover_cropper img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.cover_cropper .reactEasyCrop_Container {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 .update_cover_wrapper {
     position: absolute;
     bottom: 1rem;
@@ -56,7 +114,7 @@
     border-radius: 10px;
     box-shadow: 0px 12px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color), inset 0 0 0 1px var(--shadow-inset);
     /* box-shadow: 0 12px 20px var(--shadow-1); */
-    z-index: 99;
+    z-index: 999;
 }
 
 .open_cover_menu_item {
@@ -87,6 +145,7 @@
 
 .profile_w_img {
     position: relative;
+    /* z-index: 999; */
 }
 
 .profile_w_bg {

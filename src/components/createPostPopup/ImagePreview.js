@@ -7,11 +7,13 @@ export default function ImagePreview({ user, text, setText, setError, images, se
         let files = Array.from(e.target.files);
         files.forEach((img) => {
             if (img.type !== "image/jpeg" && img.type !== "image/png" && img.type !== "image/gif" && img.type !== "image/webp") {
+                e.target.value = null;
                 setError(`(${img.name}) Unsupported file type! Only .jpeg, .png, .gif, .webp file types are supported.`)
                 files = files.filter(item => item.name !== img.name);
                 return;
             }
             else if (img.size > 5242880) {
+                e.target.value = null;
                 setError(`(${img.name}) File size is not allowed! Max 5mb is allowed.`);
                 files = files.filter(item => item.name !== img.name);
                 return;
@@ -21,6 +23,7 @@ export default function ImagePreview({ user, text, setText, setError, images, se
             reader.onload = (readerEvent) => {
                 setImages((images) => [...images, readerEvent.target.result])
             }
+            setError("");
         })
     };
 

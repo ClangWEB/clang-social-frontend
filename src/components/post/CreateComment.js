@@ -63,7 +63,7 @@ export default function CreateComment({ user }) {
                         ref={imgRef}
                     />
                     {error &&
-                        <div className="postError_third comment_error">
+                        <div className="postError_zindex comment_error">
                             <div className="postError_error">{error}</div>
                             <button className="pink_btn" onClick={() => { setError("") }}>Retry</button>
                         </div>
