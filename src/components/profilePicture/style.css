@@ -21,6 +21,13 @@
     gap: 10px;
 }
 
+.old_pictures_second {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    gap: 10px;
+}
+
 .old_pictures img {
     width: 100px;
     height: 100px;
@@ -29,7 +36,20 @@
     object-fit: cover;
 }
 
+.old_pictures_second img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    object-fit: cover;
+}
+
 .old_pictures img:hover {
+    filter: brightness(110%);
+    transform: scale(1.1);
+}
+
+.old_pictures_second img:hover {
     filter: brightness(110%);
     transform: scale(1.1);
 }

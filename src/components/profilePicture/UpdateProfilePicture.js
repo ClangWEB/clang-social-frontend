@@ -86,7 +86,6 @@ export default function UpdateProfilePicture({ popupRef, image, setImage, setErr
         }
     }
 
-
     return (
         <div className="postBox update_img" ref={popupRef}>
             <div className="box_header">
@@ -139,7 +138,7 @@ export default function UpdateProfilePicture({ popupRef, image, setImage, setErr
                 {/* <i className="public_icon"></i>Public */}
             </div>
             <div className="update_submit_wrap">
-                <div className="pink_link" onClick={() => setImage("")}>Cancel</div>
+                <div className="pink_link" onClick={() => setImage("")}>CANCEL</div>
                 <button className="pink_btn" disabled={loading} onClick={() => updateProfilePicture()}>
                     {loading
                         ? <PulseLoader

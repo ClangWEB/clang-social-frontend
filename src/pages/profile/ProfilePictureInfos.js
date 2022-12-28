@@ -16,7 +16,8 @@ export default function ProfilePictureInfos({ profile, visitor, photos }) {
                         style={{
                             backgroundSize: "cover",
                             backgroundImage: `url(${profile?.picture})`
-                        }}>
+                        }}
+                    >
                     </div>
                     {!visitor &&
                         <div className="profile_circle hover5" onClick={() => { setShow(true) }}>

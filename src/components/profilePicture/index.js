@@ -71,7 +71,7 @@ export default function ProfilePicture({ setShow, pRef, photos }) {
                 <div className="old_pictures_wrap scrollbar">
                     <h4>Profile Pictures</h4>
                     <div className="old_pictures">
-                        {photos?.filter(img => img.folder === `${user.username}/profile_pictures`).map((photo) => (
+                        {photos && photos.filter(img => img.folder === `${user.username}/profile_pictures`).map((photo) => (
                             <img 
                                 src={photo.secure_url} 
                                 key={photo.public_id}
@@ -82,7 +82,7 @@ export default function ProfilePicture({ setShow, pRef, photos }) {
                     </div>
                     <h4>Other Pictures</h4>
                     <div className="old_pictures">
-                        {photos?.filter(img => img.folder !== `${user.username}/profile_pictures`).map((photo) => (
+                        {photos && photos.filter(img => img.folder !== `${user.username}/profile_pictures`).map((photo) => (
                             <img 
                                 src={photo.secure_url} 
                                 key={photo.public_id}
