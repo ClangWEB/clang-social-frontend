@@ -87,7 +87,7 @@ export default function CreatePostPopup({ user, setPostVisible }) {
                     error && <PostError error={error} setError={setError} />
                 }
                 <div className="box_header">
-                    <div className="small_circle" onClick={() => { setPostVisible((false)) }}>
+                    <div className="small_circle" onClick={() => { setPostVisible((false)); setImages([]); }}>
                         <i className="exit_icon"></i>
                     </div>
                     <span>Create Post</span>

@@ -541,12 +541,16 @@
     height: 300px;
     width: 100%;
     background: var(--bg-third);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .post_updated_bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .post_updated_picture {

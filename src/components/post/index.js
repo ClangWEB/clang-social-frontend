@@ -29,11 +29,11 @@ export default function Post({ post, user, profile }) {
                             <div className="updated_p">
                                 {
                                     post.type === "profilePicture" &&
-                                    `Updated ${post.user.gender === "male" ? "his" : post.user.gender === "female" ? "her" : ""} Profile Photo`
+                                    `Updated ${post.user.gender === "male" ? "his" : post.user.gender === "female" ? "her" : ""} Profile Picture`
                                 }
                                 {
                                     post.type === "coverPicture" &&
-                                    `Updated ${post.user.gender === "male" ? "his" : post.user.gender === "female" ? "her" : ""} cover picture`
+                                    `Updated ${post.user.gender === "male" ? "his" : post.user.gender === "female" ? "her" : ""} Cover Photo`
                                 }
                             </div>
                         </div>
@@ -91,14 +91,23 @@ export default function Post({ post, user, profile }) {
             ) : post.type === "profilePicture" ? (
                 <div className="post_profile_wrap">
                     <div className="post_updated_bg">
-                        {/* <img src={post.user.cover} alt="Cover" /> */}
-                        {post.user.cover && <img src={post.user.cover} alt="Cover" />}
+                        <img
+                            src={post.user.cover} 
+                            alt=""
+                        />
                     </div>
-                    <img src={post.images[0].url} className="post_updated_picture" alt="Profile" />
+                    <img
+                        src={post.images[0].url}
+                        className="post_updated_picture"
+                        alt="Profile"
+                    />
                 </div>
             ) : (
                 <div className="post_cover_wrap">
-                    <img src={post.images[0].url} alt="Cover" />
+                    <img
+                        src={post.images[0].url}
+                        alt=""
+                    />
                 </div>
             )}
 

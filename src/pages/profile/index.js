@@ -7,13 +7,14 @@ import Header from "../../components/header";
 import "./style.css";
 import Cover from "./Cover";
 import ProfilePictureInfos from "./ProfilePictureInfos";
-import ProfileMenu from "./ProfileMenu";
+// import ProfileMenu from "./ProfileMenu";
 import PeopleDiscovery from "./PeopleDiscovery";
 import CreatePost from "../../components/createPost";
 import GridPosts from "./GridPosts";
 import Post from "../../components/post";
 import Photos from "./Photos";
 import Friends from "./Friends";
+import Intro from "../../components/intro";
 
 export default function Profile({ setPostVisible }) {
   const navigate = useNavigate();
@@ -83,7 +84,7 @@ export default function Profile({ setPostVisible }) {
         <div className="profile_container">
           <Cover cover={profile?.cover} visitor={visitor} photos={photos.resources} />
           <ProfilePictureInfos profile={profile} visitor={visitor} photos={photos.resources}/>
-          <ProfileMenu />
+          {/* <ProfileMenu /> */}
         </div>
       </div>
       <div className="profile_bottom">
@@ -92,6 +93,7 @@ export default function Profile({ setPostVisible }) {
             <PeopleDiscovery />
             <div className="profile_grid">
               <div className="profile_left">
+                <Intro detailss={profile.details} visitor={visitor}/>
                 <Photos photos={photos}/>
                 <Friends friends={profile.friends} />
                 {/* <div className="relative_cs_copright">

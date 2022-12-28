@@ -7,7 +7,6 @@ import "./style.css";
 import CreatePost from "../../components/createPost";
 import SendVerification from "../../components/home/sendVerification";
 import Post from "../../components/post";
-
 import { useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 

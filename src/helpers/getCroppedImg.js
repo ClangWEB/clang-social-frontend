@@ -23,6 +23,17 @@ export function rotateSize(width, height, rotation) {
     };
 }
 
+// export const myImageFun = (url) =>
+//     new Promise((resolve, reject) => {
+//         const image = new Image();
+//         const canvas = document.createElement("canvas");
+//         canvas.toDataURL('image/gif')
+//         image.addEventListener("load", () => resolve(image));
+//         image.addEventListener("error", (error) => reject(error));
+//         image.setAttribute("crossOrigin", "anonymous"); // Needed to avoid cross-origin issues on CodeSandbox
+//         image.src = url;
+//     });
+
 export default async function getCroppedImg(
     imageSrc,
     pixelCrop,
@@ -30,6 +41,7 @@ export default async function getCroppedImg(
     flip = { horizontal: false, vertical: false }
 ) {
     const image = await createImage(imageSrc);
+    // const image = await myImageFun(imageSrc);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 

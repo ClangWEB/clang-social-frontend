@@ -154,7 +154,14 @@ export default function Cover({ cover, visitor, photos }) {
                     />
                 </div>
             )}
-            {cover && !coverPicture && <img src={cover} className="cover" alt="Profile Cover" ref={myRef} />}
+            {cover && !coverPicture && 
+                <img 
+                    src={cover} 
+                    className="cover" 
+                    alt="Profile Cover" 
+                    ref={myRef} 
+                />
+            }
             {!visitor && (
                 <div className="update_cover_wrapper">
                     <div className="open_cover_update" onClick={() => setShowCoverMenu(prev => !prev)}>
