@@ -3,6 +3,7 @@ import "./style.css";
 import Bio from "./Bio";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import EditDetails from "./EditDetails";
 
 
 export default function Intro({ detailss, visitor }) {
@@ -11,6 +12,7 @@ export default function Intro({ detailss, visitor }) {
 
     useEffect(() => {
         setDetails(detailss);
+        setInfos(detailss);
     }, [detailss]);
     const initial = {
         bio: details?.bio ? details.bio : "",
@@ -28,10 +30,12 @@ export default function Intro({ detailss, visitor }) {
     };
     const [infos, setInfos] = useState(initial);
     const [showBio, setShowBio] = useState(false);
+    const [visible, setVisible] = useState(0);
     const [max, setMax] = useState(infos?.bio ? 150 - infos?.bio.length : 150);
 
-    const handleBioChange = (e) => {
-        setInfos({ ...infos, bio: e.target.value });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setInfos({ ...infos, [name]: value });
         setMax(150 - e.target.value.length)
     };
 
@@ -50,7 +54,7 @@ export default function Intro({ detailss, visitor }) {
         catch (error) {
             console.log(error.response.data.message);
         }
-    }
+    };
 
     return (
         <div className="profile_card">
@@ -70,10 +74,13 @@ export default function Intro({ detailss, visitor }) {
             {showBio &&
                 <Bio
                     infos={infos}
-                    handleBioChange={handleBioChange}
+                    handleChange={handleChange}
                     max={max}
                     setShowBio={setShowBio}
                     updateDetails={updateDetails}
+                    placeholder="Add Bio"
+                    name="bio"
+                    norem
                 />
             }
 
@@ -159,11 +166,20 @@ export default function Intro({ detailss, visitor }) {
                     <a href={`${details?.otherLinks}`} target="_blank" rel="noreferrer">Links</a>
                 </div>
             )}
-            {!visitor && !details?.bio &&
+            {!visitor && !details?.bio && !showBio &&
                 <button onClick={() => setShowBio(true)} className="gray_btn hover4 w100">Add Bio</button>
             }
             {!visitor &&
-                <button className="gray_btn hover4 w100">Edit Details</button>
+                <button className="gray_btn hover4 w100" onClick={() => setVisible(1)}>Edit Details</button>
+            }
+            {visible === 1 && !visitor && 
+                <EditDetails 
+                    setVisible={setVisible} 
+                    details={details} 
+                    handleChange={handleChange}
+                    updateDetails={updateDetails}
+                    infos={infos}
+                />
             }
             <div className="flex">
                 {!visitor &&
