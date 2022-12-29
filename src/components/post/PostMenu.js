@@ -1,12 +1,12 @@
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 
-export default function PostMenu({ userId, postUserId, imagesLength, setShowMenu }) { // eslint-disable-next-line
+export default function PostMenu({ menuRef, userId, postUserId, imagesLength, setShowMenu }) { // eslint-disable-next-line
     const [test, setTest] = useState(postUserId === userId ? true : false);
 
 
     return (
-        <ul className="post_menu">
+        <ul className="post_menu" ref={menuRef}>
             {test && <MenuItem icon="pin_icon" title="Pin Post" subtitle="Pin this post." />}
             <MenuItem icon="save_icon" title="Save Post" subtitle="Save this post to your saved items." />
             <div className="line"></div>

@@ -1,4 +1,4 @@
-export default function ReactPopup({ visible, setVisible }) {
+export default function ReactPopup({ reactRef, visible, setVisible }) {
     const reactsArray = [
         {
             name: "Like",
@@ -30,6 +30,7 @@ export default function ReactPopup({ visible, setVisible }) {
         <>
             {visible && (
                 <div
+                    ref={reactRef}
                     className="reacts_popup"
                     // onMouseOver={() => {
                     //     setTimeout(() => {
@@ -41,7 +42,7 @@ export default function ReactPopup({ visible, setVisible }) {
                     //         setVisible(false)
                     //     }, 500)
                     // }}
-                    onClick={() => setVisible(prev => !prev)}
+                    // onClick={() => setVisible(prev => !prev)}
                 >
                     {
                         reactsArray.map((react, i) => (

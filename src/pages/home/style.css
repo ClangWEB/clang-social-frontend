@@ -227,9 +227,19 @@
         margin: 0 auto;
     }
 
+    .create_story_card {
+        height: 8rem;
+    }
+
     .stories {
-        grid-template-columns: repeat(4, 1fr);
+        width: 98%;
+        margin: 0 auto;
+        grid-template-columns: repeat(5, 1fr);
         padding-left: 0px;
+    }
+
+    .story {
+        height: 8rem;
     }
 
     .home_middle {
@@ -241,7 +251,7 @@
     }
 }
 
-/*-----Activate popup----*/
+/*--------- ACTIVATE POPUP ---------*/
 .popup {
     position: relative;
     background: var(--bg-primary);

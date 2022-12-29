@@ -2,17 +2,16 @@ import { useState } from "react";
 import Bio from "./Bio";
 
 
-export default function Detail({ header, value, img, placeholder, name, handleChange, updateDetails, infos, text }) {
+export default function Detail({ header, value, img, placeholder, name, handleChange, updateDetails, infos, text, rel }) {
     const [show, setShow] = useState(false);
 
     return (
         <div>
-            <div className="details_header">{header}</div>
             <div className="add_details_flex" onClick={() => setShow(prev => !prev)}>
                 {value ? (
                     <div className="info_profile">
                         <img src={`../../../icons/${img}.png`} alt="" />
-                        <span>{value}</span>
+                        <span className="value">{value}</span>
                         <i className="edit_icon"></i>
                     </div>
                 ) : (
@@ -30,6 +29,7 @@ export default function Detail({ header, value, img, placeholder, name, handleCh
                     infos={infos}
                     detail
                     setShow={setShow}
+                    rel={rel}
                 />
             }
         </div>

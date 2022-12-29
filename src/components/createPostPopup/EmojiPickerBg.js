@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Picker from "emoji-picker-react";
+import { useMediaQuery } from "react-responsive";
 
 export default function EmojiPickerBg({ user, text, setText, type2, background, setBackground }) {
     const [picker, setPicker] = useState(false)
@@ -27,7 +28,7 @@ export default function EmojiPickerBg({ user, text, setText, type2, background, 
         setBackground(postBackgrounds[i]);
         bgRef.current.classList.add("bgHandler");
     };
-    
+
     const removeBg = (i) => {
         bgRef.current.style.backgroundImage = "";
         setBackground("");
@@ -46,6 +47,10 @@ export default function EmojiPickerBg({ user, text, setText, type2, background, 
         "../../../images/postbackgrounds/9.jpg",
     ];
 
+    const sm = useMediaQuery({
+        query: "(max-width: 550px)"
+    })
+
     return (
         <div className={type2 ? "images_input" : ""}>
             <div className={!type2 ? "flex_center" : ""} ref={bgRef}>
@@ -55,8 +60,7 @@ export default function EmojiPickerBg({ user, text, setText, type2, background, 
                     maxLength="250"
                     value={text}
                     placeholder={`Say hii to world, ${user?.first_name}`}
-                    // placeholder={`What's on your mind, ${user?.first_name}...`}
-                    className={`post_input scrollbar ${type2 ? "input2" : ""}`}
+                    className={`post_input scrollbar ${type2 ? "input2" : ""} ${sm && !background ? "l0" : ""}`}
                     onChange={(e) => setText(e.target.value)}
                     style={{
                         paddingTop: `${background
@@ -73,9 +77,10 @@ export default function EmojiPickerBg({ user, text, setText, type2, background, 
                     </div>
                 }
                 {!type2 && <img src="../../../icons/colorful.png" alt="Background" onClick={() => { setShowBgs((prev) => !prev) }} />}
+                {!type2 && !showBgs && background && <div className="my_no_bg" onClick={() => { removeBg() }}></div>}
                 {!type2 && showBgs && (
-                    <div className="post_backgrounds">
-                        <div className="no_bg" onClick={() => {removeBg()}}></div>
+                    <div className="post_backgrounds scrollbar">
+                        <div className="no_bg" onClick={() => { removeBg() }}></div>
                         {postBackgrounds.map((bg, i) => (
                             <img
                                 src={bg}

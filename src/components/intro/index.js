@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import EditDetails from "./EditDetails";
 
 
-export default function Intro({ detailss, visitor }) {
+export default function Intro({ detailss, visitor, setOthername }) {
     const { user } = useSelector((state) => ({ ...state }));
     const [details, setDetails] = useState();
 
@@ -30,7 +30,7 @@ export default function Intro({ detailss, visitor }) {
     };
     const [infos, setInfos] = useState(initial);
     const [showBio, setShowBio] = useState(false);
-    const [visible, setVisible] = useState(0);
+    const [visible, setVisible] = useState(false);
     const [max, setMax] = useState(infos?.bio ? 150 - infos?.bio.length : 150);
 
     const handleChange = (e) => {
@@ -50,6 +50,7 @@ export default function Intro({ detailss, visitor }) {
             });
             setDetails(data);
             setShowBio(false);
+            setOthername(data.otherName);
         }
         catch (error) {
             console.log(error.response.data.message);
@@ -83,14 +84,6 @@ export default function Intro({ detailss, visitor }) {
                     norem
                 />
             }
-
-            {/* HOBBIES
-            {details?.hobby && (
-                <div className="info_profile">
-                    <img src="../../../icons/favoritesOutline.png" alt="" />
-                    Specializes in {details?.hobby}
-                </div>
-            )} */}
 
             {/* JOB */}
             {details?.job && details?.workPlace ? (
@@ -152,7 +145,7 @@ export default function Intro({ detailss, visitor }) {
             )}
 
             {/* INSTAGRAM */}
-            {details?.otherLinks && (
+            {details?.instagram && (
                 <div className="info_profile">
                     <img src="../../../icons/instagram.png" alt="" />
                     <a href={`https://www.instagram.com/${details?.instagram}`} target="_blank" rel="noreferrer">{details?.instagram}</a>
@@ -166,16 +159,18 @@ export default function Intro({ detailss, visitor }) {
                     <a href={`${details?.otherLinks}`} target="_blank" rel="noreferrer">Links</a>
                 </div>
             )}
+
             {!visitor && !details?.bio && !showBio &&
                 <button onClick={() => setShowBio(true)} className="gray_btn hover4 w100">Add Bio</button>
             }
             {!visitor &&
-                <button className="gray_btn hover4 w100" onClick={() => setVisible(1)}>Edit Details</button>
+                <button className="gray_btn hover4 w100" onClick={() => setVisible(true)}>Edit Details</button>
             }
-            {visible === 1 && !visitor && 
-                <EditDetails 
-                    setVisible={setVisible} 
-                    details={details} 
+            {visible && !visitor &&
+                <EditDetails
+                    visible={visible}
+                    setVisible={setVisible}
+                    details={details}
                     handleChange={handleChange}
                     updateDetails={updateDetails}
                     infos={infos}

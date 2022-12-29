@@ -87,7 +87,8 @@
     resize: none;
     padding: 5px 15px;
     margin-bottom: 10px;
-    width: 470px;
+    width: 100%;
+    /* width: 470px; */
     margin-left: 1px;
     font-family: inherit;
     font-size: 24px;
@@ -170,6 +171,7 @@
 
 .images_input {
     display: flex;
+    flex-direction: column;
 }
 
 .overflow_a {
@@ -183,10 +185,14 @@
     display: block;
     font-size: 15px;
     min-height: 15px !important;
+    width: 100%;
 }
 
 .moveleft {
-    transform: translateX(-10px);
+    /* transform: translateX(-10px); */
+    position: absolute;
+    top: 6.5rem;
+    right: 15px;
 }
 
 .movepicker2 {
@@ -431,8 +437,19 @@
 
 .no_bg {
     background: var(--bg-secondary);
-    width: 34px;
-    height: 34px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.my_no_bg {
+    position: absolute;
+    left: 3.8rem;
+    top: 14px;
+    background: var(--bg-secondary);
+    width: 35px;
+    height: 35px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -591,6 +608,10 @@
     }
 }
 
+.l0 {
+    left: 0;
+}
+
 @keyframes anim_third {
     0% {
         top: 100%;
@@ -610,3 +631,55 @@
         top: 0%;
     }
 }
+
+@media (max-width: 735px) {
+    .rlmove {
+        right: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    .postBox {
+        width: 96%;
+    }
+
+    .post_backgrounds {
+        width: 80%;
+        overflow-x: auto;
+    }
+
+    .no_bg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .post_backgrounds img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* @media (max-width: 405px) {
+    .preview_actions {
+        flex-direction: column;
+        gap: 2px !important;
+    }
+
+    .mobile_text {
+        width: 50%;
+    }
+}
+
+@media (max-width: 380px) {
+    .post_input {
+        font-size: 17px;
+    }
+
+    .addtoyourpost {
+        justify-content: center;
+    }
+
+    .addto_text {
+        display: none;
+    }
+} */

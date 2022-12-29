@@ -1,12 +1,13 @@
 .pictureBox {
     width: 700px !important;
-    height: 62vh;
+    height: 700px;
+    /* height: 62vh; */
 }
 
 .old_pictures_wrap {
     padding: 15px;
     overflow-y: auto;
-    height: 450px;
+    height: 550px;
 }
 
 .old_pictures_wrap h4 {
@@ -205,5 +206,48 @@
 
 .update_submit_wrap button {
     width: 110px !important;
+}
 
+@media (max-width: 720px) {
+    .postBox.pictureBox {
+        width: 98% !important;
+    }
+    .postBox.update_img {
+        width: 98% !important;
+        height: 98% !important;
+    }
+}
+
+@media (max-width: 589px) {
+    .postBox .old_pictures {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .postBox .old_pictures img {
+        width: 100%;
+        height: 110px;
+    }
+    .postBox .old_pictures_second {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .postBox .old_pictures_second img {
+        width: 100%;
+        height: 110px;
+    }
+}
+
+@media (max-width: 430px) {
+    .postBox .old_pictures {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .postBox .old_pictures_second {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .box_header span {
+        transform: translateX(-2rem);
+    }
 }

@@ -1,4 +1,4 @@
-export default function Bio({ 
+export default function Bio({
     infos,
     handleChange,
     max,
@@ -8,17 +8,27 @@ export default function Bio({
     name,
     detail,
     setShow,
+    rel
 }) {
     return (
         <div className="add_bio_wrap">
-            <textarea
-                className="scrollbar textarea_pink details_input"
-                placeholder={placeholder}
-                name={name}
-                value={infos?.[name]}
-                maxLength="150"
-                onChange={handleChange}
-            />
+            {!rel ? (
+                <textarea
+                    className="scrollbar textarea_pink details_input"
+                    placeholder={placeholder}
+                    name={name}
+                    value={infos?.[name]}
+                    maxLength={detail ? 50 : 150}
+                    onChange={handleChange}
+                />) : (
+                <select className="select_rel" name={name} value={infos?.relationship} onChange={handleChange}>
+                    <option value="Single">Single</option>
+                    <option value="In a RelationshipIn a Relationship">In a Relationship</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="">Prefer not to say</option>
+                </select>
+            )}
             {!detail && <div className="remain">{max} characters remaining</div>}
             <div className="flex">
                 <div className="flex flex_left">

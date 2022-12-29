@@ -272,7 +272,7 @@ header {
     height: 90vh;
     width: 575px;
     padding: 10px 1rem;
-    box-shadow: -2px 1px 5px 2px var(--shadow-1);
+    box-shadow: -2px 1px 5px var(--shadow-1);
     user-select: none;
 }
 
@@ -670,7 +670,7 @@ header {
     }
 
     .menu {
-        width: 340px;
+        width: 290px;
     }
 
     .middle_icon {
@@ -684,7 +684,12 @@ header {
     }
 
     .all_menu {
-        left: -12.5rem;
+        width: 310px;
+        left: -10rem;
+    }
+
+    .search_area {
+        width: 310px;
     }
 }
 

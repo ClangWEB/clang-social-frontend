@@ -47,7 +47,7 @@ export default function Post({ post, user, profile }) {
                         </div>
                     </div>
                 </Link>
-                <div className="post_header_right_second hover1" ref={menuRef} onClick={() => setShowMenu(prev => !prev)}>
+                <div className="post_header_right_second hover1" onClick={() => setShowMenu(prev => !prev)}>
                     <Dots color="#828387" />
                 </div>
             </div>
@@ -123,7 +123,7 @@ export default function Post({ post, user, profile }) {
                 </div>
             </div>
             <div className="post_actions">
-                <ReactPopup visible={visible} setVisible={setVisible} />
+                <ReactPopup reactRef={reactRef} visible={visible} setVisible={setVisible} />
                 <div
                     className="post_action hover4"
                     // onMouseOver={() => {
@@ -156,7 +156,7 @@ export default function Post({ post, user, profile }) {
                 <CreateComment user={user} />
             </div>
             <div>
-                {showMenu && <PostMenu userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} setShowMenu={setShowMenu} />}
+                {showMenu && <PostMenu menuRef={menuRef} userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} setShowMenu={setShowMenu} />}
             </div>
         </div>
     )
