@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 
 export default function Friends({ friends }) {
@@ -5,7 +6,7 @@ export default function Friends({ friends }) {
   return (
     <div className="profile_card">
       <div className="profile_card_header">Friends
-        {friends && friends.length > 0 && <div className="profile_header_link">See all</div>}
+        {friends && friends.length > 0 && <div className="profile_header_link hover4">See all</div>}
       </div>
       {friends && (
         <div className="profile_card_count">
@@ -19,9 +20,10 @@ export default function Friends({ friends }) {
       )}
       <div className="profile_card_grid">
         {friends && friends.slice(0, 9).map((friend, i) => (
-          <div className="profile_photo_card" key={i}>
-
-          </div>
+          <Link to={`/profile/${friend.username}`} className="profile_photo_card" key={i}>
+            <img src={friend?.picture} alt="Friend" />
+            <span>{friend.first_name} {friend.last_name}</span>
+          </Link>
         ))}
       </div>
     </div>

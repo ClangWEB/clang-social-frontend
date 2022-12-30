@@ -2,12 +2,12 @@ export default function Photos({ photos }) {
   return (
     <div className="profile_card">
       <div className="profile_card_header">Photos
-        {photos.total_count === 0
+        {photos && photos.total_count > 0 && <div className="profile_header_link hover4">See all</div>}
+        {/* {photos.total_count === 0
           ? ""
           : photos.total_count > 9
           && <div className="profile_header_link">See all</div>
-        }
-
+        }*/}
       </div>
       <div className="profile_card_count">
         {photos.total_count === 0

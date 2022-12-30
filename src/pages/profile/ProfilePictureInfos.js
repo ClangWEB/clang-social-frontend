@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import ProfilePicture from "../../components/profilePicture";
 import Friendship from "./Friendship";
+import { Link } from "react-router-dom";
 
 
 export default function ProfilePictureInfos({ profile, visitor, othername, photos }) {
@@ -30,10 +31,30 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
                     <div className="profile_name">
                         <div className="first_last">{profile?.first_name} {profile?.last_name}</div>
                         <div className="othername">{othername && `${othername}`}</div>
-                        {/* <div className="othername">{profile?.details?.otherName}</div> */}
                     </div>
-                    <div className="profile__friend_count"></div>
-                    <div className="profile__friend_imgs"></div>
+                    <div className="profile_friend_count">
+                        {profile?.friends && (
+                            <div className="profile_card_count">
+                                {profile?.friends.length === 0
+                                    ? "No Friends yet"
+                                    : profile?.friends.length === 1
+                                        ? "1 Friend"
+                                        : `${profile?.friends.length} Friends`
+                                }
+                            </div>
+                        )}
+                    </div>
+                    <div className="profile_friend_imgs">
+                        {profile?.friends && profile?.friends.slice(0, 6).map((friend, i) => (
+                            <Link to={`/profile/${friend?.username}`}  key={i}>
+                                <img 
+                                    src={friend.picture} 
+                                    style={{ transform: `translateX(${-i * 5}px)`, zIndex: `${i}`}} 
+                                    alt="Friend"
+                                />
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
             {visitor ? (

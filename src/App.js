@@ -23,29 +23,31 @@ function App() {
 
   useEffect(() => {
     const getAllPosts = async () => {
-      try {
-        dispatch({
-          type: "POSTS_REQUEST"
-        });
-        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllPosts`, {
-          headers: {
-            Authorization: `Bearer ${user?.token}`
-          }
-        });
-        dispatch({
-          type: "POSTS_SUCCESS",
-          payload: data
-        });
-      }
-      catch (error) {
-        dispatch({
-          type: "POSTS_ERROR",
-          payload: error.response.data.message
-        });
+      if (user) {
+        try {
+          dispatch({
+            type: "POSTS_REQUEST"
+          });
+          const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getAllPosts`, {
+            headers: {
+              Authorization: `Bearer ${user?.token}`
+            }
+          });
+          dispatch({
+            type: "POSTS_SUCCESS",
+            payload: data
+          });
+        }
+        catch (error) {
+          dispatch({
+            type: "POSTS_ERROR",
+            payload: error.response.data.message
+          });
+        }
       }
     };
     getAllPosts();
-  }, [user?.token, user]);
+  }, [user, user?.token]);
 
   return (
     <div>
@@ -53,8 +55,8 @@ function App() {
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={<Home loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} />} exact />
-          <Route path="/profile" element={<Profile setPostVisible={setPostVisible}/>} exact />
-          <Route path="/profile/:username" element={<Profile setPostVisible={setPostVisible}/>} exact />
+          <Route path="/profile" element={<Profile setPostVisible={setPostVisible} />} exact />
+          <Route path="/profile/:username" element={<Profile setPostVisible={setPostVisible} />} exact />
           <Route path="/activate/:token" element={<Activate />} exact />
         </Route>
         <Route element={<NotLoggenInRoutes />}>
@@ -67,26 +69,3 @@ function App() {
 }
 
 export default App;
-
-// const getMyAllPosts = async () => { // eslint-disable-line react-hooks/exhaustive-deps
-//   try {
-//     dispatch({
-//       type: "POSTS_REQUEST"
-//     });
-//     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllPosts`, {
-//       headers: {
-//         Authorization: `Bearer ${user?.token}`
-//       }
-//     });
-//     dispatch({
-//       type: "POSTS_SUCCESS",
-//       payload: data
-//     });
-//   }
-//   catch (error) {
-//     dispatch({
-//       type: "POSTS_ERROR",
-//       payload: error.response.data.message
-//     });
-//   }
-// };

@@ -94,14 +94,17 @@ export const unfollow = async (id, token) => {
 // ACCEPT FRIEND REQUEST
 export const acceptRequest = async (id, token) => {
     try {
-        await axios.put(`${process.env.REACT_APP_BACKEND_URL}/acceptRequest/${id}`, {}, {
-            headers: {
-                Authorization: `Bearer ${token}`,
+        await axios.put(
+            `${process.env.REACT_APP_BACKEND_URL}/acceptRequest/${id}`,
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             }
-        });
+        );
         return "ok";
-    }
-    catch (error) {
+    } catch (error) {
         return error.response.data.message;
     }
 };

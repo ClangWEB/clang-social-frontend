@@ -23,7 +23,7 @@ export default function Bio({
                 />) : (
                 <select className="select_rel" name={name} value={infos?.relationship} onChange={handleChange}>
                     <option value="Single">Single</option>
-                    <option value="In a RelationshipIn a Relationship">In a Relationship</option>
+                    <option value="In a Relationship">In a Relationship</option>
                     <option value="Married">Married</option>
                     <option value="Divorced">Divorced</option>
                     <option value="">Prefer not to say</option>

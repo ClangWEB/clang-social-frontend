@@ -95,14 +95,15 @@ export default function Profile({ setPostVisible }) {
   };
   useEffect(() => {
     // setHeight(profileTop.current.clientHeight + 300);
-    setHeight(profileTop.current.clientHeight - 35);  // IF WE ADD PEOPLE DISCOVERY <----------------------------------
+    setHeight(profileTop.current.clientHeight);  
+    // setHeight(profileTop.current.clientHeight);  
     setLeftHeight(leftSide.current.clientHeight);
     return () => {
       window.addEventListener("scroll", getScroll, { passive: true });
     }
   }, [loading, scrollHeight, height, leftHeight]);
   const check = useMediaQuery({
-    query: "(min-width: 961px)"
+    query: "(min-width: 901px)"
   });
   
   return (
@@ -121,9 +122,9 @@ export default function Profile({ setPostVisible }) {
             {/* <PeopleDiscovery /> */}
             <div
               className={
-                `profile_grid ${check && scrollHeight >= height && leftHeight > 1000
+                `profile_grid ${check && scrollHeight >= height && leftHeight > 800
                   ? "scrollFixed showLess"
-                  : check && scrollHeight >= height && leftHeight < 1000 && "scrollFixed showMore"
+                  : check && scrollHeight >= height && leftHeight < 800 && "scrollFixed showMore"
                 }`
               }
             >
