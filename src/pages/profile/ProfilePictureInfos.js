@@ -44,7 +44,7 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
                             </div>
                         )}
                     </div>
-                    <div className="profile_friend_imgs">
+                    <div className="profile_friend_imgs" style={{transform: `translateX(${profile?.friends && profile?.friends.length >= 6 && "13px"})`}}>
                         {profile?.friends && profile?.friends.slice(0, 6).map((friend, i) => (
                             <Link to={`/profile/${friend?.username}`}  key={i}>
                                 <img 

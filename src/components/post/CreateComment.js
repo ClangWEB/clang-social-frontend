@@ -1,12 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import Picker from "emoji-picker-react";
+import { comment } from "../../functions/post";
+import { uploadImages } from "../../functions/uploadImages";
+import dataURItoBlob from "../../helpers/dataURItoBlob";
+import { ClipLoader } from "react-spinners";
 
-export default function CreateComment({ user }) {
+export default function CreateComment({ user, postId }) {
     const [picker, setPicker] = useState(false);
     const [text, setText] = useState("");
-    const [commentImage, setCommentImage] = useState();
+    const [commentImage, setCommentImage] = useState("");
     const [error, setError] = useState("");
     const [cursorPosition, setCursorPosition] = useState();
+    const [loading, setLoading] = useState(false);
     const textRef = useRef(null);
     const imgRef = useRef(null);
 
@@ -45,6 +50,58 @@ export default function CreateComment({ user }) {
         setCursorPosition(start.length + emoji.length);
     };
 
+    const handleComment = async (e) => {
+        if (e.key === "Enter") {             // ONLY FOR KEYBOARD
+            if (commentImage !== "") {
+                setLoading(true);
+                const img = dataURItoBlob(commentImage);
+                const path = `${user?.username}/post_images/${postId}`;
+                let formData = new FormData();
+                formData.append("path", path);
+                formData.append("file", img);
+                const imgComment = await uploadImages(formData, user?.token, path);
+                await comment(postId, text, imgComment[0].url, user.token);
+                // const comments = await comment(postId, text, imgComment[0].url, user.token);
+                setLoading(false);
+                setCommentImage("");
+                setText("");
+            }
+            else {
+                setLoading(true);
+                await comment(postId, text, "", user.token);
+                // const comments = await comment(postId, text, "", user.token);
+                setLoading(false);
+                setCommentImage("");
+                setText("");
+            }
+        }
+    };
+
+    const handleCommentButton = async (e) => {
+        if (commentImage !== "") {
+            setLoading(true);
+            const img = dataURItoBlob(commentImage);
+            const path = `${user?.username}/post_images/${postId}`;
+            let formData = new FormData();
+            formData.append("path", path);
+            formData.append("file", img);
+            const imgComment = await uploadImages(formData, user?.token, path);
+            await comment(postId, text, imgComment[0].url, user.token);
+            // const comments = await comment(postId, text, imgComment[0].url, user.token);
+            setLoading(false);
+            setCommentImage("");
+            setText("");
+        }
+        else {
+            setLoading(true);
+            await comment(postId, text, "", user.token);
+            // const comments = await comment(postId, text, "", user.token);
+            setLoading(false);
+            setCommentImage("");
+            setText("");
+        }
+    };
+
     return (
         <div className="create_comment_wrap">
             <div className="create_comment">
@@ -68,25 +125,42 @@ export default function CreateComment({ user }) {
                             <button className="pink_btn" onClick={() => { setError("") }}>Retry</button>
                         </div>
                     }
-                    <input type="text" placeholder="Comment as you wish" ref={textRef} value={text} onChange={(e) => setText(e.target.value)} />
+                    <input
+                        type="text"
+                        placeholder="Comment here"
+                        ref={textRef}
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        onKeyUp={handleComment}
+                    />
+                    {!loading
+                        ? <div className="comment_circle_icon"  onClick={() => handleCommentButton()}>
+                            <i className="right_icon filter_pink myArrow"></i>
+                        </div>
+                        : <div className="comment_circle" style={{ marginTop: "5px" }}>
+                            <ClipLoader
+                                size={20}
+                                color="#F51997"
+                            />
+                        </div>}
                     <div className="comment_circle_icon hover3" onClick={() => { setPicker(prev => !prev) }}>
                         <i className="emoji_icon"></i>
                     </div>
                     <div className="comment_circle_icon hover3" onClick={() => imgRef.current.click()}>
                         <i className="camera_icon"></i>
                     </div>
-                    <div className="comment_circle_icon hover3" >
+                    {/* <div className="comment_circle_icon hover3" >
                         <i className="gif_icon"></i>
                     </div>
                     <div className="comment_circle_icon hover3" >
                         <i className="sticker_icon"></i>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {commentImage &&
                 <div className="comment_img_preview">
                     <img src={commentImage} alt="" />
-                    <div className="small_white_circle" onClick={() => {setCommentImage("")}}>
+                    <div className="small_white_circle" onClick={() => { setCommentImage("") }}>
                         <i className="exit_icon"></i>
                     </div>
                 </div>

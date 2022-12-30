@@ -28,7 +28,7 @@ export default function UserMenu({ user }) {
                         <img src={user?.picture} alt="Profile" />
                         <div className="menu_col">
                             <span>{user?.first_name} {user?.last_name}</span>
-                            <span>Your Profile</span>
+                            <span>My Profile</span>
                         </div>
                     </Link>
                     <div className="menu_splitter"></div>

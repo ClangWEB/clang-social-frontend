@@ -39,7 +39,7 @@ export default function Profile({ setPostVisible }) {
         dispatch({
           type: "PROFILE_REQUEST"
         });
-        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getProfile/${userName}`, {
+        const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getProfile/${userName}`, {
           headers: {
             Authorization: `Bearer ${user?.token}`
           }

@@ -1,52 +1,56 @@
-export default function ReactPopup({ reactRef, visible, setVisible }) {
-    const reactsArray = [
-        {
-            name: "Like",
-            image: "../../../reacts/like.gif",
-        },
-        {
-            name: "Love",
-            image: "../../../reacts/love.gif",
-        },
-        {
-            name: "Haha",
-            image: "../../../reacts/haha.gif",
-        },
-        {
-            name: "Wow",
-            image: "../../../reacts/wow.gif",
-        },
-        {
-            name: "Sad",
-            image: "../../../reacts/sad.gif",
-        },
-        {
-            name: "Angry",
-            image: "../../../reacts/angry.gif",
-        },
-    ];
+import { useRef } from "react";
+import useClickOutside from "../../helpers/clickOutside";
 
+const reactsArray = [
+    {
+        name: "like",
+        image: "../../../reacts/like.gif",
+    },
+    {
+        name: "love",
+        image: "../../../reacts/love.gif",
+    },
+    {
+        name: "haha",
+        image: "../../../reacts/haha.gif",
+    },
+    {
+        name: "wow",
+        image: "../../../reacts/wow.gif",
+    },
+    {
+        name: "sad",
+        image: "../../../reacts/sad.gif",
+    },
+    {
+        name: "angry",
+        image: "../../../reacts/angry.gif",
+    },
+];
+
+export default function ReactPopup({ reactHandler, visible, setVisible }) {
+    const myRef = useRef(null);
+    useClickOutside(myRef, () => setVisible(false));
     return (
         <>
             {visible && (
                 <div
-                    ref={reactRef}
                     className="reacts_popup"
-                    // onMouseOver={() => {
-                    //     setTimeout(() => {
-                    //         setVisible(true)
-                    //     }, 500)
-                    // }}
-                    // onMouseLeave={() => {
-                    //     setTimeout(() => {
-                    //         setVisible(false)
-                    //     }, 500)
-                    // }}
-                    // onClick={() => setVisible(prev => !prev)}
+                    ref={myRef}
+                    onMouseOver={() => {
+                        setTimeout(() => {
+                            setVisible(true)
+                        }, 500)
+                    }}
+                    onMouseLeave={() => {
+                        setTimeout(() => {
+                            setVisible(false)
+                        }, 500)
+                    }}
                 >
                     {
                         reactsArray.map((react, i) => (
-                            <div className="react" key={i}>
+                            <div className="react" onClick={() => reactHandler(react?.name)} key={i}>
                                 <img src={react.image} alt="Reacts" />
                             </div>
                         ))

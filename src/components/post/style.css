@@ -383,6 +383,7 @@
     font-size: 14px;
     text-transform: capitalize;
     transform: translateY(-1px);
+    font-weight: bolder;
 }
 
 .reacts_popup {
@@ -428,6 +429,10 @@
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.myArrow {
+    scale: 0.75;
 }
 
 .comment_input_wrap {
