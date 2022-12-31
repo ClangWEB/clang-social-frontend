@@ -266,7 +266,8 @@ export default function Post({ post, user, profile }) {
                     .map((comment, i) => <Comment comment={comment} key={i} />)
                 }
            
-                    <div className="myView">
+                <div className="myView">
+                <div>
                     {allow && (
                         <div className="view_comments" onClick={() => {
                             setCount(0);
@@ -274,13 +275,14 @@ export default function Post({ post, user, profile }) {
                         }}>
                             <span>Close</span>
                         </div>
-                        )}
+                    )}
                         {allow && count < comments.length && (
                         <div className="view_comments" onClick={() => setCount(prev => prev + 3)}>
                             <span>View More</span>
                         </div>
                     </div>
                 )}
+                </div>
             </div>
             {showMenu &&
                 <PostMenu
