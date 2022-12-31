@@ -232,7 +232,14 @@
 }
 
 .profile_friend_count {
+    display: flex;
+    align-items: center;
     font-weight: 600;
+    gap: 10px;
+}
+
+.gray_btn {
+    cursor: default;
 }
 
 .profile_friend_imgs {
@@ -481,6 +488,9 @@
 } */
 
 .profile_card_count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: var(--color-secondary);
 }
 
@@ -590,6 +600,8 @@
     }
 
     .profile_friend_count {
+        justify-content: center;
+        margin: 10px 0;
         text-align: center;
         transform: translateY(-15px);
     }
@@ -624,6 +636,10 @@
 @media (min-width: 900px) {
     .friendship {
         transform: translateX(-1.1rem);
+    }
+
+    .profile_friend_count {
+        margin-top: 3px;
     }
 }
 

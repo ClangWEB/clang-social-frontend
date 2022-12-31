@@ -10,6 +10,7 @@ export default function Bio({
     setShow,
     rel
 }) {
+
     return (
         <div className="add_bio_wrap">
             {!rel ? (

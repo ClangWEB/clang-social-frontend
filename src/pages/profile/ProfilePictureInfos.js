@@ -1,12 +1,20 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProfilePicture from "../../components/profilePicture";
 import Friendship from "./Friendship";
-import { Link } from "react-router-dom";
 
 
 export default function ProfilePictureInfos({ profile, visitor, othername, photos }) {
     const [show, setShow] = useState(false);
     const pRef = useRef(null);
+
+    const friendshipp = profile?.friendship;
+    const [friendship, setFriendship] = useState(friendshipp);
+
+    const [count, setCount] = useState(profile?.followers?.length)
+    useEffect(() => {
+        setFriendship(friendshipp);
+        setCount(profile?.followers?.length)
+    }, [friendshipp, profile?.followers?.length]);
 
     return (
         <div className="profile_img_wrap">
@@ -32,44 +40,53 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
                         <div className="first_last">{profile?.first_name} {profile?.last_name}</div>
                         <div className="othername">{othername && `${othername}`}</div>
                     </div>
-                    <div className="profile_friend_count">
-                        {profile?.friends && (
+                    <div className="profile_friend_count gray_btn">
+                        {profile?.followers && (
                             <div className="profile_card_count">
-                                {profile?.friends.length === 0
-                                    ? "No Friends yet"
-                                    : profile?.friends.length === 1
-                                        ? "1 Friend"
-                                        : `${profile?.friends.length} Friends`
-                                }
+                                <span>{count}</span>
+                                <span>Followers</span>
                             </div>
                         )}
-                    </div>
-                    <div className="profile_friend_imgs" style={{transform: `translateX(${profile?.friends && profile?.friends.length >= 6 && "13px"})`}}>
-                        {profile?.friends && profile?.friends.slice(0, 6).map((friend, i) => (
-                            <Link to={`/profile/${friend?.username}`}  key={i}>
-                                <img 
-                                    src={friend.picture} 
-                                    style={{ transform: `translateX(${-i * 5}px)`, zIndex: `${i}`}} 
-                                    alt="Friend"
-                                />
-                            </Link>
-                        ))}
+                        {profile?.following && (
+                            <div className="profile_card_count">
+                                <span>{profile?.following.length}</span>
+                                <span>Following</span>
+                            </div>
+                        )}
+                        {profile?.following && (
+                            <div className="profile_card_count">
+                                <span>{profile?.friends.length}</span>
+                                <span>Friends</span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
             {visitor ? (
-                <Friendship friendshipp={profile?.friendship} profileid={profile._id} />
+                <Friendship
+                    friendshipp={friendshipp}
+                    friendship={friendship}
+                    setFriendship={setFriendship}
+                    profileid={profile._id}
+                    count={count}
+                    setCount={setCount}
+                />
+                // <Friendship 
+                //     friendshipp={profile?.friendship} 
+                //     profileid={profile._id}
+                // />
             ) : (
-                <div className="profile_w_right">
-                    <div className="light_pink_btn">
-                        <img src="../../../icons/plus.png" className="invert" alt="" />
-                        <span>Add to Story</span>
-                    </div>
-                    <div className="gray_btn">
-                        <i className="edit_icon"></i>
-                        <span>Edit Profile</span>
-                    </div>
-                </div >
+                ""
+                // <div className="profile_w_right">
+                //     <div className="light_pink_btn">
+                //         <img src="../../../icons/plus.png" className="invert" alt="" />
+                //         <span>Add to Story</span>
+                //     </div>
+                //     <div className="gray_btn">
+                //         <i className="edit_icon"></i>
+                //         <span>Edit Profile</span>
+                //     </div>
+                // </div >
             )
             }
         </div >

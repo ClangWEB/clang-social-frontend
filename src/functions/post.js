@@ -65,4 +65,4 @@ export const comment = async (postId, comment, image, token) => {
     catch (error) {
         return error.response.data.message;
     }
-}
+};

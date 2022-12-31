@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import useClickOutside from "../../helpers/clickOutside";
 import { useSelector } from "react-redux";
 import { acceptRequest, addFriend, cancelRequest, deleteRequest, follow, unfollow, unfriend } from "../../functions/user";
 
 
-export default function Friendship({ friendshipp, profileid }) {
+export default function Friendship({ friendshipp, friendship, setFriendship, profileid, count, setCount }) {
 
     const { user } = useSelector((state) => ({ ...state }));
 
-    const [friendship, setFriendship] = useState(friendshipp);
-    useEffect(() => {
-        setFriendship(friendshipp);
-    }, [friendshipp]);
+    // const [friendship, setFriendship] = useState(friendshipp);
+    // useEffect(() => {
+    //     setFriendship(friendshipp);
+    // }, [friendshipp]);
+
 
     const [friendsMenu, setFriendsMenu] = useState(false);
     const [respondMenu, setRespondMenu] = useState(false);
@@ -28,15 +29,17 @@ export default function Friendship({ friendshipp, profileid }) {
         setFriendship({
             ...friendship,
             requestSent: false,
-            // following: false 
+            following: false
         });
         await cancelRequest(profileid, user?.token);
     };
     const followHandler = async () => {
+        setCount(count+1)
         setFriendship({ ...friendship, following: true });
         await follow(profileid, user?.token);
     };
     const unfollowHandler = async () => {
+        setCount(count-1)
         setFriendship({ ...friendship, following: false });
         await unfollow(profileid, user?.token);
     };
@@ -54,7 +57,7 @@ export default function Friendship({ friendshipp, profileid }) {
         setFriendship({
             ...friendship,
             friends: false,
-            // following: false,
+            following: false,
             requestSent: false,
             requestReceived: false,
         });
@@ -64,7 +67,7 @@ export default function Friendship({ friendshipp, profileid }) {
         setFriendship({
             ...friendship,
             friends: false,
-            // following: false,
+            following: false,
             requestSent: false,
             requestReceived: false,
         });

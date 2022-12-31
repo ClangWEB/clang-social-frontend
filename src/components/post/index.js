@@ -9,15 +9,18 @@ import PostMenu from "./PostMenu";
 import useClickOutside from "../../helpers/clickOutside";
 import { useEffect } from "react";
 import { getReacts, reactPost } from "../../functions/post";
+import Comment from "./Comment";
 
 
 export default function Post({ post, user, profile }) {
     const [visible, setVisible] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
-
     const [reacts, setReacts] = useState();
     const [check, setCheck] = useState();
     const [total, setTotal] = useState(0);
+    const [comments, setComments] = useState([]);
+    const [count, setCount] = useState(0);
+
     useEffect(() => {
         const getPostReacts = async () => {
             const res = await getReacts(post._id, user.token);
@@ -25,8 +28,12 @@ export default function Post({ post, user, profile }) {
             setCheck(res.check);
             setTotal(res.total);
         };
-        getPostReacts();
+        getPostReacts(post?.comments);
     }, [post, user.token]);
+    useEffect(() => {
+        setComments(post?.comments)
+    }, [post]);
+
     const reactHandler = async (type) => {
         reactPost(post._id, type, user.token);
         if (check === type) {
@@ -50,30 +57,22 @@ export default function Post({ post, user, profile }) {
             }
         }
     };
-    // const reactHandler = async (type) => {
-    //     reactPost(post._id, type, user.token);
-    //     if (check === type) {
-    //         setCheck();
-    //         let index = reacts.findIndex((x) => x.react === check);
-    //         if (index !== -1) {
-    //             setReacts([...reacts, (reacts[index].count = --reacts[index].count)]);
-    //             setTotal((prev) => --prev);
-    //         }
-    //     }
-    //     else {
-    //         setCheck(type);
-    //         let index = reacts.findIndex((x) => x.react === type);
-    //         let index1 = reacts.findIndex((x) => x.react === check);
-    //         if (index !== -1) {
-    //             setReacts([...reacts, (reacts[index].count = ++reacts[index].count)]);
-    //             setTotal((prev) => ++prev);
-    //         }
-    //         if (index1 !== -1) {
-    //             setReacts([...reacts, (reacts[index1].count = --reacts[index1].count)]);
-    //             setTotal((prev) => --prev);
-    //         }
-    //     }
-    // };
+
+    const [error, setError] = useState("");
+    const [allow, setAllow] = useState(false);
+    const toggleComments = () => {
+        if (comments.length === 0) {
+            setError("No Comments yet")
+        }
+        if (!allow) {
+            setCount(3);
+            setAllow(true);
+        }
+        else {
+            setCount(0);
+            setAllow(false);
+        }
+    }
 
     const menuRef = useRef(null);
     useClickOutside(menuRef, () => setShowMenu(false));
@@ -85,8 +84,7 @@ export default function Post({ post, user, profile }) {
                     <img src={post.user.picture} alt="Profile" />
                     <div className="header_col">
                         <div className="post_profile_name">
-                            {post.user.first_name} {post.user.last_name}
-                            {/* @{post.user.username} */}
+                            <div className="post_profile_user">{post.user.first_name} {post.user.last_name}</div>
                             <div className="updated_p">
                                 {
                                     post.type === "profilePicture" &&
@@ -172,6 +170,7 @@ export default function Post({ post, user, profile }) {
                 </div>
             )}
 
+            {/* {total && total > 0 ? */}
             <div className="post_infos">
                 <div className="reacts_count">
                     <div className="reacts_count_imgs">{
@@ -186,15 +185,20 @@ export default function Post({ post, user, profile }) {
                     }</div>
                     <div className="reacts_count_num">{total > 0 && total}</div>
                 </div>
-                <div className="to_right">
-                    <div className="comments_count">13 comments</div>
-                    <div className="share_count">1 share</div>
-                </div>
+                {comments && comments.length > 0 && <div className="to_right">
+                    <div className="comments_count">
+                        <div className="span_second">
+                            <i className="comment_icon"></i>
+                            <span>{comments.length}</span>
+                        </div>
+                    </div>
+                </div>}
             </div>
             <div className="post_actions">
                 <ReactPopup reactHandler={reactHandler} visible={visible} setVisible={setVisible} />
                 <div
-                    className="post_action hover4"
+                    className="post_action"
+                    // className="post_action hover4"
                     onMouseOver={() => {
                         setTimeout(() => {
                             setVisible(true)
@@ -233,22 +237,57 @@ export default function Post({ post, user, profile }) {
                         {check ? check : "Like"}
                     </span>
                 </div>
-                <div className="post_action hover4">
+                {/* <div className="post_action hover3" onClick={() => toggleComments()}> */}
+                <div className="post_action" onClick={() => toggleComments()}>
                     <i className="comment_icon"></i>
                     <span>Comments</span>
+                    {/* <div className="span_second">{comments && comments.length > 0 && `(${comments.length})`}</div> */}
                 </div>
-                <div className="post_action hover4">
-                    <i className="share_icon"></i>
-                    <span>Share</span>
-                </div>
+                {error &&
+                    <div className="postError_zindex comment_error">
+                        <div className="postError_error">{error}</div>
+                        <button className="pink_btn" onClick={() => { setError("") }}>Close</button>
+                    </div>
+                }
             </div>
             <div className="comments_wrap">
                 <div className="comments_order"></div>
-                <CreateComment user={user} postId={post._id} />
+                <CreateComment
+                    user={user}
+                    postId={post._id}
+                    setComments={setComments}
+                    setCount={setCount}
+                />
+                {comments && comments
+                    .sort((a, b) => {
+                        return new Date(b.commentAt) - new Date(a.commentAt);
+                    })
+                    .slice(0, count)
+                    .map((comment, i) => <Comment comment={comment} key={i} />)
+                }
+                {allow && count < comments.length && (
+                    <div className="myView">
+                        <div className="view_comments" onClick={() => {
+                            setCount(0);
+                            setAllow(false);
+                        }}>
+                            <span>Close</span>
+                        </div>
+                        <div className="view_comments" onClick={() => setCount(prev => prev + 3)}>
+                            <span>View More</span>
+                        </div>
+                    </div>
+                )}
             </div>
-            <div>
-                {showMenu && <PostMenu menuRef={menuRef} userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} setShowMenu={setShowMenu} />}
-            </div>
+            {showMenu &&
+                <PostMenu
+                    menuRef={menuRef}
+                    userId={user.id}
+                    postUserId={post.user._id}
+                    imagesLength={post?.images?.length}
+                    setShowMenu={setShowMenu}
+                />
+            }
         </div>
     )
 }

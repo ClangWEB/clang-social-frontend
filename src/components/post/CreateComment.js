@@ -5,7 +5,7 @@ import { uploadImages } from "../../functions/uploadImages";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { ClipLoader } from "react-spinners";
 
-export default function CreateComment({ user, postId }) {
+export default function CreateComment({ user, postId, setComments, setCount }) {
     const [picker, setPicker] = useState(false);
     const [text, setText] = useState("");
     const [commentImage, setCommentImage] = useState("");
@@ -60,24 +60,32 @@ export default function CreateComment({ user, postId }) {
                 formData.append("path", path);
                 formData.append("file", img);
                 const imgComment = await uploadImages(formData, user?.token, path);
-                await comment(postId, text, imgComment[0].url, user.token);
-                // const comments = await comment(postId, text, imgComment[0].url, user.token);
+                const comments = await comment(postId, text, imgComment[0].url, user.token);
+                setComments(comments);
+                setCount((prev) => ++prev);
                 setLoading(false);
                 setCommentImage("");
                 setText("");
             }
             else {
-                setLoading(true);
-                await comment(postId, text, "", user.token);
-                // const comments = await comment(postId, text, "", user.token);
-                setLoading(false);
-                setCommentImage("");
-                setText("");
+                if (text !== "") {
+                    setLoading(true);
+                    const comments = await comment(postId, text, "", user.token);
+                    setComments(comments);
+                    setCount((prev) => ++prev);
+                    setLoading(false);
+                    setCommentImage("");
+                    setText("");
+                }
+                else {
+                    setCommentImage("");
+                    setError("Write a comment");
+                }
             }
         }
     };
 
-    const handleCommentButton = async (e) => {
+    const handleCommentButton = async () => {
         if (commentImage !== "") {
             setLoading(true);
             const img = dataURItoBlob(commentImage);
@@ -86,19 +94,27 @@ export default function CreateComment({ user, postId }) {
             formData.append("path", path);
             formData.append("file", img);
             const imgComment = await uploadImages(formData, user?.token, path);
-            await comment(postId, text, imgComment[0].url, user.token);
-            // const comments = await comment(postId, text, imgComment[0].url, user.token);
+            const comments = await comment(postId, text, imgComment[0].url, user.token);
+            setComments(comments);
+            setCount((prev) => ++prev);
             setLoading(false);
             setCommentImage("");
             setText("");
         }
         else {
-            setLoading(true);
-            await comment(postId, text, "", user.token);
-            // const comments = await comment(postId, text, "", user.token);
-            setLoading(false);
-            setCommentImage("");
-            setText("");
+            if (text !== "") {
+                setLoading(true);
+                const comments = await comment(postId, text, "", user.token);
+                setComments(comments);
+                setCount((prev) => ++prev);
+                setLoading(false);
+                setCommentImage("");
+                setText("");
+            }
+            else {
+                setCommentImage("");
+                setError("Write a comment");
+            }
         }
     };
 
@@ -134,7 +150,7 @@ export default function CreateComment({ user, postId }) {
                         onKeyUp={handleComment}
                     />
                     {!loading
-                        ? <div className="comment_circle_icon"  onClick={() => handleCommentButton()}>
+                        ? <div className="comment_circle_icon" onClick={() => handleCommentButton()}>
                             <i className="right_icon filter_pink myArrow"></i>
                         </div>
                         : <div className="comment_circle" style={{ marginTop: "5px" }}>

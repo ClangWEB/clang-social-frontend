@@ -176,14 +176,14 @@ export default function Intro({ detailss, visitor, setOthername }) {
                     infos={infos}
                 />
             }
-            <div className="flex">
+            {/* <div className="flex">
                 {!visitor &&
                     <button className="gray_btn hover4 w100">Add Hobbies</button>
                 }
                 {!visitor &&
                     <button className="gray_btn hover4 w100">Add Featured</button>
                 }
-            </div>
+            </div> */}
         </div>
     )
 }
