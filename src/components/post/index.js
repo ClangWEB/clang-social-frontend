@@ -267,12 +267,14 @@ export default function Post({ post, user, profile }) {
                 }
            
                     <div className="myView">
+                    {allow && (
                         <div className="view_comments" onClick={() => {
                             setCount(0);
                             setAllow(false);
                         }}>
                             <span>Close</span>
                         </div>
+                        )}
                         {allow && count < comments.length && (
                         <div className="view_comments" onClick={() => setCount(prev => prev + 3)}>
                             <span>View More</span>
