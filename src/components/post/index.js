@@ -282,7 +282,7 @@ export default function Post({ post, user, profile }) {
                         
                     </div>
                 )}
-               
+               </div>
             </div>
             {showMenu &&
                 <PostMenu
