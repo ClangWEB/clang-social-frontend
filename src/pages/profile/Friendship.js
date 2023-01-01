@@ -29,17 +29,17 @@ export default function Friendship({ friendshipp, friendship, setFriendship, pro
         setFriendship({
             ...friendship,
             requestSent: false,
-            following: false
+            // following: false
         });
         await cancelRequest(profileid, user?.token);
     };
     const followHandler = async () => {
-        setCount(count+1)
+        setCount((prev) => ++prev);
         setFriendship({ ...friendship, following: true });
         await follow(profileid, user?.token);
     };
     const unfollowHandler = async () => {
-        setCount(count-1)
+        setCount((prev) => --prev);
         setFriendship({ ...friendship, following: false });
         await unfollow(profileid, user?.token);
     };

@@ -9,7 +9,7 @@ import useClickOutside from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
 
 
-export default function Header({ page, visitor }) {
+export default function Header({ page, visitor, getAllPosts }) {
 
     const { user } = useSelector((user) => ({ ...user }));
     const color = "#65676b";
@@ -31,7 +31,7 @@ export default function Header({ page, visitor }) {
         <header>
             {/* HEADER LEFT */}
             <div className="header_left">
-                <Link to="/" className="header_logo">
+                <Link to="/" onClick={() => getAllPosts()} className="header_logo">
                     <div className="circle">
                         <Logo />
                     </div>
@@ -46,11 +46,17 @@ export default function Header({ page, visitor }) {
                 </div>
             </div>
 
-            {showSearchMenu && <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} />}
+            {showSearchMenu && 
+                <SearchMenu
+                    token = {user?.token} 
+                    color={color} 
+                    setShowSearchMenu={setShowSearchMenu} 
+                />
+            }
 
             {/* HEADER MIDDLE */}
             <div className="header_middle">
-                <Link to="/" className={`middle_icon ${page === "home" ? "active" : "hover1"}`}>
+                <Link to="/" onClick={() => getAllPosts()} className={`middle_icon ${page === "home" ? "active" : "hover1"}`}>
                     {page === "home" ? <HomeActive /> : <Home color={color} />}
                 </Link>
                 <Link to="/" className="middle_icon hover1">

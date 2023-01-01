@@ -16,12 +16,14 @@ import Photos from "./Photos";
 import Friends from "./Friends";
 import Intro from "../../components/intro";
 import { useMediaQuery } from "react-responsive";
+import CreatePostPopup from "../../components/createPostPopup";
 
-export default function Profile({ setPostVisible }) {
+export default function Profile({ getAllPosts }) {
   const navigate = useNavigate();
   const { username } = useParams();
   const { user } = useSelector((state) => ({ ...state }));
   const [photos, setPhotos] = useState({});
+  const [postVisible, setPostVisible] = useState(false);
   var userName = username === undefined ? user.username : username; // eslint-disable-next-line
   const [{ loading, profile, error }, dispatch] = useReducer(profileReducer, {
     loading: false,
@@ -95,7 +97,7 @@ export default function Profile({ setPostVisible }) {
   };
   useEffect(() => {
     // setHeight(profileTop.current.clientHeight + 300);
-    setHeight(profileTop.current.clientHeight);  
+    setHeight(profileTop.current.clientHeight);
     // setHeight(profileTop.current.clientHeight);  
     setLeftHeight(leftSide.current.clientHeight);
     return () => {
@@ -105,10 +107,19 @@ export default function Profile({ setPostVisible }) {
   const check = useMediaQuery({
     query: "(min-width: 901px)"
   });
-  
+
   return (
     <div className="profile">
-      <Header page="profile" visitor={visitor} />
+      {postVisible &&
+        <CreatePostPopup
+          user={user}
+          setPostVisible={setPostVisible}
+          posts={profile?.posts}
+          dispatch={dispatch}
+          profile
+        />
+      }
+      <Header page="profile" visitor={visitor} getAllPosts={getAllPosts} />
       <div className="profile_top" ref={profileTop}>
         <div className="profile_container">
           <Cover cover={profile?.cover} visitor={visitor} photos={photos.resources} />

@@ -10,7 +10,7 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
     const friendshipp = profile?.friendship;
     const [friendship, setFriendship] = useState(friendshipp);
 
-    const [count, setCount] = useState(profile?.followers?.length)
+    const [count, setCount] = useState(profile?.followers?.length);
     useEffect(() => {
         setFriendship(friendshipp);
         setCount(profile?.followers?.length)
@@ -47,12 +47,14 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
                                 <span>Followers</span>
                             </div>
                         )}
+                        <div className="line_seperator"></div>
                         {profile?.following && (
                             <div className="profile_card_count">
                                 <span>{profile?.following.length}</span>
                                 <span>Following</span>
                             </div>
                         )}
+                        <div className="line_seperator"></div>
                         {profile?.following && (
                             <div className="profile_card_count">
                                 <span>{profile?.friends.length}</span>

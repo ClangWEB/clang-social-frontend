@@ -11,7 +11,7 @@ import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
 
 
-export default function CreatePostPopup({ user, setPostVisible }) {
+export default function CreatePostPopup({ user, setPostVisible, posts, dispatch, profile }) {
     const popup = useRef(null);
     useClickOutside(popup, () => {
         setPostVisible(false);
@@ -29,7 +29,11 @@ export default function CreatePostPopup({ user, setPostVisible }) {
             const response = await createPost(null, background, text, null, user?.id, user?.token);
             setLoading(false);
 
-            if (response === "Posted") {
+            if (response.status === "ok") {
+                dispatch({
+                    type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
+                    payload: [response.data, ...posts],
+                });
                 setText("");
                 setBackground("");
                 setPostVisible(false);
@@ -52,7 +56,12 @@ export default function CreatePostPopup({ user, setPostVisible }) {
             const response = await uploadImages(formData, user?.token, path);
             const res = await createPost(null, null, text, response, user?.id, user?.token);
             setLoading(false);
-            if (res === "Posted") {
+
+            if (res.status === "ok") {
+                dispatch({
+                    type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
+                    payload: [res.data, ...posts],
+                });
                 setText("");
                 setImages([]);
                 setPostVisible(false);
@@ -66,7 +75,11 @@ export default function CreatePostPopup({ user, setPostVisible }) {
             const response = await createPost(null, null, text, null, user?.id, user?.token);
             setLoading(false);
 
-            if (response === "Posted") {
+            if (response.status === "ok") {
+                dispatch({
+                    type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
+                    payload: [response.data, ...posts],
+                });
                 setText("");
                 setBackground("");
                 setPostVisible(false);
