@@ -170,3 +170,37 @@ export const addToSearchHistory = async (searchUser, token) => {
         return error.response.data.message;
     }
 };
+
+// GET SEARCH HISTORY
+export const getSearchHistory = async (token) => {
+    try {
+        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getSearchHistory`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        return data;
+    }
+    catch (error) {
+        return error.response.data.message;
+    }
+};
+
+//  REMOVE FROM SEARCH HISTORY
+export const removeFromSearch = async (searchUser, token) => {
+    try {
+        const { data } = await axios.put(
+            `${process.env.REACT_APP_BACKEND_URL}/removeFromSearch`,
+            { searchUser },
+
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return data;
+    } catch (error) {
+        return error.response.data.message;
+    }
+};
