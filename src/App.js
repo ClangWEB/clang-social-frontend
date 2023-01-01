@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import { postsReducer } from "./functions/reducers";
+import Friends from "./pages/friends";
 
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
@@ -57,6 +58,7 @@ function App() {
           <Route path="/" element={<Home loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
           <Route path="/profile" element={<Profile getAllPosts={getAllPosts} />} exact />
           <Route path="/profile/:username" element={<Profile getAllPosts={getAllPosts} />} exact />
+          <Route path="/friends" element={<Friends setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
           <Route path="/activate/:token" element={<Activate />} exact />
         </Route>
         <Route element={<NotLoggenInRoutes />}>

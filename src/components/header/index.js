@@ -1,6 +1,7 @@
 import "./style.css";
 import { Link } from "react-router-dom"
-import { Logo, Search, HomeActive, Friends, Watch, Market, Gaming, Menu, Messenger, Notifications, ArrowDown, Home } from "../../svg";
+import { Logo, Search, HomeActive, Friends, Menu, Messenger, Notifications, ArrowDown, Home, FriendsActive } from "../../svg";
+// import { Logo, Search, HomeActive, Friends, Watch, Market, Gaming, Menu, Messenger, Notifications, ArrowDown, Home } from "../../svg";
 import { useSelector } from "react-redux";
 import SearchMenu from "./SearchMenu";
 import { useRef, useState } from "react";
@@ -56,13 +57,14 @@ export default function Header({ page, visitor, getAllPosts }) {
 
             {/* HEADER MIDDLE */}
             <div className="header_middle">
-                <Link to="/" onClick={() => getAllPosts()} className={`middle_icon ${page === "home" ? "active" : "hover1"}`}>
+                <Link to="/" className={`middle_icon ${page === "home" ? "active" : "hover1"}`}>
+                {/* <Link to="/" onClick={() => getAllPosts()} className={`middle_icon ${page === "home" ? "active" : "hover1"}`}> */}
                     {page === "home" ? <HomeActive /> : <Home color={color} />}
                 </Link>
-                <Link to="/" className="middle_icon hover1">
-                    <Friends color={color} />
+                <Link to="/friends" className={`middle_icon ${page === "friends" ? "active" : "hover1"}`}>
+                {page === "friends" ? <FriendsActive /> : <Friends color={color} />}
                 </Link>
-                <Link to="/" className="middle_icon hover1">
+                {/* <Link to="/" className="middle_icon hover1">
                     <Watch color={color} />
                     <div className="middle_notification">9+</div>
                 </Link>
@@ -71,7 +73,7 @@ export default function Header({ page, visitor, getAllPosts }) {
                 </Link>
                 <Link to="/" className="middle_icon hover1">
                     <Gaming color={color} />
-                </Link>
+                </Link> */}
             </div>
 
             {/* HEADER RIGHT */}

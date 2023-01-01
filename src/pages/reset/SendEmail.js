@@ -1,15 +1,16 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
+import RiseLoader from "react-spinners/RiseLoader";
 
 export default function SendEmail({ email, userInfos, error, setError, loading, setLoading, setUserInfos, setVisible }) {
     const sendEmail = async () => {
         try {
             setLoading(true);
-            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/sendResetPasswordCode`, {email});
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/sendResetPasswordCode`, { email });
             setError("");
             setLoading(false);
             setVisible(2);
-        } 
+        }
         catch (error) {
             setLoading(false);
             setError(error.response.data.message);
@@ -39,7 +40,19 @@ export default function SendEmail({ email, userInfos, error, setError, loading, 
             {error && <div className="error_text">{error}</div>}
             <div className="reset_form_btns">
                 <Link to="/login" className="gray_btn">Not Me</Link>
-                <button onClick={() => { sendEmail() }} className="pink_btn">Continue</button>
+                {!loading
+                    ? <button onClick={() => { sendEmail() }} className="pink_btn">Continue</button>
+                    : <div className="pink_btn">
+                        <RiseLoader
+                            color="#fff"
+                            // className="loading_btn"
+                            loading={loading}
+                            size={8.5}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div>
+                }
             </div>
         </div>
     )

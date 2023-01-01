@@ -69,6 +69,22 @@ a {
   cursor: pointer;
 }
 
+.pink_btn_second {
+  border: none;
+  outline: none;
+  background: var(--pink-color);
+  padding: 8.5px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
 .light_pink_btn {
   border: none;
   outline: none;

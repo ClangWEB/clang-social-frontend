@@ -60,7 +60,7 @@ export default function RegisterForm({ setVisible }) {
       .min(6, "Password must be atleast of 6 characters."),
     // .max(36, "Password must not be more than 36 characters")
   })
-  
+
 
   const [dateError, setDateError] = useState("");
   const [genderError, setGenderError] = useState("");
@@ -209,16 +209,24 @@ export default function RegisterForm({ setVisible }) {
                   and <Link to="/"><span>Privacy Policy</span></Link>. You may receive email
                   notifications from us and can opt out at any time.
                 </div>
-                <div className="reg_btn_wrapper">
-                  <button disabled={loading} className="pink_btn open_signup_second" type="submit">Sign Up</button>
-                </div>
-                <RiseLoader
-                  color="#F51997"
-                  loading={loading}
-                  size={10}
-                  aria-label="Loading Spinner"
-                  data-testid="loader"
-                />
+                {!loading
+                  ? <div className="reg_btn_wrapper">
+                    <button disabled={loading} className="pink_btn open_signup_second" type="submit">Sign Up</button>
+                  </div>
+                  : <div className="reg_btn_wrapper">
+                    <div className="pink_btn_second open_signup_second">
+                      <RiseLoader
+                        color="#fff"
+                        // color="#F51997"
+                        loading={loading}
+                        className="loading_btn"
+                        size={10}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                      />
+                    </div>
+                  </div>
+                }
                 {error && <div className="error_text">{error}</div>}
                 {success && <div className="success_text">{success}</div>}
               </Form>

@@ -3,6 +3,7 @@ import LoginInput from "../../components/inputs/logininput";
 import { Form, Formik } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import RiseLoader from "react-spinners/RiseLoader";
 
 
 export default function CodeVerification({ code, userInfos, setCode, error, setError, loading, setLoading, setVisible }) {
@@ -50,7 +51,19 @@ export default function CodeVerification({ code, userInfos, setCode, error, setE
                         {error && <div className="error_text">{error}</div>}
                         <div className="reset_form_btns">
                             <Link to="/login" className="gray_btn">Cancel</Link>
-                            <button type="submit" className="pink_btn">Continue</button>
+                            {!loading
+                                ? <button type="submit" className="pink_btn">Continue</button>
+                                : <div className="pink_btn">
+                                    <RiseLoader
+                                        color="#fff"
+                                        // className="loading_btn"
+                                        loading={loading}
+                                        size={8.5}
+                                        aria-label="Loading Spinner"
+                                        data-testid="loader"
+                                    />
+                                </div>
+                            }
                         </div>
                     </Form>
                 )}

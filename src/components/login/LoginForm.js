@@ -81,7 +81,21 @@ export default function LoginForm({ setVisible }) {
                                 <Form>
                                     <LoginInput onChange={handleLoginChange} type="text" name="email" placeholder="Email Address" />
                                     <LoginInput onChange={handleLoginChange} type="password" name="password" placeholder="Password" bottom />
-                                    <button type="submit" className="pink_btn">Log In</button>
+                                    {!loading
+                                        ? <button type="submit" className="pink_btn">Log In</button>
+                                        :
+                                        <div className="pink_btn">
+                                            <RiseLoader
+                                                color="#fff"
+                                                // color="#F51997"
+                                                loading={loading}
+                                                className="loading_btn"
+                                                size={10}
+                                                aria-label="Loading Spinner"
+                                                data-testid="loader"
+                                            />
+                                        </div>
+                                    }
                                 </Form>
                             )
                         }
@@ -89,13 +103,13 @@ export default function LoginForm({ setVisible }) {
                     <Link to="/reset" className="forgot_password">Recover Password</Link>
 
                     <div className="error_text">
-                        <RiseLoader
+                        {/* <RiseLoader
                             color="#F51997"
                             loading={loading}
                             size={10}
                             aria-label="Loading Spinner"
                             data-testid="loader"
-                        />
+                        /> */}
                         {error && <div>{error}</div>}
                     </div>
                     <div className="sign_splitter"></div>

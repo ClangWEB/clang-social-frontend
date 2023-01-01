@@ -64,6 +64,13 @@
     background: var(--bg-third);
 }
 
+.loading_btn {
+    display: flex;
+    align-items: center;
+    height: 33px;
+    /* margin-top: 10px; */
+}
+
 .open_signup {
     background: var(--blue-color);
     /* background: var(--color-secondary); */
