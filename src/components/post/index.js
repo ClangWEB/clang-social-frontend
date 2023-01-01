@@ -3,9 +3,10 @@ import Moment from "react-moment";
 import "./style.css";
 import { Dots, Public } from "../../svg";
 import ReactPopup from "./ReactPopup";
+import { useRef, useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
-import { useRef, useState } from "react";
+import useClickOutside from "../../helpers/clickOutside";
 import { useEffect } from "react";
 import { getReacts, reactPost } from "../../functions/post";
 import Comment from "./Comment";
@@ -19,7 +20,6 @@ export default function Post({ post, user, profile }) {
     const [total, setTotal] = useState(0);
     const [comments, setComments] = useState([]);
     const [count, setCount] = useState(0);
-    const [checkSaved, setCheckSaved] = useState();
 
     useEffect(() => {
         const getPostReacts = async () => {
@@ -27,7 +27,6 @@ export default function Post({ post, user, profile }) {
             setReacts(res.reacts);
             setCheck(res.check);
             setTotal(res.total);
-            setCheckSaved(res.checkSaved);
         };
         getPostReacts(post?.comments);
     }, [post, user.token]);
@@ -75,17 +74,11 @@ export default function Post({ post, user, profile }) {
         }
     }
 
-    // const menuRef = useRef(null);
-    // useClickOutside(menuRef, () => setShowMenu(false));
-
-    const postRef = useRef(null);
+    const menuRef = useRef(null);
+    useClickOutside(menuRef, () => setShowMenu(false));
 
     return (
-        <div 
-            className="post" 
-            ref={postRef} 
-            style={{ width: `${profile && "100%"}` }}
-        >
+        <div className="post" style={{ width: `${profile && "100%"}` }}>
             <div className="post_header">
                 <Link to={`/profile/${post.user.username}`} className="post_header_left">
                     <img src={post.user.picture} alt="Profile" />
@@ -272,7 +265,9 @@ export default function Post({ post, user, profile }) {
                     .slice(0, count)
                     .map((comment, i) => <Comment comment={comment} key={i} />)
                 }
+           
                 <div className="myView">
+                
                     {allow && (
                         <div className="view_comments" onClick={() => {
                             setCount(0);
@@ -281,28 +276,23 @@ export default function Post({ post, user, profile }) {
                             <span>Close</span>
                         </div>
                     )}
-                    {allow && count < comments.length && (
+                        {allow && count < comments.length && (
                         <div className="view_comments" onClick={() => setCount(prev => prev + 3)}>
                             <span>View More</span>
-                        </div>
-                    )}
-                </div>
-                {showMenu &&
-                    <PostMenu
-                        // menuRef={menuRef}
-                        userId={user.id}
-                        postUserId={post.user._id}
-                        imagesLength={post?.images?.length}
-                        postId={post?._id}
-                        token={user.token}
-                        checkSaved={checkSaved}
-                        setCheckSaved={setCheckSaved}
-                        images = {post?.images}
-                        imagesName = {post?.user?.first_name}
-                        postRef={postRef}
-                    />
-                }
+                        
+                    </div>
+                )}
+               </div>
             </div>
+            {showMenu &&
+                <PostMenu
+                    menuRef={menuRef}
+                    userId={user.id}
+                    postUserId={post.user._id}
+                    imagesLength={post?.images?.length}
+                    setShowMenu={setShowMenu}
+                />
+            }
         </div>
     )
 }
