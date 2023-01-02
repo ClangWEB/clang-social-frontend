@@ -6,7 +6,7 @@ import { useState } from "react";
 import SearchAccount from "./SearchAccount";
 import SendEmail from "./SendEmail";
 import CodeVerification from "./CodeVerification";
-import Footer from "../../components/login/Footer";
+// import Footer from "../../components/login/Footer";
 import ChangePassword from "./ChangePassword";
 
 
@@ -97,7 +97,7 @@ export default function Reset() {
                     />
                 }
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

@@ -39,7 +39,7 @@ export default function Friendship({ friendshipp, friendship, setFriendship, pro
         await follow(profileid, user?.token);
     };
     const unfollowHandler = async () => {
-        setCount((prev) => --prev);
+        count !== 0 && setCount((prev) => --prev)
         setFriendship({ ...friendship, following: false });
         await unfollow(profileid, user?.token);
     };

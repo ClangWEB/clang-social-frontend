@@ -1,6 +1,7 @@
 import "./style.css";
 import { Link } from "react-router-dom"
-import { Logo, Search, HomeActive, Friends, Menu, Messenger, Notifications, ArrowDown, Home, FriendsActive } from "../../svg";
+import { Logo, Search, HomeActive, Friends, ArrowDown, Home, FriendsActive } from "../../svg";
+// import { Logo, Search, HomeActive, Friends, Menu, Messenger, Notifications, ArrowDown, Home, FriendsActive } from "../../svg";
 // import { Logo, Search, HomeActive, Friends, Watch, Market, Gaming, Menu, Messenger, Notifications, ArrowDown, Home } from "../../svg";
 import { useSelector } from "react-redux";
 import SearchMenu from "./SearchMenu";
@@ -88,21 +89,21 @@ export default function Header({ page, visitor, getAllPosts }) {
                         <span>{user?.first_name}</span>
                     </Link>
                 )}
-                <div className={`circle_icon hover1 ${showAllMenu && "active_header"}`} ref={allMenu}>
+                {/* <div className={`circle_icon hover1 ${showAllMenu && "active_header"}`} ref={allMenu}>
                     <div onClick={() => setShowAllMenu((prev) => !prev)}>
                         <div style={{ transform: "translateY(2.5px)" }}>
                             <Menu />
                         </div>
-                    </div>
+                    </div> */}
                     {showAllMenu && <AllMenu />}
-                </div>
-                <div className="circle_icon hover1">
+                {/* </div> */}
+                {/* <div className="circle_icon hover1">
                     <Messenger />
-                </div>
-                <div className="circle_icon hover1">
+                </div> */}
+                {/* <div className="circle_icon hover1">
                     <Notifications />
                     <div className="right_notification">5</div>
-                </div>
+                </div> */}
                 <div className={`circle_icon hover1 ${showUserMenu && "active_header"}`} ref={usermenu} >
                     <div onClick={() => setShowUserMenu((prev) => !prev)}>
                         <div style={{ transform: "translateY(2.5px)" }}>

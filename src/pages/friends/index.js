@@ -1,8 +1,35 @@
+import { useEffect, useReducer } from "react";
 import Header from "../../components/header";
 import "./style.css";
+import { getFriendsPageInfos } from "../../functions/user";
+import { useSelector } from "react-redux";
+import { friendspage } from "../../functions/reducers";
+import Card from "./Card";
 
 
 export default function Friends() {
+    const { user } = useSelector((state) => ({ ...state }));
+
+    // eslint-disable-next-line
+    const [{ loading, error, data }, dispatch] = useReducer(friendspage, {
+        loading: false,
+        data: {},
+        error: "",
+    });
+    useEffect(() => {
+        getData(); // eslint-disable-next-line 
+    }, []);
+    const getData = async () => {
+        dispatch({ type: "FRIENDS_REQUEST" });
+        const data = await getFriendsPageInfos(user?.token);
+        if (data.status === "ok") {
+            dispatch({ type: "FRIENDS_SUCCESS", payload: data.data });
+        }
+        else {
+            dispatch({ type: "FRIENDS_ERROR", payload: data.data });
+        }
+    };
+
     return (
         <>
             <Header page="friends" />
@@ -10,19 +37,19 @@ export default function Friends() {
                 <div className="friends_left">
                     <div className="friends_left_header">
                         <h3>Friends</h3>
-                        <div className="small_circle_second">
+                        {/* <div className="small_circle_second">
                             <i className="settings_filled_icon"></i>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="friends_left_wrap">
                         <div className="menu_item active_friends">
-                            <div className="small_circle">
-                                <i className="friends_home_icon"></i>
+                            <div className="small_circle_second" style={{background: "#F51997"}}>
+                                <i className="friends_home_icon invert"></i>
                             </div>
                             <span>Home</span>
                         </div>
-                        <div className="menu_item hover3">
-                            <div className="small_circle">
+                        <div className="menu_item hover1">
+                            <div className="small_circle_second">
                                 <i className="friends_suggestions_icon"></i>
                             </div>
                             <span>Friend Requests</span>
@@ -30,8 +57,8 @@ export default function Friends() {
                                 <i className="right_icon"></i>
                             </div>
                         </div>
-                        <div className="menu_item hover3">
-                            <div className="small_circle">
+                        <div className="menu_item hover1">
+                            <div className="small_circle_second">
                                 <i className="friends_requests_icon"></i>
                             </div>
                             <span>Sent Requests</span>
@@ -39,8 +66,8 @@ export default function Friends() {
                                 <i className="right_icon"></i>
                             </div>
                         </div>
-                        <div className="menu_item hover3">
-                            <div className="small_circle">
+                        <div className="menu_item hover1">
+                            <div className="small_circle_second">
                                 <i className="friends_requests_icon"></i>
                             </div>
                             <span>Suggestions</span>
@@ -48,8 +75,8 @@ export default function Friends() {
                                 <i className="right_icon"></i>
                             </div>
                         </div>
-                        <div className="menu_item hover3">
-                            <div className="small_circle">
+                        <div className="menu_item hover1">
+                            <div className="small_circle_second">
                                 <i className="all_friends_icon"></i>
                             </div>
                             <span>My Friends</span>
@@ -57,8 +84,8 @@ export default function Friends() {
                                 <i className="right_icon"></i>
                             </div>
                         </div>
-                        <div className="menu_item hover3">
-                            <div className="small_circle">
+                        <div className="menu_item hover1">
+                            <div className="small_circle_second">
                                 <i className="birthdays_icon"></i>
                             </div>
                             <span>Birthdays</span>
@@ -77,7 +104,44 @@ export default function Friends() {
                         </div> */}
                     </div>
                 </div>
-                <div className="friends_right"></div>
+                <div className="friends_right">
+                    <div className="friends_right_wrap">
+                        <div className="friends_left_header">
+                            <h3>Friend Requests</h3>
+                        </div>
+                        <div className="flex_wrap">
+                            {data.requests && data.requests
+                                .map((user, i) => (
+                                    <Card user={user} type="request" key={i} />
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div className="friends_right_wrap">
+                        <div className="friends_left_header">
+                            <h3>Sent Requests</h3>
+                        </div>
+                        <div className="flex_wrap">
+                            {data.sentRequests && data.sentRequests
+                                .map((user, i) => (
+                                    <Card user={user} type="sent" key={i} />
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div className="friends_right_wrap">
+                        <div className="friends_left_header">
+                            <h3>My Friends</h3>
+                        </div>
+                        <div className="flex_wrap">
+                            {data.friends && data.friends
+                                .map((user, i) => (
+                                    <Card user={user} type="friends" key={i} />
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import Header from "../../components/header";
-import LeftHome from "../../components/home/left";
-import RightHome from "../../components/home/right";
-import Stories from "../../components/home/stories";
+// import LeftHome from "../../components/home/left";
+// import RightHome from "../../components/home/right";
+// import Stories from "../../components/home/stories";
 import "./style.css";
 import CreatePost from "../../components/createPost";
 import SendVerification from "../../components/home/sendVerification";
@@ -14,9 +14,9 @@ export default function Home({ loading, posts, error, setPostVisible, getAllPost
   return (
     <div className="home">
       <Header page="home" getAllPosts={getAllPosts} />
-      <LeftHome user={user} />
+      {/* <LeftHome user={user} /> */}
       <div className="home_middle">
-        <Stories />
+        {/* <Stories /> */}
         {user.verified === false && <SendVerification user={user} />}
         <CreatePost user={user} setPostVisible={setPostVisible} />
         <div className="posts">
@@ -27,7 +27,7 @@ export default function Home({ loading, posts, error, setPostVisible, getAllPost
           }
         </div>
       </div>
-      <RightHome user={user} />
+      {/* <RightHome user={user} /> */}
     </div>
   );
 }

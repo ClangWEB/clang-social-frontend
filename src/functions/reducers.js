@@ -22,7 +22,7 @@ export function postsReducer(state, action) {
     default:
       return state;
   }
-}
+};
 
 export function profileReducer(state, action) {
   switch (action.type) {
@@ -54,7 +54,7 @@ export function profileReducer(state, action) {
     default:
       return state;
   }
-}
+};
 
 export function photosReducer(state, action) {
   switch (action.type) {
@@ -80,4 +80,30 @@ export function photosReducer(state, action) {
     default:
       return state;
   }
-}
+};
+
+export function friendspage(state, action) {
+  switch (action.type) {
+    case "FRIENDS_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: ""
+      };
+    case "FRIENDS_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+        error: ""
+      };
+    case "FRIENDS_ERROR":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    default:
+      return state;
+  }
+};

@@ -239,10 +239,6 @@
     border: 1px solid var(--pink-color);
 }
 
-.gray_btn {
-    cursor: default;
-}
-
 .profile_friend_imgs {
     display: flex;
     align-items: center;
