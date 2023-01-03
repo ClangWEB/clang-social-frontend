@@ -63,7 +63,7 @@ export default function Post({ post, user, profile }) {
     const [allow, setAllow] = useState(false);
     const toggleComments = () => {
         if (comments.length === 0) {
-            setError("No Comments yet")
+            setError("No Comments yet");
         }
         if (!allow) {
             setCount(3);
@@ -273,7 +273,7 @@ export default function Post({ post, user, profile }) {
                     .map((comment, i) => <Comment comment={comment} key={i} />)
                 }
                 <div className="myView">
-                    {allow && (
+                    {allow && comments.length !== 0 && (
                         <div className="view_comments" onClick={() => {
                             setCount(0);
                             setAllow(false);

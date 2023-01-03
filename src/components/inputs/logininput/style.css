@@ -21,11 +21,13 @@
 }
 
 .input_wrap input:focus {
-    border-color: var(--blue-color);
+    border-color: var(--pink-color);
+    /* border-color: var(--blue-color); */
 }
 
 .input_error_border {
-    border-color: var(--pink-color) !important
+    border-color: red !important
+    /* border-color: var(--pink-color) !important */
 }
 
 .input_wrap i {

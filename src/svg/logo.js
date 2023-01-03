@@ -5,7 +5,7 @@ function Logo() {
             preserveAspectRatio="xMidYMid meet">
 
             <g transform="translate(0.000000,40.000000) scale(0.100000,-0.100000)"
-                fill="#F51997" stroke="none">
+                fill="#F51997" stroke="none" >
                 <path d="M112 374 c-184 -92 -118 -368 88 -368 206 0 272 276 88 368 -66 33
 -110 33 -176 0z m162 -46 c22 -30 11 -36 -13 -7 -14 17 -23 21 -31 13 -8 -8 2
 -33 35 -93 64 -115 54 -158 -30 -137 -22 6 -54 61 -42 73 4 3 11 -5 16 -19 13

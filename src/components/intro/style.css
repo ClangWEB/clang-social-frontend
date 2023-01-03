@@ -89,6 +89,7 @@
 }
 
 .infosBox {
+    position: absolute;
     height: 82vh;
     width: 500px !important;
 }

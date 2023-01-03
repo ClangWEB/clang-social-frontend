@@ -7,19 +7,19 @@ export default function HelpSupport({ setVisible }) {
             </div>
             Help & Support
         </div>
-        <div className="menu_item hover3">
+        <div className="menu_item hover1">
             <div className="small_circle">
                 <i className="help_center_icon"></i>
             </div>
             <span>Help</span>
         </div>
-        <div className="menu_item hover3">
+        <div className="menu_item hover1">
             <div className="small_circle">
                 <i className="email_icon"></i>
             </div>
             <span>Support</span>
         </div>
-        <div className="menu_item hover3">
+        <div className="menu_item hover1">
             <div className="small_circle">
                 <i className="info_filled_icon"></i>
             </div>

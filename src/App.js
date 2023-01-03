@@ -14,7 +14,11 @@ import { postsReducer } from "./functions/reducers";
 import Friends from "./pages/friends";
 
 function App() {
-  const { user } = useSelector((state) => ({ ...state }));
+
+  const { user, darkTheme } = useSelector((state) => ({ ...state }));
+  useEffect(() => {
+    document.body.style.backgroundColor = `${darkTheme ? "#18191a" : "#f0f2f5"}`
+  }, [darkTheme]);
   const [postVisible, setPostVisible] = useState(false);
   const [{ loading, posts, error }, dispatch] = useReducer(postsReducer, {
     loading: false,
@@ -51,7 +55,7 @@ function App() {
   }, [user, user?.token]);
 
   return (
-    <div>
+    <div className={darkTheme ? "dark" : ""}>
       {postVisible && <CreatePostPopup user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
@@ -59,6 +63,7 @@ function App() {
           <Route path="/profile" element={<Profile getAllPosts={getAllPosts} />} exact />
           <Route path="/profile/:username" element={<Profile getAllPosts={getAllPosts} />} exact />
           <Route path="/friends" element={<Friends setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
+          <Route path="/friends/:type" element={<Friends setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
           <Route path="/activate/:token" element={<Activate />} exact />
         </Route>
         <Route element={<NotLoggenInRoutes />}>

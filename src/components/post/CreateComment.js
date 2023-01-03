@@ -79,7 +79,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
                 }
                 else {
                     setCommentImage("");
-                    setError("Write a comment");
+                    setError("Write a comment first");
                 }
             }
         }
@@ -113,7 +113,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
             }
             else {
                 setCommentImage("");
-                setError("Write a comment");
+                setError("Write a comment first");
             }
         }
     };
@@ -159,16 +159,16 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
                                 color="#F51997"
                             />
                         </div>}
-                    <div className="comment_circle_icon hover3" onClick={() => { setPicker(prev => !prev) }}>
+                    <div className="comment_circle_icon hover2" onClick={() => { setPicker(prev => !prev) }}>
                         <i className="emoji_icon"></i>
                     </div>
-                    <div className="comment_circle_icon hover3" onClick={() => imgRef.current.click()}>
+                    <div className="comment_circle_icon hover2" onClick={() => imgRef.current.click()}>
                         <i className="camera_icon"></i>
                     </div>
-                    {/* <div className="comment_circle_icon hover3" >
+                    {/* <div className="comment_circle_icon hover2" >
                         <i className="gif_icon"></i>
                     </div>
-                    <div className="comment_circle_icon hover3" >
+                    <div className="comment_circle_icon hover2" >
                         <i className="sticker_icon"></i>
                     </div> */}
                 </div>

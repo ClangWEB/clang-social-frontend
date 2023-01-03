@@ -45,6 +45,8 @@
     gap: 5px;
     line-height: 19px;
     color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .post_profile_user {
@@ -88,6 +90,7 @@
 
 .post_text {
     width: 100%;
+    /* color: var(--color-secondary); */
     padding: 0 15px 10px 15px;
     word-break: break-word;
 }
@@ -386,12 +389,7 @@
     color: var(--color-secondary);
     font-size: 14px;
     text-transform: capitalize;
-    transform: translateY(-1px);
     font-weight: bold;
-}
-
-.post_action span:hover {
-    color: var(--pink-color-btn);
 }
 
 .span_second {
@@ -412,7 +410,7 @@
     padding: 5px 15px;
     border-radius: 50px;
     gap: 8px;
-    box-shadow: 0 10px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color), inset 0 0 0 1px var(--shadow-inset);
+    box-shadow: 0 10px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color);
 }
 
 .react {
@@ -512,7 +510,8 @@
 .post_menu {
     background: var(--bg-primary);
     width: 300px;
-    box-shadow: 1px 0 2px var(--shadow-1);
+    box-shadow: 0 12px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color);
+    /* box-shadow: 1px 0 2px var(--shadow-1); */
     border-radius: 10px;
     position: absolute;
     top: 3.1rem;

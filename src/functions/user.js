@@ -208,7 +208,7 @@ export const removeFromSearch = async (searchUser, token) => {
 //  FRIENDS PAGE
 export const getFriendsPageInfos = async (token) => {
     try {
-        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getFriendsPageInfos`, {
+        const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getFriendsPageInfos`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

@@ -232,7 +232,7 @@
 }
 
 .login_footer_wrap a:hover {
-    text-decoration: underline;
+    color: var(--pink-color);
 }
 
 .footer_splitter {

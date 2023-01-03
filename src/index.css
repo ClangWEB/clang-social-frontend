@@ -9,7 +9,6 @@
 
 body {
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-  background: var(--bg-secondary);
 }
 
 html {
@@ -35,7 +34,9 @@ a {
   --dark-color-primary: #242526;
   --dark-color-secondary: #b0b3b8;
   --blue-color: #1876f2;
+  /* --pink-color: #FC00FF; */
   --pink-color: #F51997;
+  --my-color: #ff009049;
   --pink-color-btn: #f51996c9;
   --pink-color-light: #ffccbb;
   --green-color: #42b72a;
@@ -128,7 +129,7 @@ a {
   font-family: inherit;
   font-weight: 600;
   font-size: 14px;
-  color: #fff;
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,7 +200,8 @@ a {
 }
 
 .hover3:hover {
-  background: pink;
+  background: var(--pink-color-btn);
+  /* background: pink; */
   /* background: #d4d6da3a; */
 }
 

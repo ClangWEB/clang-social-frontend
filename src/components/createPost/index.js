@@ -14,17 +14,17 @@ export default function CreatePost({ user, setPostVisible, profile }) {
             </div>
             <div className="create_splitter"></div>
             <div className="createPost_body">
-                <div className="createPost_icon hover3">
+                <div className="createPost_icon hover1" onClick={() => { setPostVisible(true) }}>
                     <Photo color="#4bbf67" />Image/Video
                 </div>
-                <div className="createPost_icon hover3">
+                <div className="createPost_icon hover1">
                     <LiveVideo color="#f3425f" />Live Video
                 </div>
                 {profile ?
-                    <div className="createPost_icon hover3">
+                    <div className="createPost_icon hover1">
                         <i className="lifeEvent_icon" />Life Events
                     </div> :
-                    <div className="createPost_icon hover3">
+                    <div className="createPost_icon hover1">
                         <Feeling color="#f7b928" />Thoughts
                     </div>
                 }

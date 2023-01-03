@@ -12,7 +12,7 @@
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  background: #fff;
+  background: var(--bg-primary);
   cursor: pointer;
   box-shadow: 0 1px 2px var(--shadow-1);
 }
@@ -43,7 +43,7 @@
 
 .story_create_text {
   position: absolute;
-  color: #000;
+  color: var(--color-primary);
   left: 21%;
   top: 87%;
   font-size: 14px;

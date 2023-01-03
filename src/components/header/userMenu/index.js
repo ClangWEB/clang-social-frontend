@@ -24,7 +24,7 @@ export default function UserMenu({ user }) {
         <div className="menu">
             {visible === 0 && (
                 <div>
-                    <Link to="/profile" className="menu_header hover3">
+                    <Link to="/profile" className="menu_header hover1">
                         <img src={user?.picture} alt="Profile" />
                         <div className="menu_col">
                             <span>{user?.first_name} {user?.last_name}</span>
@@ -32,7 +32,7 @@ export default function UserMenu({ user }) {
                         </div>
                     </Link>
                     <div className="menu_splitter"></div>
-                    <div className="menu_item hover3" onClick={() => {setVisible(1)}}>
+                    {/* <div className="menu_item hover1" onClick={() => {setVisible(1)}}>
                         <div className="small_circle">
                             <i className="settings_filled_icon"></i>
                         </div>
@@ -40,17 +40,17 @@ export default function UserMenu({ user }) {
                         <div className="rArrow">
                             <i className="right_icon"></i>
                         </div>
-                    </div>
-                    <div className="menu_item hover3"onClick={() => {setVisible(2)}}>
+                    </div> */}
+                    <div className="menu_item hover1"onClick={() => {setVisible(2)}}>
                         <div className="small_circle">
                             <i className="dark_filled_icon"></i>
                         </div>
-                        <span>Display & Accessibility</span>
+                        <span>Display Setting</span>
                         <div className="rArrow">
                             <i className="right_icon"></i>
                         </div>
                     </div>
-                    <div className="menu_item hover3" onClick={() => {setVisible(3)}}>
+                    {/* <div className="menu_item hover1" onClick={() => {setVisible(3)}}>
                         <div className="small_circle">
                             <i className="help_filled_icon"></i>
                         </div>
@@ -58,15 +58,15 @@ export default function UserMenu({ user }) {
                         <div className="rArrow">
                             <i className="right_icon"></i>
                         </div>
-                    </div>
-                    <div className="menu_item hover3" onClick={() => { logOut(); }}>
+                    </div> */}
+                    <div className="menu_item hover1" onClick={() => { logOut(); }}>
                         <div className="small_circle">
                             <i className="logout_filled_icon"></i>
                         </div>
                         <span>Log Out</span>
                     </div>
                     <div className="menu_splitter"></div>
-                    <div className="menu_main hover3">
+                    <div className="menu_item hover1">
                         <div className="small_circle">
                             <i className="report_filled_icon"></i>
                         </div>

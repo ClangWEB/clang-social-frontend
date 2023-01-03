@@ -1,5 +1,5 @@
 .friends {
-    height: calc(100vh - 70);
+    height: calc(100vh - 70px);
     width: 100%;
     margin-top: 70px;
     display: grid;
@@ -10,7 +10,7 @@
 
 .friends_left {
     background: var(--bg-primary);
-    box-shadow: 0 12px 12px var(--shadow-1);
+    /* box-shadow: 0 12px 12px var(--shadow-1); */
     padding: 10px;
     position: fixed;
     width: 360px;
@@ -32,7 +32,19 @@
 }
 
 .active_friends {
-    background: var(--bg-secondary)
+    background: var(--bg-secondary);
+}
+
+.active_friends .small_circle_second {
+    background: var(--pink-color);
+}
+
+.active_friends i {
+    filter: invert(100%);
+}
+
+.active_friends .rArrow {
+    display: none;
 }
 
 /* ----------------------------------------------------------------- */
@@ -47,12 +59,17 @@
     left: 360px;
     right: 0;
     width: calc(100% - 360px);
+    min-height: calc(100vh - 70px);
 }
 
 .see_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--pink-color);
     padding: 5px;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .req_card .flex {
@@ -112,7 +129,7 @@
 
     .friends_right {
         left: 100px;
-        width: calc(100vw - 100px);
+        width: calc(100% - 100px);
     }
 
     .friends_left .friends_left_header .small_circle_second {
@@ -133,8 +150,8 @@
         font-size: 16px;
     }
 
-    .see_links {
-        font-size: 14px;
+    .see_link {
+        font-size: 13px;
     }
 
 }

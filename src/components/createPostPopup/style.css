@@ -4,7 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: var(--bg-primary);
-    box-shadow: 0 12px 28px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color), inset 0 0 0 1px var(--shadow-inset);
+    box-shadow: 0 12px 28px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color);
     min-height: 228px;
     width: 500px;
     border-radius: 25px;
@@ -58,13 +58,14 @@
 .box_privacy {
     display: flex;
     align-items: center;
-    width: 81px;
+    width: fit-content;
+    /* width: 81px; */
     gap: 4px;
     font-size: 12px;
     padding: 3px 8px 4px 8px;
     border-radius: 7px;
     background: var(--bg-third);
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .box_privacy span {
@@ -92,7 +93,7 @@
     font-family: inherit;
     font-size: 24px;
     background: var(--bg-primary);
-    color: var(--color-primary);
+    color: #000;
 }
 
 .flex_center textarea {
@@ -143,6 +144,7 @@
     width: 50%;
     font-weight: 600;
     font-size: 14px;
+    color: var(--color-primary);
 }
 
 .post_header_right {
@@ -205,6 +207,7 @@
     padding: 10px;
     border: 1px solid var(--bg-third);
     border-radius: 10px;
+    color: var(--color-primary);
 }
 
 .add_pics_inside1 {
@@ -554,7 +557,7 @@
     /* gap: 10px; */
     align-items: center;
     justify-content: center;
-    z-index: 999;
+    z-index: 99;
     color: var(--pink-color);
     animation: anim_forth 0.3s;
     border-radius: 5px;

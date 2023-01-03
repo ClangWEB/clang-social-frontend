@@ -26,7 +26,7 @@ export default function SendVerification({ user }) {
             <div className="send_verification_link" onClick={() => {
                 sendVerificationLink();
             }}>
-                Click Here to resend Verification link to your email.
+                Click Here to send Verification link to your email.
             </div>
             {success && <div className="success_text">{success}</div>}
             {error && <div className="error_text">{error}</div>}

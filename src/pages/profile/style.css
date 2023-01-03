@@ -1,5 +1,10 @@
+.mY {
+    background: var(--bg-secondary);
+}
+
 .profile {
     color: var(--color-primary);
+    min-height: calc(100vh - 70px);
 }
 
 .profile_top {
@@ -147,8 +152,20 @@
     padding: 10px;
     width: 300px;
     border-radius: 10px;
-    box-shadow: 0px 12px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color), inset 0 0 0 1px var(--shadow-inset);
+    box-shadow: 0px 12px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color);
     /* box-shadow: 0 12px 20px var(--shadow-1); */
+    z-index: 999;
+}
+
+.open_cover_menu_second {
+    margin-top: 1px;
+    background: var(--bg-primary);
+    position: absolute;
+    right: -105px;
+    padding: 10px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 12px 20px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color);
     z-index: 999;
 }
 
@@ -170,6 +187,7 @@
     justify-content: space-between;
     padding: 0 1rem;
     margin-bottom: -2.8rem;
+    z-index: 1;
 }
 
 .profile_w_left {
@@ -236,7 +254,11 @@
     align-items: center;
     font-weight: 600;
     gap: 10px;
-    border: 1px solid var(--pink-color);
+    /* border: 1px solid var(--pink-color); */
+}
+
+.profile_friend_count.gray_btn {
+    cursor: default;
 }
 
 .profile_friend_imgs {
@@ -265,6 +287,10 @@
 
 .invert {
     filter: invert(100%);
+}
+
+.friends_menu_wrap {
+    position: relative;
 }
 
 /*------------------------- MENU -------------------------*/
@@ -537,6 +563,46 @@
     gap: 10px;
 }
 
+.line_seperator {
+    width: 2px !important;
+    height: 40px !important;
+    border-left: 1px solid var(--pink-color);
+}
+
+.fix {
+    flex-direction: row !important;
+}
+
+/*--------------------------------------------------------*/
+
+/*------------------  SKELETON LOADING -------------------*/
+
+.react-loading-skeleton {
+    --base-color: transparent !important;
+    --highlight-color: var(--light-pink-color-blur) !important;
+    /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(222,168,248,1) 0%, rgba(168,222,248,1) 21.8%, rgba(189,250,205,1) 35.6%, rgba(243,250,189,1) 52.9%, rgba(250,227,189,1) 66.8%, rgba(248,172,172,1) 90%, rgba(254,211,252,1) 99.7% ); */
+
+}
+
+.profile_friend_count .avatar_skeleton span {
+    height: 0 !important;
+}
+
+.skeleton_loader {
+    height: 100px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.skeleton_loader_second {
+    height: 100px;
+    width: 100%;
+    /* width: calc(100% + 100px) !important; */
+    display: grid;
+    place-items: center;
+}
+
 /*--------------------------------------------------------*/
 
 @media (max-width: 900px) {
@@ -617,10 +683,17 @@
         display: none;
     }
 
-    .line_seperator {
-        width: 2px !important;
-        height: 40px !important;
-        border-left: 1px solid var(--shadow-1);
+
+    .save_changes_left span {
+        font-size: 12px;
+    }
+
+    .save_changes_right .pink_btn {
+        font-size: 12px !important;
+    }
+
+    .save_changes_right button {
+        width: 100px !important;
     }
 }
 
@@ -633,6 +706,10 @@
 @media (max-width: 410px) {
     .friendship {
         flex-direction: column;
+    }
+
+    .skeleton_loader_second {
+        width: calc(100% + 100px) !important;
     }
 }
 
@@ -658,10 +735,16 @@
 
 .showLess .profile_left {
     bottom: 10px;
+    top: 85px;
     /* top: 71px; */
 }
 
 .showMore .profile_left {
     top: 71px;
     /* bottom: 30px; */
+}
+
+.dark .gray_btn i,
+.dark .gray_btn img {
+    filter: invert(100%);
 }

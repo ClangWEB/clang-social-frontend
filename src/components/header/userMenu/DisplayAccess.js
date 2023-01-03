@@ -1,11 +1,18 @@
+import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
+
+
 export default function DisplayAccess({ setVisible }) {
+    const dispatch = useDispatch();
+    const { darkTheme } = useSelector((state) => ({ ...state }));
+
     return (
         <div className="absolute_wrap">
             <div className="absolute_wrap_header">
                 <div className="circle hover1" onClick={() => setVisible(0)}>
                     <i className="arrow_back_icon"></i>
                 </div>
-                Display & Accessibility
+                Display Setting
             </div>
             <div className="menu_main">
                 <div className="small_circle">
@@ -16,15 +23,35 @@ export default function DisplayAccess({ setVisible }) {
                     <div className="menu_span2">Adjust the view according to what's best for you.</div>
                 </div>
             </div>
-            <label htmlFor="darkOff" className="hover1">
+            <label
+                htmlFor="darkOff"
+                className="hover1"
+                onClick={() => {
+                    Cookies.set("darkTheme", false);
+                    dispatch({ type: "LIGHT" });
+                }}
+            >
                 <span>Light Mode</span>
-                <input type="radio" name="dark" id="darkOff" />
+                {darkTheme
+                    ? <input type="radio" name="dark" id="darkOff" />
+                    : <input type="radio" name="dark" id="darkOff" defaultChecked />
+                }
             </label>
-            <label htmlFor="darkOn" className="hover1">
+            <label
+                htmlFor="darkOn"
+                className="hover1"
+                onClick={() => {
+                    Cookies.set("darkTheme", true);
+                    dispatch({ type: "DARK" });
+                }}
+            >
                 <span>Dark Mode</span>
-                <input type="radio" name="dark" id="darkOn" />
+                {darkTheme
+                    ? <input type="radio" name="dark" id="darkOn" defaultChecked />
+                    : <input type="radio" name="dark" id="darkOn" />
+                }
             </label>
-            <div className="menu_main">
+            {/* <div className="menu_main">
                 <div className="small_circle">
                     <i className="compact_icon"></i>
                 </div>
@@ -40,8 +67,8 @@ export default function DisplayAccess({ setVisible }) {
             <label htmlFor="compactOn" className="hover1">
                 <span>On</span>
                 <input type="radio" name="compact" id="compactOn" />
-            </label>
-            <div className="menu_item hover3">
+            </label> */}
+            {/* <div className="menu_item hover1">
                 <div className="small_circle">
                     <i className="keyboard_icon"></i>
                 </div>
@@ -49,7 +76,7 @@ export default function DisplayAccess({ setVisible }) {
                 <div className="rArrow">
                     <i className="right_icon"></i>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

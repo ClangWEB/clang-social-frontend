@@ -23,7 +23,7 @@ export default function SendEmail({ email, userInfos, error, setError, loading, 
             <div className="reset_grid">
                 <div className="reset_left">
                     <div className="reset_form_text">A code will be sent to your Email address to reset your password</div>
-                    <label htmlFor="email" className="hover3">
+                    <label htmlFor="email" className="">
                         <input type="radio" name="" id="email" checked readOnly />
                         <div className="label_col">
                             <span>Send code via email</span>

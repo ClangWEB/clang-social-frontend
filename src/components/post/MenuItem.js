@@ -1,6 +1,6 @@
 export default function MenuItem({ icon, title, subtitle, img }) {
   return (
-    <li className="hover3">
+    <li className="hover2">
       {img
         ? <img src={img} alt="" />
         : <i className={icon}></i>

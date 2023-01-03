@@ -83,7 +83,7 @@ export default function Friendship({ friendshipp, friendship, setFriendship, pro
                         <span>Friends</span>
                     </button>
                     {friendsMenu && (
-                        <div className="open_cover_menu" ref={menuRef}>
+                        <div className="open_cover_menu_second" ref={menuRef}>
                             {/* <div className="open_cover_menu_item hover3">
                                 <img src="../../../icons/favoritesOutline.png" alt="" />
                                 Favorites

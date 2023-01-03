@@ -7,12 +7,21 @@
     color: var(--color-primary);
     display: flex;
     flex-direction: column;
+    align-items: center;
     border-radius: 10px;
+}
+
+.send_verification span {
+    text-align: center;
 }
 
 .send_verification_link {
     color: var(--blue-color);
     cursor: pointer;
+}
+
+.myLink {
+    text-align: center;
 }
 
 .send_verification_link:hover {

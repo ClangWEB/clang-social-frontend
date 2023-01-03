@@ -111,7 +111,7 @@ header {
     justify-content: center;
     width: 100%;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -132,7 +132,7 @@ header {
 } */
 
 .active {
-    border-bottom: 3px solid var(--pink-color);
+    border-top: 3px solid var(--pink-color);
     height: 70px;
 }
 
@@ -184,7 +184,7 @@ header {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 1px solid #b0b3b8;
+    /* border: 1px solid #b0b3b8; */
     transform: translateX(-1px);
 }
 
@@ -255,6 +255,7 @@ header {
 
 .search_area .search input {
     padding-left: 4px;
+    color: var(--color-primary);
 }
 
 .search_area .search svg {
@@ -446,12 +447,16 @@ header {
     padding: 0 0.3rem;
     position: absolute;
     /* top: 100%; */
-    top: 56px;
-    right: 0;
+    top: 45px;
+    /* top: 55px; */
+    right: -10px;
     width: 360px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     background: var(--bg-primary);
-    box-shadow: 2px 2px 2px var(--shadow-1);
+    box-shadow: 0 2px 0 0 var(--shadow-1);
+    /* box-shadow: 0 12px 28px 0 var(--light-pink-color-blur), 0 2px 4px 0 var(--light-pink-color); */
     user-select: none;
     padding: 10px;
 }
@@ -547,7 +552,8 @@ header {
     height: fit-content;
     border-radius: 10px;
     background: var(--bg-primary);
-    box-shadow: 2px 2px 2px var(--shadow-1);
+    box-shadow: 0 2px 0 0 var(--shadow-1);
+    /* box-shadow: 2px 2px 2px var(--shadow-1); */
     user-select: none;
     padding: 10px;
 }
@@ -578,6 +584,30 @@ header {
 .absolute_wrap label input {
     width: 15px;
     height: 15px;
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    /* border-radius: 15px; */
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    /* border-radius: 15px; */
+    position: relative;
+    background-color: var(--pink-color);
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
 }
 
 /* ------------------------------------------------------ */
@@ -664,7 +694,7 @@ header {
     }
 
     .active {
-        border-bottom: none;
+        border-top: none;
     }
 }
 
@@ -749,7 +779,7 @@ header {
 }
 
 .activate_link {
-    background: var(--light-pink-color);
+    background: var(--light-pink-color-blur);
     color: var(--pink-color);
 }
 
@@ -757,7 +787,7 @@ header {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 1px solid var(--pink-color);
+    /* border: 1px solid var(--pink-color); */
     transform: translateX(-1px);
 }
 
