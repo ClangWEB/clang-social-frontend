@@ -4,6 +4,8 @@
     --bg-third: #3a3b3c;
     --bg-forth: #3a3b3c;
     --bg-fifth: #888888;
+    --bg-sixth: #18191a;
+    --bg-seventh: #fff;
     --color-primary: #e4e6eb;
     --color-secondary: #65676b;
     /* --color-primary: #e4e6eb; */
@@ -42,10 +44,6 @@
 
 .dark .header_right .circle_icon:hover {
     background: var(--bg-fifth);
-}
-
-.dark input[type=text] {
-    color: var(--color-primary);
 }
 
 .dark .small_circle {

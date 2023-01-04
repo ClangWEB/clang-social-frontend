@@ -9,9 +9,8 @@ import SendVerification from "../../components/home/sendVerification";
 import Post from "../../components/post";
 import { HashLoader } from "react-spinners";
 
-export default function Home({ loading, posts, error, setPostVisible, getAllPosts }) {
+export default function Home({ loading, posts, error, setPostVisible, getAllPosts, setRoomOpen }) {
   const { user } = useSelector((state) => ({ ...state }));
-
 
   return (
     <div className="home">
@@ -21,7 +20,7 @@ export default function Home({ loading, posts, error, setPostVisible, getAllPost
       <div className="home_middle">
         {/* <Stories /> */}
         {user.verified === false && <SendVerification user={user} />}
-        <CreatePost user={user} setPostVisible={setPostVisible} />
+        <CreatePost user={user} setPostVisible={setPostVisible} setRoomOpen={setRoomOpen} />
         {loading
           ? <div className="skeleton_loader">
             <HashLoader

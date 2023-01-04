@@ -12,6 +12,8 @@ import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import { postsReducer } from "./functions/reducers";
 import Friends from "./pages/friends";
+import Room from "./pages/room";
+import RoomInput from "./components/createPost/RoomInput";
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
     document.body.style.backgroundColor = `${darkTheme ? "#18191a" : "#f0f2f5"}`
   }, [darkTheme]);
   const [postVisible, setPostVisible] = useState(false);
+  const [roomOpen, setRoomOpen] = useState(false);
   const [{ loading, posts, error }, dispatch] = useReducer(postsReducer, {
     loading: false,
     posts: [],
@@ -57,14 +60,18 @@ function App() {
   return (
     <div className={darkTheme ? "dark" : ""}>
       {postVisible && <CreatePostPopup user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}
+      {roomOpen && <RoomInput setRoomOpen={setRoomOpen} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
-          <Route path="/" element={<Home loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
+          <Route path="/" element={
+          <Home loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} getAllPosts={getAllPosts} setRoomOpen={setRoomOpen} />} exact 
+          />
           <Route path="/profile" element={<Profile getAllPosts={getAllPosts} />} exact />
           <Route path="/profile/:username" element={<Profile getAllPosts={getAllPosts} />} exact />
           <Route path="/friends" element={<Friends setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
           <Route path="/friends/:type" element={<Friends setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
           <Route path="/activate/:token" element={<Activate />} exact />
+          <Route path="/room/:roomID" element={<Room />} exact />
         </Route>
         <Route element={<NotLoggenInRoutes />}>
           <Route path="/login" element={<Login />} exact />

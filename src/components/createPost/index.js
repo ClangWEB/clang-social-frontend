@@ -2,7 +2,8 @@ import { Feeling, LiveVideo, Photo } from "../../svg";
 import "./style.css";
 
 
-export default function CreatePost({ user, setPostVisible, profile }) {
+export default function CreatePost({ user, setPostVisible, profile, setRoomOpen }) {
+
     return (
         <div className="createPost">
             <div className="createPost_header">
@@ -17,8 +18,8 @@ export default function CreatePost({ user, setPostVisible, profile }) {
                 <div className="createPost_icon hover1" onClick={() => { setPostVisible(true) }}>
                     <Photo color="#4bbf67" />Image/Video
                 </div>
-                <div className="createPost_icon hover1">
-                    <LiveVideo color="#f3425f" />Live Video
+                <div className="createPost_icon hover1" onClick={() => { setRoomOpen(true) }}>
+                    <LiveVideo color="#f3425f" />Live Chat
                 </div>
                 {profile ?
                     <div className="createPost_icon hover1">
