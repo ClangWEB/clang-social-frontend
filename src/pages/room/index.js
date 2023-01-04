@@ -37,7 +37,7 @@ export default function Room() {
         <>
             <Header />
             <div className="room_wrap">
-                <div ref={meeting} className=""></div>
+                <div ref={meeting}></div>
             </div>
         </>
     )
