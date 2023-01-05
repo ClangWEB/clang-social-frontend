@@ -29,8 +29,6 @@ export default function Room() {
             scenario: {
                 mode: ZegoUIKitPrebuilt.GroupCall,
             },
-            showScreenSharingButton: false,
-            videoResolutionDefault: 3,
         });
     };
     return (

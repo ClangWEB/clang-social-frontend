@@ -114,90 +114,98 @@ export default function Friends() {
 
                 {/* RIGHT WRAP */}
 
-                {loading
-                    ? <div className="skeleton_loader_second">
-                        <HashLoader
-                            color="#F51997"
-                        />
-                    </div>
-                    : <div className="friends_right">
-                        {(type === undefined || type === "requests") && (
-                            <div className="friends_right_wrap">
-                                <div className="friends_left_header">
-                                    <h3>Friend Requests</h3>
-                                    {type === undefined && (
-                                        <Link to="/friends/requests" className="see_link hover3">
-                                            See all
-                                        </Link>
-                                    )}
-                                </div>
-                                <div className="flex_wrap">
-                                    {data.requests && data.requests
-                                        .slice(0, 5)
-                                        .map((user, i) => (
-                                            <Card
-                                                userr={user}
-                                                type="request"
-                                                key={i}
-                                                getData={getData}
-                                            />
-                                        ))
-                                    }
-                                </div>
-                            </div>
-                        )}
-                        {(type === undefined || type === "sent") && (
-                            <div className="friends_right_wrap">
-                                <div className="friends_left_header">
-                                    <h3>Sent Requests</h3>
-                                    {type === undefined && (
-                                        <Link to="/friends/sent" className="see_link hover3">
-                                            See all
-                                        </Link>
-                                    )}
-                                </div>
-                                <div className="flex_wrap">
-                                    {data.sentRequests && data.sentRequests
-                                        .slice(0, 5)
-                                        .map((user, i) => (
-                                            <Card
-                                                userr={user}
-                                                type="sent"
-                                                key={i}
-                                                getData={getData}
-                                            />
-                                        ))
-                                    }
-                                </div>
-                            </div>
-                        )}
-                        {(type === undefined || type === "all") && (
-                            <div className="friends_right_wrap">
-                                <div className="friends_left_header">
-                                    <h3>My Friends</h3>
-                                    {type === undefined && (
-                                        <Link to="/friends/all" className="see_link hover3">
-                                            See all
-                                        </Link>
-                                    )}
-                                </div>
-                                <div className="flex_wrap">
-                                    {data.friends && data.friends
-                                        .slice(0, 5)
-                                        .map((user, i) => (
-                                            <Card
-                                                userr={user}
-                                                type="friends"
-                                                key={i}
-                                                getData={getData}
-                                            />
-                                        ))
-                                    }
-                                </div>
-                            </div>
-                        )}
-                    </div>}
 
+                <div className="friends_right">
+                    {loading
+                        ? <div className="skeleton_loader_second">
+                            <HashLoader
+                                color="#F51997"
+                            />
+                        </div>
+                        : <div>
+                            {
+                                (type === undefined || type === "requests") && (
+                                    <div className="friends_right_wrap">
+                                        <div className="friends_left_header">
+                                            <h3>Friend Requests</h3>
+                                            {type === undefined && (
+                                                <Link to="/friends/requests" className="see_link hover3">
+                                                    See all
+                                                </Link>
+                                            )}
+                                        </div>
+                                        <div className="flex_wrap">
+                                            {data.requests && data.requests
+                                                .slice(0, 5)
+                                                .map((user, i) => (
+                                                    <Card
+                                                        userr={user}
+                                                        type="request"
+                                                        key={i}
+                                                        getData={getData}
+                                                    />
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                )
+                            }
+                            {
+                                (type === undefined || type === "sent") && (
+                                    <div className="friends_right_wrap">
+                                        <div className="friends_left_header">
+                                            <h3>Sent Requests</h3>
+                                            {type === undefined && (
+                                                <Link to="/friends/sent" className="see_link hover3">
+                                                    See all
+                                                </Link>
+                                            )}
+                                        </div>
+                                        <div className="flex_wrap">
+                                            {data.sentRequests && data.sentRequests
+                                                .slice(0, 5)
+                                                .map((user, i) => (
+                                                    <Card
+                                                        userr={user}
+                                                        type="sent"
+                                                        key={i}
+                                                        getData={getData}
+                                                    />
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                )
+                            }
+                            {
+                                (type === undefined || type === "all") && (
+                                    <div className="friends_right_wrap">
+                                        <div className="friends_left_header">
+                                            <h3>My Friends</h3>
+                                            {type === undefined && (
+                                                <Link to="/friends/all" className="see_link hover3">
+                                                    See all
+                                                </Link>
+                                            )}
+                                        </div>
+                                        <div className="flex_wrap">
+                                            {data.friends && data.friends
+                                                .slice(0, 5)
+                                                .map((user, i) => (
+                                                    <Card
+                                                        userr={user}
+                                                        type="friends"
+                                                        key={i}
+                                                        getData={getData}
+                                                    />
+                                                ))
+                                            }
+                                        </div>
+                                    </div>)
+                            }
+                        </div>
+                    }
+                </div>
             </div>
         </>
     )

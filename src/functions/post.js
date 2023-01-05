@@ -3,7 +3,7 @@ import axios from "axios";
 // CREATING NEW POST
 export const createPost = async (type, background, text, images, user, token) => {
     try {
-        const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createPost`, {
+        const { data } = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/createPost`, {
             type, background, text, images, user,
         }, {
             headers: {
@@ -20,7 +20,7 @@ export const createPost = async (type, background, text, images, user, token) =>
 // REACTING TO POST
 export const reactPost = async (postId, react, token) => {
     try {
-        await axios.put(`${process.env.REACT_APP_BACKEND_URL}/reactPost`, {
+        await axios.put(`${process.env.REACT_APP_LOGIN_URL}/reactPost`, {
             postId, react
         }, {
             headers: {
@@ -37,7 +37,7 @@ export const reactPost = async (postId, react, token) => {
 // GET POSTS REACTS
 export const getReacts = async (postId, token) => {
     try {
-        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getReacts/${postId}`, {
+        const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getReacts/${postId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -52,7 +52,7 @@ export const getReacts = async (postId, token) => {
 // COMMENT
 export const comment = async (postId, comment, image, token) => {
     try {
-        const { data } = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/comment`, {
+        const { data } = await axios.put(`${process.env.REACT_APP_LOGIN_URL}/comment`, {
             postId, comment, image
         }, {
             headers: {
@@ -69,7 +69,7 @@ export const comment = async (postId, comment, image, token) => {
 // SAVE POST
 export const savePost = async (postId, token) => {
     try {
-        const { data } = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/savePost/${postId}`, {}, {
+        const { data } = await axios.put(`${process.env.REACT_APP_LOGIN_URL}/savePost/${postId}`, {}, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -84,7 +84,7 @@ export const savePost = async (postId, token) => {
 //DELETE POST
 export const deletePost = async (postId, token) => {
     try {
-        const { data } = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/deletePost/${postId}`, {
+        const { data } = await axios.delete(`${process.env.REACT_APP_LOGIN_URL}/deletePost/${postId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }

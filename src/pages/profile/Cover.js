@@ -42,9 +42,9 @@ export default function Cover({ cover, visitor, photos }) {
             setError(`Only Image is supported!`)
             return;
         }
-        else if (file.size > 5242880) {
+        else if (file.size > 20971520) {
             e.target.value = null;
-            setError(`Max 5mb is allowed!`)
+            setError(`Max 20mb is allowed!`)
             return;
         }
         const reader = new FileReader();

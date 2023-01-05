@@ -586,7 +586,7 @@ header {
     height: 15px;
 }
 
-input[type='radio']:after {
+input.themeInput[type='radio']:after {
     width: 15px;
     height: 15px;
     /* border-radius: 15px; */
@@ -598,7 +598,7 @@ input[type='radio']:after {
     border: 2px solid white;
 }
 
-input[type='radio']:checked:after {
+input.themeInput[type='radio']:checked:after {
     width: 15px;
     height: 15px;
     /* border-radius: 15px; */
@@ -699,12 +699,15 @@ input[type='radio']:checked:after {
 }
 
 @media (max-width: 550px) {
-    .middle_icon:nth-child(1) {
+    /* .middle_icon:nth-child(1) {
         display: none;
-    }
+    } */
 
     .header_middle {
-        transform: translateX(-20%);
+        transform: translateX(5%);
+        /* width: 100vw; */
+        justify-content: center;
+        /* transform: translateX(-20%); */
     }
 
 

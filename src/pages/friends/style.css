@@ -51,9 +51,8 @@
 
 /* ------------------------- FRIENDS RIGHT ------------------------- */
 .friends_right {
-
     background: var(--bg-secondary);
-    padding: 2rem;
+    padding: 1rem;
     position: absolute;
     top: 70px;
     left: 360px;

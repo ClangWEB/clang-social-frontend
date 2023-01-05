@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import useClickOutside from "../../helpers/clickOutside";
+import BounceLoader from "react-spinners/BounceLoader";
 
 export default function RoomInput({ setRoomOpen }) {
     const [RoomCode, setRoomCode] = useState("");
@@ -8,13 +9,16 @@ export default function RoomInput({ setRoomOpen }) {
     const roomRef = useRef(null);
     useClickOutside(roomRef, () => setRoomOpen(false));
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const submitCode = () => {
         if (RoomCode === "") {
+            setLoading(false);
             setError("Create or Enter the code");
         }
         else {
             setError("");
+            setLoading(false)
             navigate(`/room/${RoomCode}`);
             setRoomOpen(false);
         }
@@ -45,7 +49,14 @@ export default function RoomInput({ setRoomOpen }) {
                         <button className="pink_btn" onClick={() => { setError("") }}>Retry</button>
                     </div>
                 }
-                <button className="post_submit" onClick={() => { submitCode() }}>Proceed</button>
+                <div className="room_submit">
+                    <button className="post_submit_second" onClick={() => {
+                        setLoading(true);
+                        submitCode();
+                    }}>{
+                            loading ? <BounceLoader color='white' size={20} /> : "Proceed"
+                        }</button>
+                </div>
                 <div className="create_splitter"></div>
                 <div className="createPost_icon">
                     Be sure to share the code with your friends

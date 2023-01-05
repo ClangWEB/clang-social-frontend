@@ -89,7 +89,7 @@ export default function RegisterForm({ setVisible }) {
       const { message, ...rest } = data;
       setTimeout(() => {
         dispatch({ type: "LOGIN", payload: rest });
-        Cookies.set("user", JSON.stringify(rest));
+        Cookies.set("user", JSON.stringify(rest), {expires: 365});
         navigate("/");
       }, 5000);
     }

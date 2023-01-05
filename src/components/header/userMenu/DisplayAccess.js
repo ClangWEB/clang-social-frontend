@@ -27,28 +27,28 @@ export default function DisplayAccess({ setVisible }) {
                 htmlFor="darkOff"
                 className="hover1"
                 onClick={() => {
-                    Cookies.set("darkTheme", false);
+                    Cookies.set("darkTheme", false, {expires: 365});
                     dispatch({ type: "LIGHT" });
                 }}
             >
                 <span>Light Mode</span>
                 {darkTheme
-                    ? <input type="radio" name="dark" id="darkOff" />
-                    : <input type="radio" name="dark" id="darkOff" defaultChecked />
+                    ? <input type="radio" name="dark" id="darkOff" className="themeInput"/>
+                    : <input type="radio" name="dark" id="darkOff" className="themeInput" defaultChecked />
                 }
             </label>
             <label
                 htmlFor="darkOn"
                 className="hover1"
                 onClick={() => {
-                    Cookies.set("darkTheme", true);
+                    Cookies.set("darkTheme", true, {expires: 365});
                     dispatch({ type: "DARK" });
                 }}
             >
                 <span>Dark Mode</span>
                 {darkTheme
-                    ? <input type="radio" name="dark" id="darkOn" defaultChecked />
-                    : <input type="radio" name="dark" id="darkOn" />
+                    ? <input type="radio" name="dark" id="darkOn" className="themeInput" defaultChecked />
+                    : <input type="radio" name="dark" id="darkOn" className="themeInput"/>
                 }
             </label>
             {/* <div className="menu_main">

@@ -23,6 +23,7 @@ function App() {
   }, [darkTheme]);
   const [postVisible, setPostVisible] = useState(false);
   const [roomOpen, setRoomOpen] = useState(false);
+
   const [{ loading, posts, error }, dispatch] = useReducer(postsReducer, {
     loading: false,
     posts: [],
@@ -56,15 +57,16 @@ function App() {
   useEffect(() => {
     getAllPosts(); // eslint-disable-next-line 
   }, [user, user?.token]);
+  const [showPreview, setShowPreview] = useState(false);
 
   return (
     <div className={darkTheme ? "dark" : ""}>
-      {postVisible && <CreatePostPopup user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}
+      {postVisible && <CreatePostPopup showPreview={showPreview} setShowPreview={setShowPreview} user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}
       {roomOpen && <RoomInput setRoomOpen={setRoomOpen} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={
-          <Home loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} getAllPosts={getAllPosts} setRoomOpen={setRoomOpen} />} exact 
+          <Home setShowPreview={setShowPreview} loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} getAllPosts={getAllPosts} setRoomOpen={setRoomOpen} />} exact 
           />
           <Route path="/profile" element={<Profile getAllPosts={getAllPosts} />} exact />
           <Route path="/profile/:username" element={<Profile getAllPosts={getAllPosts} />} exact />

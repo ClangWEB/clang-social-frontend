@@ -63,7 +63,7 @@ export default function UpdateProfilePicture({ popupRef, image, setImage, setErr
                     Cookies.set("user", JSON.stringify({
                         ...user,
                         picture: res[0].url
-                    }));
+                    }), {expires: 365});
                     dispatch({
                         type: "UPDATEPICTURE",
                         payload: res[0].url

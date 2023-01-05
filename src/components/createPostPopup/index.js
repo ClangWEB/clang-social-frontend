@@ -11,14 +11,14 @@ import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
 
 
-export default function CreatePostPopup({ user, setPostVisible, posts, dispatch, profile }) {
+export default function CreatePostPopup({ user, setPostVisible, posts, dispatch, profile, showPreview, setShowPreview }) {
     const popup = useRef(null);
     useClickOutside(popup, () => {
         setPostVisible(false);
     });
     const [loading, setLoading] = useState(false);
     const [text, setText] = useState("");
-    const [showPreview, setShowPreview] = useState(false);
+    // const [showPreview, setShowPreview] = useState(false);
     const [images, setImages] = useState([]);
     const [background, setBackground] = useState("");
     const [error, setError] = useState("");
@@ -140,9 +140,9 @@ export default function CreatePostPopup({ user, setPostVisible, posts, dispatch,
                         />
                     )
                 }
-                <AddToYourPost
+                {!showPreview && <AddToYourPost
                     setShowPreview={setShowPreview}
-                />
+                />}
                 <button disabled={loading} className="post_submit" onClick={() => { postSubmit() }}>
                     {loading
                         ? <PulseLoader

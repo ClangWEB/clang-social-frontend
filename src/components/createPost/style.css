@@ -2,7 +2,6 @@
     background: var(--bg-primary);
     border-radius: 10px;
     box-shadow: 0 1px 2px var(--shadow-1);
-    margin-top: 1.1rem;
     width: 100%;
 }
 
@@ -62,4 +61,11 @@
 
 .myInput {
     color: var(--color-primary) !important;
+}
+
+.room_submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

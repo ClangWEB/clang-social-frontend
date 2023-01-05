@@ -29,8 +29,8 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
             setError(`Only Image is supported!`)
             return;
         }
-        else if (file.size > 5242880) {
-            setError(`Max 5mb is allowed!`)
+        else if (file.size > 20971520) {
+            setError(`Max 20mb is allowed!`)
             return;
         }
         const reader = new FileReader();

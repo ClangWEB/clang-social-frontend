@@ -12,9 +12,9 @@ export default function ImagePreview({ user, text, setText, setError, images, se
                 files = files.filter(item => item.name !== img.name);
                 return;
             }
-            else if (img.size > 5242880) {
+            else if (img.size > 20971520) {
                 e.target.value = null;
-                setError(`(${img.name}) File size is not allowed! Max 5mb is allowed.`);
+                setError(`(${img.name}) File size is not allowed! Max 20mb is allowed.`);
                 files = files.filter(item => item.name !== img.name);
                 return;
             }
@@ -93,8 +93,8 @@ export default function ImagePreview({ user, text, setText, setError, images, se
                                     <div className="add_circle">
                                         <i className="addPhoto_icon"></i>
                                     </div>
-                                    <span>Add Images/Videos</span>
-                                    <span>or drag & drop</span>
+                                    <span>Add Images</span>
+                                    <span>upto 20mb</span>
                                 </div>
                             </div>
                         )

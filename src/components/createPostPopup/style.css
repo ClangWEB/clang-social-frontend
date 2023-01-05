@@ -133,6 +133,7 @@
 .addtoyourpost {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     margin: 0 10px;
     padding: 10px;
@@ -168,6 +169,22 @@
     border-radius: 25px;
     cursor: pointer;
     margin-bottom: 11px;
+}
+
+.post_submit_second {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 100px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background: var(--pink-color);
+    color: white;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
 .images_input {

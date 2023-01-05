@@ -140,9 +140,9 @@
     background: #777;
 }
 
-.dark .profile_container svg {
+/* .dark .profile_container svg {
     filter: invert(80%);
-}
+} */
 
 .dark .grid_icon {
     filter: invert(80%);

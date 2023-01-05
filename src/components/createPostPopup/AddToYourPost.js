@@ -1,4 +1,5 @@
-import { Dots, Feeling, Photo } from "../../svg"
+import { Photo } from "../../svg";
+// import { Dots, Feeling, Photo } from "../../svg";
 
 
 export default function AddToYourPost({ setShowPreview }) {
@@ -8,7 +9,7 @@ export default function AddToYourPost({ setShowPreview }) {
             <div className="post_header_right hover1" onClick={() => {setShowPreview(true)}}>
                 <Photo color="#45BD62"/>
             </div>
-            <div className="post_header_right hover1">
+            {/* <div className="post_header_right hover1">
                 <i className="tag_icon"></i>
             </div>
             <div className="post_header_right hover1">
@@ -22,7 +23,7 @@ export default function AddToYourPost({ setShowPreview }) {
             </div>
             <div className="post_header_right hover1">
                 <Dots color="#65676B"/>
-            </div>
+            </div> */}
         </div>
     )
 }
