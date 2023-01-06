@@ -35,7 +35,7 @@ export default function RoomInput({ setRoomOpen }) {
                 </div>
                 {!error
                     ? <textarea
-                        autoFocus
+                        // autoFocus
                         maxLength="250"
                         value={RoomCode}
                         placeholder="Enter a Room Code"
@@ -54,7 +54,7 @@ export default function RoomInput({ setRoomOpen }) {
                         setLoading(true);
                         submitCode();
                     }}>{
-                            loading ? <BounceLoader color='white' size={20} /> : "Proceed"
+                            loading ? <BounceLoader color='white' size={20} /> : "PROCEED"
                         }</button>
                 </div>
                 <div className="create_splitter"></div>

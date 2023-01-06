@@ -11,7 +11,8 @@ import useClickOutside from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
 
 
-export default function Header({ page, visitor, getAllPosts }) {
+export default function Header({ page, visitor }) {
+// export default function Header({ page, visitor, getAllPosts }) {
 
     const { user } = useSelector((user) => ({ ...user }));
     const color = "#65676b";
@@ -33,7 +34,8 @@ export default function Header({ page, visitor, getAllPosts }) {
         <header>
             {/* HEADER LEFT */}
             <div className="header_left">
-                <Link to="/" onClick={() => getAllPosts()} className="header_logo">
+                <Link to="/" className="header_logo">
+                {/* <Link to="/" onClick={() => getAllPosts()} className="header_logo"> */}
                     <div className="circle">
                         <Logo />
                     </div>

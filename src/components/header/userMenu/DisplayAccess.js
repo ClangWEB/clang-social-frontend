@@ -25,7 +25,6 @@ export default function DisplayAccess({ setVisible }) {
             </div>
             <label
                 htmlFor="darkOff"
-                className="hover1"
                 onClick={() => {
                     Cookies.set("darkTheme", false, {expires: 365});
                     dispatch({ type: "LIGHT" });
@@ -39,7 +38,6 @@ export default function DisplayAccess({ setVisible }) {
             </label>
             <label
                 htmlFor="darkOn"
-                className="hover1"
                 onClick={() => {
                     Cookies.set("darkTheme", true, {expires: 365});
                     dispatch({ type: "DARK" });

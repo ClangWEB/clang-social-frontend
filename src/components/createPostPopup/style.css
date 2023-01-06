@@ -101,6 +101,7 @@
     background: transparent;
     overflow-y: visible;
     position: absolute;
+    color: var(--color-primary);
 }
 
 .post_emojis_wrap {

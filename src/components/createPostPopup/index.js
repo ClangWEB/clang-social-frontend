@@ -11,7 +11,7 @@ import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
 
 
-export default function CreatePostPopup({ user, setPostVisible, posts, dispatch, profile, showPreview, setShowPreview }) {
+export default function CreatePostPopup({ type, user, setPostVisible, posts, dispatch, profile, showPreview, setShowPreview }) {
     const popup = useRef(null);
     useClickOutside(popup, () => {
         setPostVisible(false);
@@ -121,6 +121,7 @@ export default function CreatePostPopup({ user, setPostVisible, posts, dispatch,
                 {!showPreview ? (
                     <>
                         <EmojiPickerBg
+                            type={type}
                             user={user}
                             text={text}
                             setText={setText}

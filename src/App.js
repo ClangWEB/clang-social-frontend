@@ -14,6 +14,7 @@ import { postsReducer } from "./functions/reducers";
 import Friends from "./pages/friends";
 import Room from "./pages/room";
 import RoomInput from "./components/createPost/RoomInput";
+import FullScreen from "./components/post/FullScreen";
 
 function App() {
 
@@ -58,20 +59,39 @@ function App() {
     getAllPosts(); // eslint-disable-next-line 
   }, [user, user?.token]);
   const [showPreview, setShowPreview] = useState(false);
+  const [type, setType] = useState("");
+
+  const [fullscreen, setFullscreen] = useState(false);
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [postImages, setPostImages] = useState([]);
 
   return (
     <div className={darkTheme ? "dark" : ""}>
-      {postVisible && <CreatePostPopup showPreview={showPreview} setShowPreview={setShowPreview} user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}
+      {postVisible && <CreatePostPopup type={type} showPreview={showPreview} setShowPreview={setShowPreview} user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}
       {roomOpen && <RoomInput setRoomOpen={setRoomOpen} />}
+      {fullscreen && <FullScreen setFullscreen={setFullscreen} postImages={postImages} slideNumber={slideNumber} setSlideNumber={setSlideNumber} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={
-          <Home setShowPreview={setShowPreview} loading={loading} posts={posts} error={error} setPostVisible={setPostVisible} getAllPosts={getAllPosts} setRoomOpen={setRoomOpen} />} exact 
+            <Home 
+              setType={setType}
+              setShowPreview={setShowPreview}
+              loading={loading}
+              posts={posts}
+              error={error}
+              setPostVisible={setPostVisible}
+              setRoomOpen={setRoomOpen}
+              setFullscreen={setFullscreen}
+              setSlideNumber={setSlideNumber}
+              setPostImages={setPostImages}
+            />
+          }
+            exact
           />
-          <Route path="/profile" element={<Profile getAllPosts={getAllPosts} />} exact />
-          <Route path="/profile/:username" element={<Profile getAllPosts={getAllPosts} />} exact />
-          <Route path="/friends" element={<Friends setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
-          <Route path="/friends/:type" element={<Friends setPostVisible={setPostVisible} getAllPosts={getAllPosts} />} exact />
+          <Route path="/profile" element={<Profile />} exact />
+          <Route path="/profile/:username" element={<Profile />} exact />
+          <Route path="/friends" element={<Friends setPostVisible={setPostVisible} />} exact />
+          <Route path="/friends/:type" element={<Friends setPostVisible={setPostVisible} />} exact />
           <Route path="/activate/:token" element={<Activate />} exact />
           <Route path="/room/:roomID" element={<Room />} exact />
         </Route>

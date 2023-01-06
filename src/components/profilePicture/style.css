@@ -1,75 +1,24 @@
 .pictureBox {
     width: 700px !important;
+
     height: 700px;
-    /* height: 62vh; */
-}
-
-.old_pictures_wrap {
-    padding: 15px;
-    overflow-y: auto;
-    height: 550px;
-}
-
-.old_pictures_wrap h4 {
-    padding: 10px 0;
-
-}
-
-.old_pictures {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px 0;
-    gap: 10px;
-}
-
-.old_pictures_second {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px 0;
-    gap: 10px;
-}
-
-.old_pictures img {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    cursor: pointer;
-    object-fit: cover;
-}
-
-.old_pictures_second img {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    cursor: pointer;
-    object-fit: cover;
-}
-
-.old_pictures img:hover {
-    filter: brightness(110%);
-    transform: scale(1.1);
-}
-
-.old_pictures_second img:hover {
-    filter: brightness(110%);
-    transform: scale(1.1);
-}
-
-.old_pictures:first-of-type {
-    border-bottom: 1px solid var(--bg-third);
 }
 
 .update_picture_wrap {
     padding: 10px 15px;
 }
 
-.update_picture_btns {
+.update_picture_buttons {
     display: flex;
     gap: 10px;
 }
 
-.update_picture_btns button {
+.update_picture_buttons button {
     width: 100%;
+}
+
+.update_picture_buttons .light_blue_btn {
+    color: var(--blue-color);
 }
 
 .update_img {
@@ -88,31 +37,33 @@
     border-radius: 7px;
     outline-offset: 5px;
     border-color: var(--bg-third);
-    padding: 1.3rem;
+    padding: 1.1rem;
     font-size: 16px;
     font-family: inherit;
     background: var(--bg-primary);
     color: var(--color-primary);
 }
 
-.textarea_pink:hover {
-    border-color: var(--bg-secondary);
-}
-
 .textarea_pink:focus {
     outline-color: var(--pink-color);
 }
 
+.textarea_pink:hover {
+    border-color: var(--color-secondary);
+}
+
 .update_center {
     position: relative;
+    /* height: 400px; */
     height: 400px;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.cropper {
+.crooper {
     position: relative;
     display: flex;
     justify-content: center;
@@ -120,7 +71,7 @@
     width: 100%;
 }
 
-.cropper img {
+.crooper img {
     width: 100%;
     object-fit: contain;
 }
@@ -128,7 +79,7 @@
 .update_img .reactEasyCrop_CropAreaGrid {
     width: 300px !important;
     height: 300px !important;
-    /* color: rgba(255, 255, 255, 0.5); */
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .slider {
@@ -197,8 +148,8 @@
     gap: 1rem;
 }
 
-.pink_link {
-    color: var(--pink-color);
+.blue_link {
+    color: var(--blue-color);
     font-weight: 600;
     font-size: 15px;
     cursor: pointer;
@@ -208,13 +159,45 @@
     width: 110px !important;
 }
 
+.old_pictures_wrap {
+    padding: 15px;
+    overflow-y: auto;
+    height: 550px;
+}
+
+.old_pictures_wrap h4 {
+    padding: 10px 0;
+}
+
+.old_pictures {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.old_pictures img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.old_pictures img:hover {
+    filter: brightness(110%);
+}
+
+.old_pictures:first-of-type {
+    border-bottom: 1px solid var(--bg-third);
+}
+
 @media (max-width: 720px) {
     .postBox.pictureBox {
         width: 98% !important;
     }
     .postBox.update_img {
         width: 98% !important;
-        height: 98% !important;
     }
 }
 
@@ -223,15 +206,8 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
     }
+
     .postBox .old_pictures img {
-        width: 100%;
-        height: 110px;
-    }
-    .postBox .old_pictures_second {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .postBox .old_pictures_second img {
         width: 100%;
         height: 110px;
     }
@@ -239,11 +215,6 @@
 
 @media (max-width: 430px) {
     .postBox .old_pictures {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .postBox .old_pictures_second {
-        display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
 

@@ -10,10 +10,11 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
     const friendshipp = profile?.friendship;
     const [friendship, setFriendship] = useState(friendshipp);
 
-    const [count, setCount] = useState(profile?.followers?.length);
+    const [friendCount, setFriendCount] = useState(profile?.friends?.length);
+    const [followCount, setFollowCount] = useState(profile?.followers?.length);
     useEffect(() => {
         setFriendship(friendshipp);
-        setCount(profile?.followers?.length)
+        setFollowCount(profile?.followers?.length);
     }, [friendshipp, profile?.followers?.length]);
 
     return (
@@ -43,7 +44,7 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
                     <div className="profile_friend_count gray_btn">
                         {profile?.followers && (
                             <div className="profile_card_count">
-                                <span>{count}</span>
+                                <span>{followCount}</span>
                                 <span>Followers</span>
                             </div>
                         )}
@@ -57,7 +58,7 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
                         <div className="line_seperator"></div>
                         {profile?.following && (
                             <div className="profile_card_count">
-                                <span>{profile?.friends.length}</span>
+                                <span>{friendCount}</span>
                                 <span>Friends</span>
                             </div>
                         )}
@@ -66,12 +67,13 @@ export default function ProfilePictureInfos({ profile, visitor, othername, photo
             </div>
             {visitor ? (
                 <Friendship
-                    friendshipp={friendshipp}
                     friendship={friendship}
                     setFriendship={setFriendship}
                     profileid={profile._id}
-                    count={count}
-                    setCount={setCount}
+                    followCount={followCount}
+                    setFollowCount={setFollowCount}
+                    friendCount={friendCount}
+                    setFriendCount={setFriendCount}
                 />
                 // <Friendship 
                 //     friendshipp={profile?.friendship} 

@@ -141,9 +141,6 @@
 }
 
 @media (max-width : 400px) {
-    .friends_left .friends_left_header {
-        display: none;
-    }
 
     .friends_left_header h3 {
         font-size: 16px;

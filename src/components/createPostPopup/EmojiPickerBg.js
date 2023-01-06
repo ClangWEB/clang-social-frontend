@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Picker from "emoji-picker-react";
 import { useMediaQuery } from "react-responsive";
 
-export default function EmojiPickerBg({ user, text, setText, type2, background, setBackground }) {
+export default function EmojiPickerBg({ type, user, text, setText, type2, background, setBackground }) {
     const [picker, setPicker] = useState(false)
     const [cursorPosition, setCursorPosition] = useState();
     const textRef = useRef(null);
@@ -56,10 +56,11 @@ export default function EmojiPickerBg({ user, text, setText, type2, background, 
             <div className={!type2 ? "flex_center" : ""} ref={bgRef}>
                 <textarea
                     ref={textRef}
-                    autoFocus
+                    // autoFocus
                     maxLength="250"
                     value={text}
-                    placeholder={`Say hii to world, ${user?.first_name}`}
+                    placeholder={!type2 ? type : "Say something..."}
+                    // placeholder={`Say hii to world, ${user?.first_name}`}
                     className={`post_input scrollbar ${type2 ? "input2" : ""} ${sm && !background ? "l0" : ""}`}
                     onChange={(e) => setText(e.target?.value)}
                     style={{

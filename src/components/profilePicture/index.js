@@ -14,10 +14,10 @@ export default function ProfilePicture({ setShow, pRef, photos }) {
     const [error, setError] = useState("");
     const handleImage = (e) => {
         let file = e.target.files[0];
-        if (file.type !== "image/jpeg" &&
-            file.type !== "image/png" &&
-            file.type !== "image/gif" &&
-            file.type !== "image/webp"
+        if (file?.type !== "image/jpeg" &&
+            file?.type !== "image/png" &&
+            file?.type !== "image/gif" &&
+            file?.type !== "image/webp"
         ) {
             e.target.value = null;
             setError(`Only Image is supported!`)
@@ -57,9 +57,9 @@ export default function ProfilePicture({ setShow, pRef, photos }) {
                         <button className="light_pink_btn" onClick={() => inputRef.current.click()}>
                             <i className="plus_icon filter_white" />Upload Image
                         </button>
-                        <button className="gray_btn">
+                        {/* <button className="gray_btn">
                             <i className="frame_icon" />Add Frame
-                        </button>
+                        </button> */}
                     </div>
                 </div>
                 {error &&
@@ -71,10 +71,10 @@ export default function ProfilePicture({ setShow, pRef, photos }) {
                 <div className="old_pictures_wrap scrollbar">
                     <h4>Profile Pictures</h4>
                     <div className="old_pictures">
-                        {photos && photos.filter(img => img.folder === `${user.username}/profile_pictures`).map((photo) => (
+                        {photos && photos.filter(img => img.folder === `${user.username}/profile_pictures`).map((photo, i) => (
                             <img 
                                 src={photo.secure_url} 
-                                key={photo.public_id}
+                                key={i}
                                 onClick={() => setImage(photo.secure_url)}
                                 alt="Profile Pictures" 
                             />
@@ -82,10 +82,10 @@ export default function ProfilePicture({ setShow, pRef, photos }) {
                     </div>
                     <h4>Other Pictures</h4>
                     <div className="old_pictures">
-                        {photos && photos.filter(img => img.folder !== `${user.username}/profile_pictures`).map((photo) => (
+                        {photos && photos.filter(img => img.folder !== `${user.username}/profile_pictures`).map((photo, i) => (
                             <img 
                                 src={photo.secure_url} 
-                                key={photo.public_id}
+                                key={i}
                                 onClick={() => setImage(photo.secure_url)} 
                                 alt="Profile Pictures" 
                             />

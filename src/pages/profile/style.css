@@ -187,7 +187,6 @@
     justify-content: space-between;
     padding: 0 1rem;
     margin-bottom: -2.8rem;
-    z-index: 1;
 }
 
 .profile_w_left {
@@ -605,6 +604,12 @@
 
 /*--------------------------------------------------------*/
 
+.seperator {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 @media (max-width: 900px) {
     .profile_w_left {
         flex-direction: column;
@@ -706,10 +711,6 @@
 @media (max-width: 410px) {
     .friendship {
         flex-direction: column;
-    }
-
-    .skeleton_loader_second {
-        /* margin-left: calc(100% + 100px) !important; */
     }
 }
 

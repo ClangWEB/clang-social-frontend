@@ -22,6 +22,7 @@
 
     .home_middle {
         margin-left: 5%;
+        width: 50%;
     }
 
     .right_home {
@@ -190,6 +191,7 @@
     }
 
     .home_middle {
+        width: 95%;
         position: absolute;
         margin-left: 0;
     }

@@ -55,36 +55,45 @@ export default function UpdateProfilePicture({ popupRef, image, setImage, setErr
             const res = await uploadImages(formData, user.token, path);
             const updated_picture = await updateprofilePicture(res[0].url, user.token);
             if (updated_picture === "ok") {
-                const new_post = await createPost("profilePicture", null, desc, res, user.id, user.token);
-                if (new_post === "Posted") {
+                const new_post = await createPost(
+                    "profilePicture",
+                    null,
+                    desc,
+                    res,
+                    user.id,
+                    user.token
+                );
+                if (new_post.status === "ok") {
                     setLoading(false);
                     setImage("");
                     pRef.current.style.backgroundImage = `url(${res[0].url})`;
-                    Cookies.set("user", JSON.stringify({
-                        ...user,
-                        picture: res[0].url
-                    }), {expires: 365});
+                    Cookies.set(
+                        "user",
+                        JSON.stringify({
+                            ...user,
+                            picture: res[0].url,
+                        })
+                    );
                     dispatch({
                         type: "UPDATEPICTURE",
-                        payload: res[0].url
+                        payload: res[0].url,
                     });
                     setShow(false);
-                }
-                else {
+                } else {
                     setLoading(false);
+
                     setError(new_post);
                 }
-            }
-            else {
+            } else {
                 setLoading(false);
+
                 setError(updated_picture);
             }
-        }
-        catch (error) {
+        } catch (error) {
             setLoading(false);
             setError(error.response.data.message);
         }
-    }
+    };
 
     return (
         <div className="postBox update_img" ref={popupRef}>

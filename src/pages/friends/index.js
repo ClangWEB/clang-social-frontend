@@ -39,12 +39,12 @@ export default function Friends() {
             <div className="friends">
                 {/* LEFT WRAP */}
                 <div className="friends_left">
-                    <div className="friends_left_header">
+                    {/* <div className="friends_left_header">
                         <h3>Friends</h3>
-                        {/* <div className="small_circle_second">
+                        <div className="small_circle_second">
                             <i className="settings_filled_icon"></i>
-                        </div> */}
-                    </div>
+                        </div>
+                    </div> */}
                     <div className="friends_left_wrap">
                         <Link to="/friends" className={`menu_item hover1 ${type === undefined && "active_friends"}`}>
                             <div className="small_circle_second">

@@ -9,26 +9,27 @@ import Cover from "./Cover";
 import ProfilePictureInfos from "./ProfilePictureInfos";
 // import ProfileMenu from "./ProfileMenu";
 // import PeopleDiscovery from "./PeopleDiscovery";
-import CreatePost from "../../components/createPost";
+// import CreatePost from "../../components/createPost";
 import GridPosts from "./GridPosts";
 import Post from "../../components/post";
-import Photos from "./Photos";
+// import Photos from "./Photos";
 import Friends from "./Friends";
 import Intro from "../../components/intro";
 import { useMediaQuery } from "react-responsive";
-import CreatePostPopup from "../../components/createPostPopup";
+// import CreatePostPopup from "../../components/createPostPopup";
 import Skeleton from "react-loading-skeleton";
 // import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { HashLoader } from "react-spinners";
 
 
-export default function Profile({ getAllPosts }) {
+export default function Profile() {
+// export default function Profile({ getAllPosts }) {
   const navigate = useNavigate();
   const { username } = useParams();
   const { user } = useSelector((state) => ({ ...state }));
   const [photos, setPhotos] = useState({});
-  const [postVisible, setPostVisible] = useState(false);
+  // const [postVisible, setPostVisible] = useState(false);
   var userName = username === undefined ? user.username : username; // eslint-disable-next-line
   const [{ loading, profile, error }, dispatch] = useReducer(profileReducer, {
     loading: false,
@@ -115,7 +116,7 @@ export default function Profile({ getAllPosts }) {
 
   return (
     <div className="profile">
-      {postVisible &&
+      {/* {postVisible &&
         <CreatePostPopup
           user={user}
           setPostVisible={setPostVisible}
@@ -123,8 +124,9 @@ export default function Profile({ getAllPosts }) {
           dispatch={dispatch}
           profile
         />
-      }
-      <Header page="profile" visitor={visitor} getAllPosts={getAllPosts} />
+      } */}
+      <Header page="profile" visitor={visitor} />
+      {/* <Header page="profile" visitor={visitor} getAllPosts={getAllPosts} /> */}
 
       {/* SKELETON GRADIENT LOADING */}
       <div className="profile_top" ref={profileTop}>
@@ -245,7 +247,7 @@ export default function Profile({ getAllPosts }) {
                         />
                       </div>
                     </div>
-                    <div className="profile_card">
+                    {/* <div className="profile_card">
                       <div className="profile_card_header">Photos
                         {photos && photos.total_count > 0 && <div className="profile_header_link hover4">See all</div>}
                       </div>
@@ -254,7 +256,7 @@ export default function Profile({ getAllPosts }) {
                           color="#F51997"
                         />
                       </div>
-                    </div>
+                    </div> */}
                     <div className="profile_card">
                       <div className="profile_card_header">Friends
                         {photos && photos.total_count > 0 && <div className="profile_header_link hover4">See all</div>}
@@ -268,7 +270,7 @@ export default function Profile({ getAllPosts }) {
                   </>
                   : <>
                     <Intro detailss={profile.details} visitor={visitor} setOthername={setOthername} />
-                    <Photos photos={photos} />
+                    {/* <Photos photos={photos} /> */}
                     <Friends friends={profile.friends} />
                   </>
                 }
@@ -283,31 +285,42 @@ export default function Profile({ getAllPosts }) {
                 </div> */}
               </div>
               <div className="profile_right">
-                {loading ?
-                  ""
-                  : !visitor && <CreatePost profile user={user} setPostVisible={setPostVisible} />
-                }
-                <GridPosts profile={profile} />
-                {loading
+                <div className="seperator">
+                  {/* {loading ?
+                    ""
+                    : !visitor && <CreatePost profile user={user} setPostVisible={setPostVisible} />
+                  } */}
+                  <GridPosts />
+                  {/* <GridPosts profile={profile} /> */}
+                </div>
+                {/* {loading
                   ? <div className="skeleton_loader">
                     <HashLoader
                       color="#F51997"
                     />
                   </div>
-                  :
-                  <div className="posts">
-                    {profile.posts && profile.posts.length ?
-                      profile.posts.map((post) => (
-                        <Post post={post} user={user} key={post._id} profile={profile} />
-                      )) : (<div className="no_posts">No Posts yet...</div>)
-                    }
-                  </div>
-                }
+                  : */}
+                <div className="posts">
+                  {profile.posts && profile.posts.length ?
+                    profile.posts.map((post) => (
+                      <Post post={post} user={user} key={post._id} profile={profile} />
+                    )) : (
+                      loading ? (
+                        <div className="skeleton_loader">
+                          <HashLoader
+                            color="#F51997"
+                          />
+                        </div>
+                      )
+                        : < div className="no_posts">No Posts yet...</div>
+                    )
+                  }
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

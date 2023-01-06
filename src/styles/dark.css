@@ -34,16 +34,8 @@
     filter: invert(100%);
 }
 
-.dark .active_header {
-    background: var(--light-pink-color-blur) !important;
-}
-
 .dark .active_header svg {
     fill: var(--pink-color) !important;
-}
-
-.dark .header_right .circle_icon:hover {
-    background: var(--bg-fifth);
 }
 
 .dark .small_circle {
