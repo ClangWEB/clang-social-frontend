@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div className={darkTheme ? "dark" : ""}>
-      {/*{postVisible && <CreatePostPopup showPreview={showPreview} setShowPreview={setShowPreview} user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}*/}
+      {postVisible && <CreatePostPopup showPreview={showPreview} setShowPreview={setShowPreview} user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}
       {roomOpen && <RoomInput setRoomOpen={setRoomOpen} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
