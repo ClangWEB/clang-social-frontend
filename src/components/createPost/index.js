@@ -42,6 +42,7 @@ export default function CreatePost({ user, setPostVisible, profile, setRoomOpen,
                 } */}
                 <div className="createPost_icon hover1" onClick={() => {
                     setType(`How r u feeling today, ${user?.first_name}`);
+                    setShowPreview(false)
                     setPostVisible(true)
                 }}>
                     <Feeling color="#f7b928" />Thoughts

@@ -225,9 +225,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 11px;
-  background: pink;
-  /* background: var(--bg-third); */
+  /* margin-right: 11px; */
+  /* background: pink; */
+  background: var(--bg-third);
   cursor: pointer;
 }
 

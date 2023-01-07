@@ -23,7 +23,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { HashLoader } from "react-spinners";
 
 
-export default function Profile() {
+export default function Profile({ setSlideNumber, setFullscreen, setPostImages }) {
 // export default function Profile({ getAllPosts }) {
   const navigate = useNavigate();
   const { username } = useParams();
@@ -303,7 +303,7 @@ export default function Profile() {
                 <div className="posts">
                   {profile.posts && profile.posts.length ?
                     profile.posts.map((post) => (
-                      <Post post={post} user={user} key={post._id} profile={profile} />
+                      <Post post={post} user={user} key={post._id} profile={profile} setSlideNumber={setSlideNumber} setFullscreen={setFullscreen} setPostImages={setPostImages} />
                     )) : (
                       loading ? (
                         <div className="skeleton_loader">

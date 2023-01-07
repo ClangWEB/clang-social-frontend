@@ -26,10 +26,10 @@
 }
 
 .sliderWrap .btnClose {
-    top: 40px;
+    top: 10px;
     right: 10px;
     scale: 1.5;
-    color: var(--color-primary);
+    color: white;
 }
 
 .sliderWrap .btnPrev {

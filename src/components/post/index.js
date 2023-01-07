@@ -178,6 +178,10 @@ export default function Post({ post, user, profile, setSlideNumber, setFullscree
                                 src={post.images[0].url}
                                 className="post_updated_picture"
                                 alt="Profile"
+                                onClick={() => {
+                                    setPostImages(post.images)
+                                    setFullscreen(true);
+                                }}
                             />
                         </div>
                     </div>

@@ -92,6 +92,7 @@ export default function CreatePostPopup({ type, user, setPostVisible, posts, dis
 
         }
     }
+    console.log()
 
     return (
         <div className="blur">
@@ -111,11 +112,11 @@ export default function CreatePostPopup({ type, user, setPostVisible, posts, dis
                         <div className="box_profile_name">
                             {user.first_name} {user.last_name}
                         </div>
-                        <div className="box_privacy">
+                        {/* <div className="box_privacy">
                             <img src="../../../icons/public.png" alt="" />
                             <span>Public</span>
-                            {/* <i className="arrowDown_icon"></i> */}
-                        </div>
+                            <i className="arrowDown_icon"></i>
+                        </div> */}
                     </div>
                 </div>
                 {!showPreview ? (

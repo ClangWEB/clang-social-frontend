@@ -88,8 +88,8 @@ function App() {
           }
             exact
           />
-          <Route path="/profile" element={<Profile />} exact />
-          <Route path="/profile/:username" element={<Profile />} exact />
+          <Route path="/profile" element={<Profile setFullscreen={setFullscreen} setSlideNumber={setSlideNumber} setPostImages={setPostImages} />} exact />
+          <Route path="/profile/:username" element={<Profile setFullscreen={setFullscreen} setSlideNumber={setSlideNumber} setPostImages={setPostImages} />} exact />
           <Route path="/friends" element={<Friends setPostVisible={setPostVisible} />} exact />
           <Route path="/friends/:type" element={<Friends setPostVisible={setPostVisible} />} exact />
           <Route path="/activate/:token" element={<Activate />} exact />

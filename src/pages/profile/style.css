@@ -597,7 +597,7 @@
 .skeleton_loader_second {
     height: 100px;
     width: 100%;
-    /* width: calc(100% + 100px) !important; */
+    width: calc(100% + 100px) !important;
     display: grid;
     place-items: center;
 }

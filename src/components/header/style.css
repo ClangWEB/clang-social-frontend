@@ -773,9 +773,9 @@ input.themeInput[type='radio']:checked:after {
 
 /* ------------------- ACTIVE HEADER -------------------- */
 
-.active_header {
+/* .active_header {
     background: var(--light-pink-color);
-}
+} */
 
 .active_header svg {
     fill: var(--pink-color);

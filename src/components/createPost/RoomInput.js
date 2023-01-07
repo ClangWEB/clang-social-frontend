@@ -31,15 +31,16 @@ export default function RoomInput({ setRoomOpen }) {
                     <div className="small_circle" onClick={() => setRoomOpen(false)}>
                         <i className="exit_icon"></i>
                     </div>
-                    <span>Create/Join Room</span>
+                    <span>Room</span>
                 </div>
                 {!error
                     ? <textarea
                         // autoFocus
-                        maxLength="250"
+                        maxLength="10"
                         value={RoomCode}
-                        placeholder="Enter a Room Code"
-                        className="post_input myInput scrollbar"
+                        placeholder="Create or Enter a Room Code"
+                        className="post_input"
+                        // className="post_input scrollbar"
                         onChange={(e) => setRoomCode(e.target?.value)}
                         style={{ color: "white" }}
                     ></textarea>
