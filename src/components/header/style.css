@@ -532,6 +532,7 @@ header {
     font-weight: 600;
     font-size: 14px;
     border-radius: 10px;
+    gap: 10px;
 }
 
 .rArrow {
