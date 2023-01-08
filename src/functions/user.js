@@ -142,7 +142,7 @@ export const deleteRequest = async (id, token) => {
 // SEARCH MENU
 export const search = async (searchTerm, token) => {
     try {
-        const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/search/${searchTerm}`, {
+        const { data } = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/search/${searchTerm}`, {
 
         }, {
             headers: {
@@ -159,7 +159,7 @@ export const search = async (searchTerm, token) => {
 // ADD TO SEARCH HISTORY
 export const addToSearchHistory = async (searchUser, token) => {
     try {
-        const { data } = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/addToSearchHistory`, { searchUser }, {
+        const { data } = await axios.put(`${process.env.REACT_APP_LOGIN_URL}/addToSearchHistory`, { searchUser }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -174,7 +174,7 @@ export const addToSearchHistory = async (searchUser, token) => {
 // GET SEARCH HISTORY
 export const getSearchHistory = async (token) => {
     try {
-        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getSearchHistory`, {
+        const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getSearchHistory`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -190,7 +190,7 @@ export const getSearchHistory = async (token) => {
 export const removeFromSearch = async (searchUser, token) => {
     try {
         const { data } = await axios.put(
-            `${process.env.REACT_APP_BACKEND_URL}/removeFromSearch`,
+            `${process.env.REACT_APP_LOGIN_URL}/removeFromSearch`,
             { searchUser },
 
             {
