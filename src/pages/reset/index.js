@@ -34,7 +34,8 @@ export default function Reset() {
     return (
         <div className="reset">
             <div className="reset_header">
-                <img src="../../../icons/ClangSocial_Reset.png" alt="" />
+                <Link to="/" ><img src="../../../icons/clangsocial.svg" alt="" /></Link>
+                {/* <Link to="/" ><img src="../../../icons/ClangSocial_Reset.png" alt="" /></Link> */}
                 {user ?
                     <div className="right_reset">
                         <Link to="/profile"><img src={user?.picture} alt="" /></Link>

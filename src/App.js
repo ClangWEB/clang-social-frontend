@@ -15,6 +15,9 @@ import Friends from "./pages/friends";
 import Room from "./pages/room";
 import RoomInput from "./components/createPost/RoomInput";
 import FullScreen from "./components/post/FullScreen";
+import Privacy from "./pages/data/Privacy";
+import Terms from "./pages/data/Terms";
+import Cookies from "./pages/data/Cookies";
 
 function App() {
 
@@ -73,7 +76,7 @@ function App() {
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={
-            <Home 
+            <Home
               setType={setType}
               setShowPreview={setShowPreview}
               loading={loading}
@@ -99,6 +102,9 @@ function App() {
           <Route path="/login" element={<Login />} exact />
         </Route>
         <Route path="/reset" element={<Reset />} />
+        <Route path="/privacy" element={<Privacy />} exact />
+        <Route path="/terms" element={<Terms />} exact />
+        <Route path="/cookies" element={<Cookies />} exact />
       </Routes>
     </div>
   );

@@ -1,0 +1,12 @@
+.space {
+    padding: 10px;
+}
+
+.post {
+    padding: 10px !important;
+}
+
+.post h1 {
+    font-size: 30px;
+    color: var(--pink-color);
+}

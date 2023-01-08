@@ -6,10 +6,10 @@ export default function Footer() {
             <div className="login_footer_wrap">
                 <Link to="/">Sign Up</Link>
                 <Link to="/login">Log in</Link>
-                <Link to="/">Privacy</Link>
-                <Link to="/">Cookies</Link>
-                <Link to="/">Terms</Link>
-                <Link to="/">Help</Link>
+                <Link to="/privacy">Privacy</Link>
+                <Link to="/cookies">Cookies</Link>
+                <Link to="/terms">Terms</Link>
+                {/* <Link to="/">Help</Link> */}
             </div>
             <div className="footer_splitter"></div>
             <div className="login_footer_wrap">
