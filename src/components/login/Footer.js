@@ -12,10 +12,14 @@ export default function Footer() {
                 {/* <Link to="/">Help</Link> */}
             </div>
             <div className="footer_splitter"></div>
-            <div className="login_footer_wrap">
-                <Link to="/" style={{ fontSize: "12px", marginTop: "10px" }}>
-                    Casuals4Fun © 2022
-                </Link>
+            <div className="login_footer_wrap companyWrap">
+                {/* <Link to="/" style={{ fontSize: "12px", marginTop: "10px" }}> */}
+                <div style={{ fontSize: "12px", marginTop: "10px" }}>
+                    Made with 🖤 by Casuals4Fun
+                </div>
+                <div style={{ fontSize: "12px", textDecoration: "underline"}}>
+                    WeKnewHow
+                </div>
             </div>
         </footer>
     )
