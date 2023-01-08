@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-export default function Footer() {
+export default function Footer({ setVisible }) {
     return (
         <footer className="login_footer">
             <div className="login_footer_wrap">
-                <Link to="/">Sign Up</Link>
+                <Link to="/login" onClick={() => setVisible(true)}>Sign Up</Link>
                 <Link to="/login">Log in</Link>
                 <Link to="/privacy">Privacy</Link>
                 <Link to="/cookies">Cookies</Link>
