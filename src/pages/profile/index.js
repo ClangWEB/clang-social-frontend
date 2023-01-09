@@ -47,7 +47,7 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
         dispatch({
           type: "PROFILE_REQUEST"
         });
-        const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getProfile/${userName}`, {
+        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getProfile/${userName}`, {
           headers: {
             Authorization: `Bearer ${user?.token}`
           }
@@ -57,7 +57,7 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
         }
         else {
           try {
-            const images = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/listImages`, { path, sort, max }, {
+            const images = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/listImages`, { path, sort, max }, {
               headers: {
                 Authorization: `Bearer ${user.token}`
               }
