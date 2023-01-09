@@ -123,7 +123,7 @@
 
 .dark .profile_friend_count.gray_btn,
 .dark .profile_friend_count.gray_btn:hover {
-    background: transparent;
+    background: none;
     cursor: default;
     border-radius: none;
 }

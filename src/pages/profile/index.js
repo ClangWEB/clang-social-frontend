@@ -24,7 +24,7 @@ import { HashLoader } from "react-spinners";
 
 
 export default function Profile({ setSlideNumber, setFullscreen, setPostImages }) {
-// export default function Profile({ getAllPosts }) {
+  // export default function Profile({ getAllPosts }) {
   const navigate = useNavigate();
   const { username } = useParams();
   const { user } = useSelector((state) => ({ ...state }));
@@ -36,7 +36,7 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
     profile: {},
     error: ""
   });
-  const [othername, setOthername] = useState();
+  const [othername, setOthername] = useState("");
   const path = `${userName}/*`;
   const sort = "desc";
   const max = 30;
@@ -57,7 +57,7 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
         }
         else {
           try {
-            const images = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/listImages`,
+            const images = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/listImages`,
               {
                 path, sort, max
               },
@@ -94,7 +94,7 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
   const [scrollHeight, setScrollHeight] = useState();
 
   useEffect(() => {
-    setOthername(profile?.details?.othername);
+    setOthername(profile?.details?.otherName);
   }, [profile]);
 
 
@@ -137,12 +137,15 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
               <div className="profile_cover">
                 <Skeleton
                   // highlightColor="pink"
-                  height="347px"
+                  height="347.5px"
                   containerClassName="avatar-skeleton"
-                  style={{ borderRadius: "8px" }}
+                  style={{
+                    borderBottomLeftRadius: "8px",
+                    borderBottomRightRadius: "8px"
+                  }}
                 />
               </div>
-              <div className="profile_img_wrap" style={{ marginBottom: "-3rem", transform: "translateY(-8px)" }} >
+              <div className="profile_img_wrap" style={{ marginBottom: "-4.2rem", transform: "translateY(-8px)" }} >
                 <div className="profile_w_left">
                   <Skeleton
                     circle
@@ -160,12 +163,12 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
                         width="200px"
                         containerClassName="avatar-skeleton"
                       />
-                      {/* <Skeleton
-                      height="55px"
-                      width="240px"
-                      containerClassName="avatar-skeleton"
-                      style={{transform: "translateY(5px)"}}
-                    /> */}
+                      <Skeleton
+                        height="30px"
+                        width="100px"
+                        containerClassName="avatar-skeleton"
+                        // style={{ transform: "translateY(5px)" }}
+                      />
                     </div>
                     <div className="profile_friend_count gray_btn">
                       <Skeleton

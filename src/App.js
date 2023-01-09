@@ -18,6 +18,8 @@ import FullScreen from "./components/post/FullScreen";
 import Privacy from "./pages/data/Privacy";
 import Terms from "./pages/data/Terms";
 import Cookies from "./pages/data/Cookies";
+import RoomEnter from "./pages/room/RoomEnter";
+import Error from "./pages/error";
 
 function App() {
 
@@ -96,11 +98,13 @@ function App() {
           <Route path="/friends" element={<Friends setPostVisible={setPostVisible} />} exact />
           <Route path="/friends/:type" element={<Friends setPostVisible={setPostVisible} />} exact />
           <Route path="/activate/:token" element={<Activate />} exact />
+          <Route path="/room" element={<RoomEnter setRoomOpen={setRoomOpen} />} exact />
           <Route path="/room/:roomID" element={<Room />} exact />
         </Route>
         <Route element={<NotLoggenInRoutes />}>
           <Route path="/login" element={<Login />} exact />
         </Route>
+        <Route path="/*" element={<Error />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/privacy" element={<Privacy />} exact />
         <Route path="/terms" element={<Terms />} exact />

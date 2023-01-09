@@ -23,7 +23,7 @@ export default function OldCover({ photos, setCoverPicture, setShowOld }) {
                 <div className="old_pictures_wrap scrollbar">
                     {/* <h4>Cover Photos</h4> */}
                     <h4>Your Pictures</h4>
-                    <div className="old_pictures_second">
+                    <div className="old_pictures">
                         {/* {photos && photos.filter(img => img.folder === `${user.username}/cover_pictures`).map((photo) => ( */}
                         {photos && photos.map((photo) => (
                             <img

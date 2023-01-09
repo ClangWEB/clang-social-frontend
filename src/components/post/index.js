@@ -209,7 +209,7 @@ export default function Post({ post, user, profile, setSlideNumber, setFullscree
                         }</div>
                         <div className="reacts_count_num">{total > 0 && total}</div>
                     </div>
-                    {comments && comments.length > 0 && <div className="to_right">
+                    {comments && comments.length > 0 && <div className="to_right" onClick={() => toggleComments()}>
                         <div className="comments_count">
                             <div className="span_second">
                                 <i className="comment_icon"></i>

@@ -28,7 +28,10 @@ export default function RoomInput({ setRoomOpen }) {
         <div className='blur'>
             <div className="postBox" ref={roomRef}>
                 <div className="box_header">
-                    <div className="small_circle" onClick={() => setRoomOpen(false)}>
+                    <div className="small_circle" onClick={() => {
+                        setRoomOpen(false);
+                        navigate("/");
+                        }}>
                         <i className="exit_icon"></i>
                     </div>
                     <span>Room</span>

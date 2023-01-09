@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { useSelector } from 'react-redux';
@@ -15,7 +14,7 @@ export default function Room() {
         // const appID = 946219318;
         const serverSecret = "dbd9701a0eacfd44b992d65b1c03fa32";
         // const serverSecret = "8e0b853d79deae0bcbfe949b73ca46a4";
-        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+        const kitToken = ZegoUIKitPrebuilt?.generateKitTokenForTest(
             appID,
             serverSecret,
             roomID,
@@ -24,7 +23,7 @@ export default function Room() {
         );
         const zp = ZegoUIKitPrebuilt.create(kitToken);
 
-        zp.joinRoom({
+        zp?.joinRoom({
             container: element,
             scenario: {
                 mode: ZegoUIKitPrebuilt.GroupCall,
