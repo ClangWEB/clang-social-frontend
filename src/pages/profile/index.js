@@ -57,15 +57,11 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
         }
         else {
           try {
-            const images = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/listImages`,
-              {
-                path, sort, max
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${user.token}`
-                }
+            const images = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/listImages`, { path, sort, max }, {
+              headers: {
+                Authorization: `Bearer ${user.token}`
               }
+            }
             );
             setPhotos(images.data);
           }
@@ -167,7 +163,7 @@ export default function Profile({ setSlideNumber, setFullscreen, setPostImages }
                         height="30px"
                         width="100px"
                         containerClassName="avatar-skeleton"
-                        // style={{ transform: "translateY(5px)" }}
+                      // style={{ transform: "translateY(5px)" }}
                       />
                     </div>
                     <div className="profile_friend_count gray_btn">
