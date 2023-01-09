@@ -19,6 +19,12 @@
     width: 200px;
 }
 
+.flex_name {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
 .right_reset {
     display: flex;
     align-items: center;

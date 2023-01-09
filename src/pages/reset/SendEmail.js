@@ -33,6 +33,9 @@ export default function SendEmail({ email, userInfos, error, setError, loading, 
                 </div>
                 <div className="reset_right">
                     <img src={userInfos?.picture} alt="Profile" />
+                    <div className="flex_name">
+                        <span>{userInfos?.first_name}</span> <span>{userInfos?.last_name}</span>
+                    </div>
                     <span>{userInfos?.email}</span>
                     <span style={{ color: "#F51997" }}>Clang Social User</span>
                 </div>
