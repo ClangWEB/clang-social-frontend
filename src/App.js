@@ -22,7 +22,7 @@ import RoomEnter from "./pages/room/RoomEnter";
 import Error from "./pages/error";
 
 function App() {
-
+  axios.get(`${process.env.REACT_APP_BACKEND_URL}/`);
   const { user, darkTheme } = useSelector((state) => ({ ...state }));
   useEffect(() => {
     document.body.style.backgroundColor = `${darkTheme ? "#18191a" : "#f0f2f5"}`
