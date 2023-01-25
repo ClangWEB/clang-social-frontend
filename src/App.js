@@ -64,6 +64,8 @@ function App() {
     }
   };
   useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/`);
+    axios.get(`${process.env.REACT_APP_LOGIN_URL}/`);
     getAllPosts(); // eslint-disable-next-line 
   }, [user, user?.token]);
   const [showPreview, setShowPreview] = useState(false);
