@@ -89,8 +89,7 @@ export default function Intro({ detailss, visitor, setOthername }) {
             {details?.job && details?.workPlace ? (
                 <div className="info_profile">
                     <img src="../../../icons/job.png" alt="" />
-                    <span>Works as {details?.job} at <span style={{ fontWeight: "600" }}>{details?.workPlace}</span></span>
-
+                    <span>{details?.job} at <span style={{ fontWeight: "600" }}>{details?.workPlace}</span></span>
                 </div>
             ) : details?.job && !details?.workPlace ? (
                 <div className="info_profile">
