@@ -16,7 +16,7 @@ export default function SearchAccount({ email, setEmail, error, setError, loadin
     const handleSearch = async () => {
         try {
             setLoading(true);
-            const { data } = await axios.post(`${process.env.REACT_APP_LOGIN_URL}/findUser`, { email });
+            const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/findUser`, { email });
             setError("");
             setUserInfos(data);
             setLoading(false);
