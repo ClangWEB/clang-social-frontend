@@ -75,12 +75,12 @@ export default function Activate() {
         )
       }
       <Header />
-      <LeftHome user={user} />
+      {/* <LeftHome user={user} /> */}
       <div className="home_middle">
-        <Stories />
+        {/* <Stories /> */}
         <CreatePost user={user} />
       </div>
-      <RightHome user={user} />
+      {/* <RightHome user={user} /> */}
     </div>
   );
 }
