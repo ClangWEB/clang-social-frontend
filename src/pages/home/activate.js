@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/header";
-import LeftHome from "../../components/home/left";
-import RightHome from "../../components/home/right";
-import Stories from "../../components/home/stories";
+// import LeftHome from "../../components/home/left";
+// import RightHome from "../../components/home/right";
+// import Stories from "../../components/home/stories";
 import "./style.css";
 import CreatePost from "../../components/createPost";
 import { useEffect, useState } from "react";

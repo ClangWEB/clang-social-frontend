@@ -11,7 +11,7 @@ import { getReacts, reactPost } from "../../functions/post";
 import Comment from "./Comment";
 
 
-export default function Post({ post, user, profile, setSlideNumber, setFullscreen, setPostImages }) {
+export default function Post({ post, user, profile, setSlideNumber, setFullscreen, setPostImages }) {  
     const [visible, setVisible] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [reacts, setReacts] = useState();
@@ -190,6 +190,10 @@ export default function Post({ post, user, profile, setSlideNumber, setFullscree
                         <img
                             src={post.images[0].url}
                             alt=""
+                            onClick={() => {
+                                setPostImages(post.images)
+                                setFullscreen(true);
+                            }}
                         />
                     </div>
                 )}

@@ -22,9 +22,11 @@ import RoomEnter from "./pages/room/RoomEnter";
 import Error from "./pages/error";
 
 function App() {
-  axios.get(`${process.env.REACT_APP_BACKEND_URL}/`);
-  axios.get(`${process.env.REACT_APP_LOGIN_URL}/`);
   const { user, darkTheme } = useSelector((state) => ({ ...state }));
+  if (!user) {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/`);
+    axios.get(`${process.env.REACT_APP_LOGIN_URL}/`);
+  }
   useEffect(() => {
     document.body.style.backgroundColor = `${darkTheme ? "#18191a" : "#f0f2f5"}`
   }, [darkTheme]);
@@ -38,29 +40,31 @@ function App() {
   });
 
   const getAllPosts = async () => {
-      try {
-        dispatch({
-          type: "POSTS_REQUEST"
-        });
-        const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getAllPosts`, {
-          headers: {
-            Authorization: `Bearer ${user?.token}`
-          }
-        });
-        dispatch({
-          type: "POSTS_SUCCESS",
-          payload: data
-        });
-      }
-      catch (error) {
-        dispatch({
-          type: "POSTS_ERROR",
-          payload: error.response.data.message
-        });
-      }
+    // if (user) {
+    try {
+      dispatch({
+        type: "POSTS_REQUEST"
+      });
+      const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/getAllPosts`, {
+        headers: {
+          Authorization: `Bearer ${user?.token}`
+        }
+      });
+      dispatch({
+        type: "POSTS_SUCCESS",
+        payload: data
+      });
+    }
+    catch (error) {
+      dispatch({
+        type: "POSTS_ERROR",
+        payload: error.response.data.message
+      });
+    }
+    // }
   };
   useEffect(() => {
-    getAllPosts(); // eslint-disable-next-line 
+    if (user) getAllPosts(); // eslint-disable-next-line 
   }, [user, user?.token]);
   const [showPreview, setShowPreview] = useState(false);
   const [type, setType] = useState("");
