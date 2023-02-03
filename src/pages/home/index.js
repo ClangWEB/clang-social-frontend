@@ -9,7 +9,7 @@ import SendVerification from "../../components/home/sendVerification";
 import Post from "../../components/post";
 import { HashLoader } from "react-spinners";
 
-export default function Home({ loading, posts, error, setPostVisible, setRoomOpen, setShowPreview, setType, setFullscreen, setSlideNumber, setPostImages }) {
+export default function Home({ loading, posts, error, setPostVisible, setRoomOpen, setShowPreview, setType, setFullscreen, setSlideNumber, setPostImages, setCoverType }) {
   const { user } = useSelector((state) => ({ ...state }));
 
   return (
@@ -30,7 +30,7 @@ export default function Home({ loading, posts, error, setPostVisible, setRoomOpe
           : <div className="posts">
             {
               posts?.map((post, i) => (
-                <Post key={i} post={post} user={user} setSlideNumber={setSlideNumber} setFullscreen={setFullscreen} setPostImages={setPostImages} />
+                <Post key={i} post={post} user={user} setSlideNumber={setSlideNumber} setFullscreen={setFullscreen} setPostImages={setPostImages} setCoverType={setCoverType} />
               ))
             }
           </div>

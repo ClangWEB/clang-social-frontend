@@ -72,12 +72,17 @@ function App() {
   const [fullscreen, setFullscreen] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
   const [postImages, setPostImages] = useState([]);
+  const [coverType, setCoverType] = useState(false);
 
   return (
     <div className={darkTheme ? "dark" : ""}>
-      {postVisible && <CreatePostPopup type={type} showPreview={showPreview} setShowPreview={setShowPreview} user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />}
+      {postVisible &&
+        <CreatePostPopup type={type} showPreview={showPreview} setShowPreview={setShowPreview} user={user} setPostVisible={setPostVisible} posts={posts} dispatch={dispatch} />
+      }
       {roomOpen && <RoomInput setRoomOpen={setRoomOpen} />}
-      {fullscreen && <FullScreen setFullscreen={setFullscreen} postImages={postImages} slideNumber={slideNumber} setSlideNumber={setSlideNumber} />}
+      {fullscreen &&
+        <FullScreen setFullscreen={setFullscreen} postImages={postImages} slideNumber={slideNumber} setSlideNumber={setSlideNumber} coverType={coverType} setCoverType={setCoverType}
+        />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={
@@ -92,6 +97,7 @@ function App() {
               setFullscreen={setFullscreen}
               setSlideNumber={setSlideNumber}
               setPostImages={setPostImages}
+              setCoverType={setCoverType}
             />
           }
             exact

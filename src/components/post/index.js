@@ -11,7 +11,7 @@ import { getReacts, reactPost } from "../../functions/post";
 import Comment from "./Comment";
 
 
-export default function Post({ post, user, profile, setSlideNumber, setFullscreen, setPostImages }) {  
+export default function Post({ post, user, profile, setSlideNumber, setFullscreen, setPostImages, setCoverType }) {  
     const [visible, setVisible] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [reacts, setReacts] = useState();
@@ -79,7 +79,6 @@ export default function Post({ post, user, profile, setSlideNumber, setFullscree
     // useClickOutside(menuRef, () => setShowMenu(false));
 
     const postRef = useRef(null);
-
     return (
         <div className="no_overflow">
             <div
@@ -171,6 +170,11 @@ export default function Post({ post, user, profile, setSlideNumber, setFullscree
                             <img
                                 src={post.user.cover}
                                 alt=""
+                                onClick={() => {
+                                    setCoverType(true)
+                                    setPostImages(post.user.cover)
+                                    setFullscreen(true);
+                                }}
                             />
                         </div>
                         <div className="post_updated_image">

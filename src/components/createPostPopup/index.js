@@ -92,7 +92,6 @@ export default function CreatePostPopup({ type, user, setPostVisible, posts, dis
 
         }
     }
-    console.log()
 
     return (
         <div className="blur">
