@@ -133,9 +133,11 @@ export default function RegisterForm({ setVisible }) {
               setGenderError("Choose your gender!");
             }
             else if (current_date - picked_date < atleast14) {
+              setGenderError("");
               setDateError("You must be 14 years old to join Clang Social.");
             }
             else if (current_date - picked_date > noMoreThan70) {
+              setGenderError("");
               setDateError("You must be less than 70 years old to join Clang Social.");
             }
             else if (gender === "") {
