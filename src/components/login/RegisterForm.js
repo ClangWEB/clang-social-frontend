@@ -125,6 +125,7 @@ export default function RegisterForm({ setVisible }) {
                         let atleast14 = new Date(1970 + 14, 0, 1);
                         let noMoreThan70 = new Date(1970 + 70, 0, 1);
                         if (gender === "") {
+                            setDateError("");
                             setGenderError("Choose your gender!");
                             if (current_date - picked_date < atleast14)
                                 setDateError("You must be 14 years old to join Clang Social.");
